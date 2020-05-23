@@ -1,4 +1,13 @@
 <?php $this->title = "Accueil"; ?>
+<!-- ======= Hero Section ======= -->
+<section id="hero" class="align-items-center">
+        <div class="container fade-up">
+          <img src="https://www.gifsanimes.com/data/media/1622/twirling-baton-image-animee-0003.gif" alt="twirling-baton-image-animee-0003" class="gif-baton fade-right " />
+          <h1>Twirling-bâton<br/>Fontenay-sous-bois</h1>
+          <h2>Les panthères de Fontenay vous souhaitent la bienvenue</h2>
+          
+        </div>
+      </section><!-- End Hero -->
 
       <main id="main">
          <!-- ======= Actuality Section ======= -->

@@ -25,7 +25,9 @@ class Router
         try{
             if(isset($route))
             {
-               
+                if($route === 'login'){
+                    $this->frontController->login($this->request->getPost());
+                }
 
             }
             else {

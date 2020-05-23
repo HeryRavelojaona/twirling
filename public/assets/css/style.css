@@ -808,3 +808,15 @@ Read-more
   color: #FFBF61;
 }
 
+/*----------------------------
+*Login_form
+---------------------------------*/
+#login_form {
+  text-align: center;
+  height: 90vh;
+}
+
+#forgot_pass{
+  background-color: #FFBF61;
+  color: #fff;
+}

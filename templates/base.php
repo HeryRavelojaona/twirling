@@ -40,7 +40,7 @@
           <div class="collapse navbar-collapse justify-content-center " id="nav_menu">
             <ul class="navbar-nav ">
                   <li class="nav-item active">
-                      <a class="nav-link" href="index.html">Accueil</a>
+                      <a class="nav-link" href="../public/index.php">Accueil</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="#about">Présentation</a>
@@ -50,21 +50,16 @@
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="#team">Team</a>
+                  </li>
+                  <li class="nav-item">
+                  <a href="../public/index.php?route=login" class="nav-link" ><i class="fas fa-user-lock"></i></a>
+                  </li>
               </ul>
               <button class="close-btn"><i class="fas fa-times"></i></button>
           </div>
         </nav>
       </header><!-- End Header -->
 
-       <!-- ======= Hero Section ======= -->
-       <section id="hero" class="align-items-center">
-        <div class="container fade-up">
-          <img src="https://www.gifsanimes.com/data/media/1622/twirling-baton-image-animee-0003.gif" alt="twirling-baton-image-animee-0003" class="gif-baton fade-right " />
-          <h1>Twirling-bâton<br/>Fontenay-sous-bois</h1>
-          <h2>Les panthères de Fontenay vous souhaitent la bienvenue</h2>
-          
-        </div>
-      </section><!-- End Hero -->
       <div id="content">
             <?= $content ?>
         </div>

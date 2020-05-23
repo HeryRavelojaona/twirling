@@ -14,4 +14,13 @@ class FrontController extends Controller
         return $this->view->render('home');
         
     }
+
+    public function login($post)
+    {
+        if($post->get('submit')) {
+            
+        }
+        return $this->view->render('login');
+        
+    }
 }
