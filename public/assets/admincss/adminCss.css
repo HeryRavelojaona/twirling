@@ -1,0 +1,76 @@
+/*--------------------------------------------------------------
+*
+/* Navigation Menu
+--------------------------------------------------------------*/
+/*Navigation */
+.profil-img {
+    max-height: 80px;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+ 
+
+/*--------------------------------------------------------------
+*
+/* Actuality
+--------------------------------------------------------------*/
+#main {
+    padding-top: 60px;
+}
+
+.message-for-all {
+    text-align: center;
+}
+.text-message-for-all {
+    color: #fff !important;
+    padding: 15px;
+}
+
+.text-message-for-all i {
+    color: rgb(223, 54, 110) !important;
+    margin: 0 10px;
+    font-size: 30px;
+}
+
+.actuality-admin {
+    margin: 30px 0;
+}
+
+.admin-box {
+    text-align: left !important;
+    display: flex;
+    justify-content: space-between;
+}
+
+.admin-box .action {
+    display: flex;
+    flex-direction: column;
+}
+
+.admin-box .action .btn {
+    margin: 10px 0;
+}
+
+.admin-members {
+    text-align: center;
+}
+
+.admin-members .members {
+    margin: 30px 0;
+    padding: 15px;
+    border: solid 1px;
+    border-radius: 5px;
+}
+
+.team .planning {
+    width: 100%;
+    height: 100%;
+}
+
+#changePrice {
+    display: none;
+    margin: 10px 0;
+}
+

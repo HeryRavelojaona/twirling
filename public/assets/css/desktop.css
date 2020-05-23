@@ -1,0 +1,70 @@
+.navbar  .collapse {
+    background: none !important;
+  }
+
+.navbar .collapse a {
+    color: #000 !important;
+    font-weight: 600;
+}
+
+.close-btn {
+    display: none;
+}
+
+
+.clients img {
+    width: 50%;
+}
+/*--------------------------------------------------------------
+# Hero Section
+--------------------------------------------------------------*/
+#hero {
+    width: 100%;
+    height: 90vh !important;
+    background-size: cover !important;
+    position: relative;
+  }
+  
+  #hero:before {
+    content: "";
+    background: rgba(0, 0, 0, 0.3);
+    position: absolute;
+    bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+  }
+  
+  #hero .container {
+    margin-top: 270px;
+  }
+  
+  #hero {
+    text-align: center;
+  }
+  #hero .container {
+    padding-top: 40px;
+  }
+  
+  #hero h1 {
+    text-shadow: #000 8px 8px 10px;
+    margin: 0 0 10px 0;
+    font-weight: 700;
+    font-size: 38px !important;
+    text-transform: uppercase;
+    color: #fff;
+  }
+  #hero h2 {
+    text-shadow: #000 8px 8px 10px;
+    color: #eee;
+    font-size: 18px;
+    line-height: 24px;
+
+  }
+
+
+/*-------------SectionInfo---------*/
+.gif {
+    top: -15px !important;
+   
+  }
