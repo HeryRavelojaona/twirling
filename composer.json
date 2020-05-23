@@ -1,0 +1,11 @@
+{
+  "autoload": {
+    "psr-4": {
+      "Spac\\config\\":"config/",
+      "Spac\\src\\": "src/"
+    }
+  },
+  "require": {
+    "swiftmailer/swiftmailer": "^5.4"
+  }
+}

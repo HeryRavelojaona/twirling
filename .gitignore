@@ -1,0 +1,5 @@
+.idea/
+/vendor/
+/config/dev.php
+public/assets/img
+
