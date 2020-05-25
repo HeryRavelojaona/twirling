@@ -22,6 +22,7 @@
         <!--feuille de style-->
         <link rel="stylesheet" type="text/css" href="../public/assets/css/reset.css"/> <!--reset_css-->
         <link rel="stylesheet" type="text/css" href="../public/assets/css/style.css"/><!--Mobile-first-->
+        <link rel="stylesheet" type="text/css" href="../public/assets/admincss/adminCss.css"/><!--Mobile-first-->
         <link rel="stylesheet" type="text/css" media="screen and (min-width: 576px)" href="../public/assets/css/tablet.css"/><!--tablet-style-->
         <link rel="stylesheet" type="text/css" media="screen and (min-width: 992px)" href="../public/assets/css/desktop.css"/><!--desktop-style-->
       <link href="../public/assets/css/style.css" rel="stylesheet">
@@ -51,8 +52,26 @@
                   <li class="nav-item">
                     <a class="nav-link" href="#team">Team</a>
                   </li>
-                  <li class="nav-item">
-                  <a href="../public/index.php?route=login" class="nav-link" ><i class="fas fa-user-lock"></i></a>
+                  <li class="nav-item dropdown">
+        <?php
+            if($this->session->get('id'))
+            {
+        ?>
+                    <a href="#" class="nav-link" data-toggle="dropdown" role="button" aria-expanded="false">Admin</a>
+                    <ul class="dropdown-menu" role="menu">
+                    <li><a href="../public/index.php?route=profile" class="dropdown-item">
+                    <img src="../public/assets/img/hoby.png" class="img-fluid rounded-circle profil-img"><br/>Profil</a></li>
+            <?php if($this->session->get('role') === 'admin') { ?>
+                    <li><a href="../public/index.php?route=administration" class="dropdown-item">Administration</a></li>
+            <?php } ?>
+                    <li><a href="../public/index.php?route=logout" class="dropdown-item">Déconnexion</a></li>
+        <?php 
+            }else{ 
+        ?>
+                    <a href="../public/index.php?route=login" class="nav-link" ><i class="fas fa-user-lock"></i></a>   
+        <?php 
+        } 
+        ?>
                   </li>
               </ul>
               <button class="close-btn"><i class="fas fa-times"></i></button>

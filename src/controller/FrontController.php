@@ -26,6 +26,7 @@ class FrontController extends Controller
                     $this->session->set('login', 'Bonjour '.$result['result']['lastname'].'');
                     $this->session->set('id', $result['result']['id']);
                     $this->session->set('lastname', $result['result']['lastname']);
+                    $this->session->set('firstname', $result['result']['firstname']);
                     $this->session->set('mail', $result['result']['email']);
                     $this->session->set('role', $result['result']['role']);
                     header('Location: ../public/index.php');
@@ -42,6 +43,11 @@ class FrontController extends Controller
 
         }
         return $this->view->render('login');
+    }
+
+    public function profile()
+    {
+        return $this->view->render('profile');
     }
 
         

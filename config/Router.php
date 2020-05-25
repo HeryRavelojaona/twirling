@@ -28,6 +28,9 @@ class Router
                 if($route === 'login'){
                     $this->frontController->login($this->request->getPost());
                 }
+                elseif($route === 'profile'){
+                    $this->frontController->profile();
+                }
 
             }
             else {

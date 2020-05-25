@@ -6,8 +6,7 @@
 .profil-img {
     max-height: 80px;
     position: relative;
-    left: 50%;
-    transform: translateX(-50%);
+    margin: 0 auto;
 }
 
  
@@ -74,3 +73,16 @@
     margin: 10px 0;
 }
 
+/*-----------------------------
+Profile-part
+--------------------------------*/
+.profile {
+    text-align: center;
+    margin-top: 100px;
+    height: 90vh;
+    box-shadow: 0 0 30px rgba(214, 215, 216, 0.6);
+}
+
+.profile-content {
+    margin :10px 0;
+}
