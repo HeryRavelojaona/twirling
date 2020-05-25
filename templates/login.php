@@ -8,14 +8,15 @@
                         <label for="inputEmail" class="col-lg-2 control-label">Email</label>
                         <div class="col-lg-12">
                         <input type="email" class="form-control" id="inputEmail" name="mail" placeholder="Email">
-                        <span class="form-error"></span>
+                        <span class="form-error"><?= isset($errors['mail']) ? $errors['mail'] : ''; ?></span>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="pass" class="col-lg-2 control-label">Mot de passe</label>
                         <div class="col-lg-12">
                         <input type="password" class="form-control" id="password" name="password" placeholder="Mot de passe">
-                        <span class="form-error"></span>
+                        <span class="form-error"><?= isset($errors['password']) ? $errors['password'] : ''; ?></span>
+                        <span class="form-error"><?= isset($errors['invalid']) ? $errors['invalid'] : ''; ?></span>
                         </div>
                     </div>
                     <div class="form-group ">

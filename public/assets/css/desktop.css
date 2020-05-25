@@ -67,4 +67,9 @@
 .gif {
     top: -15px !important;
    
-  }
+}
+
+.connexion .form-control {
+  width: 30%;
+  margin:0 auto;
+}

@@ -820,3 +820,7 @@ Read-more
   background-color: #FFBF61;
   color: #fff;
 }
+
+.form-error {
+  color: red;
+}
