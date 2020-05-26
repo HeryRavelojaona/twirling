@@ -1,6 +1,6 @@
 /** 
  * Utils Class
- *
+ * For all little events
  */
 class Utils {
     constructor(){
@@ -8,6 +8,7 @@ class Utils {
         this.ArrowUp();
         this.changePrice('#openChangePrice');
         this.responsiveSlider(576, 992);
+        this.openForm();
     }
 
     /**
@@ -75,7 +76,34 @@ class Utils {
         return;
     }
 
-   
+     //Validation before Delete
+    openForm() {
+        $('.go-delete').hide();
+
+        /*part delete-account*/
+        $('.check-delete').click(function(e){
+        e.preventDefault();
+        if($('.go-delete').hide()){
+            $('.btnAdmin').hide();
+            $('.go-delete').show();
+            $('.stop-delete').click(function(){
+                $('.go-delete').hide();
+                $('.btnAdmin').show();
+            });
+        }else {
+            $('.btnAdmin').show();
+            }
+        });
+    
+        /*part Change pass*/
+        $('.profile-changePass').hide();
+        
+        $('.modif-pass').click(function(e){
+            e.preventDefault();
+                $('.profile-changePass').toggle();
+        });
+        
+    }
 
     
 };

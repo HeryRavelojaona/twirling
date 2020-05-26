@@ -2,9 +2,12 @@ $(document).ready(function() {
  
     /*animation */
     const animation = new Animation();
-    /* animte GIF on load section Hero*/
+    /* animate GIF on load section Hero*/
     animation.gifBatonAnimate(".gif-baton" );
 
     /*Utils*/
     const utils = new Utils();
+
+    /*form*/
+    const form_ajax = new Form_ajax();
 });

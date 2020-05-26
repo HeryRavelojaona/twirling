@@ -31,6 +31,10 @@ class UserValidation extends Validation
             $error = $this->checkPass($name, $value);
             $this->addError($name, $error);
         }
+        elseif($name === 'samePassword') {
+            $error = $this->checkPass($name, $value );
+            $this->addError($name, $error);
+        }
   
     }
 

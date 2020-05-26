@@ -86,3 +86,12 @@ Profile-part
 .profile-content {
     margin :10px 0;
 }
+
+.profile-changePass {
+    box-shadow: 0 0 30px rgba(214, 215, 216, 0.6);
+    margin: 20px;
+}
+
+.profile-changePass input {
+    text-align: center;
+}
