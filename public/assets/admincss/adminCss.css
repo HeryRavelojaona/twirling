@@ -95,3 +95,25 @@ Profile-part
 .profile-changePass input {
     text-align: center;
 }
+
+#myModal {
+    text-align: center;
+    width: 320px;
+    height: 250px;
+    border: 1px solid #281EA7;
+    box-shadow: 0 0 30px rgba(214, 215, 216, 0.6);
+    border-radius: 3px;
+    background-color: #fff;
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 20%;
+}
+
+#openModal {
+    max-height: 200px;
+    border: none;
+    border-radius: 10px;
+}

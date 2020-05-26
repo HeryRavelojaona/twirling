@@ -5,7 +5,7 @@
 class Form_ajax {
     constructor(){
         this.changePass('#change_pass');
-    
+        this.changePicture('#changeImage');
     }
 
     /**
@@ -34,5 +34,40 @@ class Form_ajax {
             })
         })
 
+    }
+
+    /**
+     * @param element HTMLElement|string Element Change picture
+     */
+    changePicture(element) 
+    {   /*open part form*/
+        if($("#myModal").hide()){
+            $('#openModal').click(function(){
+            $("#myModal").show();
+            })
+        }
+        
+        $('.changeImgClose').click(function(){
+            $("#myModal").hide();
+            $('#picture_profil').load(' #picture_profil');
+        })
+    
+        /*change picture*/
+       $(element).submit(function(e){
+            e.preventDefault();
+            let fileData = new FormData($(element)[0]);
+            $.ajax({
+                type: "POST",
+                data: fileData,
+                cache: false,
+                contentType: false,
+                processData: false,
+                url: "../public/index.php?route=fileUpload",
+                success: function (data) {
+                        $('.status').text(data);
+                        $(element)[0].reset();
+                }
+            })
+        })
     }
 }

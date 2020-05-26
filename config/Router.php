@@ -40,6 +40,9 @@ class Router
                 elseif($route === 'logout'){
                     $this->frontController->logout();
                 }
+                elseif($route === 'fileUpload'){
+                    $this->frontController->fileUpload($this->request->getPost());
+                }
 
             }
             else {
