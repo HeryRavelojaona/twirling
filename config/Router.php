@@ -37,6 +37,9 @@ class Router
                 elseif($route === 'updatePassword'){
                     $this->backController->updatePassword($this->request->getPost());
                 }
+                elseif($route === 'logout'){
+                    $this->frontController->logout();
+                }
 
             }
             else {

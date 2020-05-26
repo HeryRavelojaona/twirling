@@ -4,7 +4,10 @@
         <div class="container fade-up">
           <img src="https://www.gifsanimes.com/data/media/1622/twirling-baton-image-animee-0003.gif" alt="twirling-baton-image-animee-0003" class="gif-baton fade-right " />
           <h1>Twirling-bâton<br/>Fontenay-sous-bois</h1>
-          <h2>Les panthères de Fontenay vous souhaitent la bienvenue <br/><?= $this->session->show('login'); ?></h2>
+          <h2>Les panthères de Fontenay vous souhaitent la bienvenue <br/>
+          <?= $this->session->show('login'); ?>
+          <?= $this->session->show('logout'); ?>
+          </h2>
           
         </div>
       </section><!-- End Hero -->

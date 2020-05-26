@@ -45,6 +45,15 @@ class FrontController extends Controller
         return $this->view->render('login');
     }
 
+    public function logout()
+    {
+        $this->session->stop();
+        $this->session->start();
+        $this->session->set('logout', 'Vous êtes déconnecter');
+        header('Location: ../public/index.php');
+        exit();
+    }
+
     public function profile()
     {
         return $this->view->render('profile');
