@@ -63,7 +63,7 @@
                     <a href="#" class="nav-link" data-toggle="dropdown" role="button" aria-expanded="false">Admin</a>
                     <ul class="dropdown-menu" role="menu">
                     <li><a href="../public/index.php?route=profile" class="dropdown-item">
-                    <img src="../public/assets/img/hoby.png" class="img-fluid rounded-circle profil-img"><br/>Profil</a></li>
+                    <img src="../public/assets/img/upload/<?= htmlspecialchars($this->session->get('filename'));?>" class="img-fluid rounded-circle profil-img"><br/>Profil</a></li>
             <?php if($this->session->get('role') === 'admin') { ?>
                     <li><a href="../public/index.php?route=administration" class="dropdown-item">Administration</a></li>
             <?php } ?>
