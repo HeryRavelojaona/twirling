@@ -34,6 +34,9 @@ class Router
                 elseif($route === 'actuality'){
                     $this->frontController->actuality($this->request->getGet());
                 }
+                elseif($route === 'article'){
+                    $this->frontController->article($this->request->getGet());
+                }
                 elseif($route === 'profile'){
                     $this->frontController->profile();
                 }

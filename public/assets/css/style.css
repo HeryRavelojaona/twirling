@@ -275,6 +275,14 @@ Read-more
   color: #316BA4;
 }
 
+.article-return {
+  text-align: center;
+}
+
+.article-return .return {
+  background: #DB3575;
+}
+
 
 /*--------------------------------------------------------------
 # About

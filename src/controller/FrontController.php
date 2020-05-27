@@ -25,6 +25,21 @@ class FrontController extends Controller
         ]);
         
     }
+    public function article(Parameter $get)
+    {
+        if(isset($get)){
+            $articleId =  $get->get('articleId');
+            if(($articleId > 1)){
+                $article = $this->articleDAO->showArticle($articleId);
+
+                return $this->view->render('article',[
+                    'article' => $article
+                ]);
+            }
+         }
+     
+         $this->errorController->errorNotFound();
+    }
 
     public function actuality($get)
     {

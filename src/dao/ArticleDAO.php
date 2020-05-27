@@ -46,7 +46,7 @@ class ArticleDAO extends DAO
             $sql = "SELECT article.id , article.title, article.content,article.status, article.created_at, article.user_id, article.filename, article.category_id FROM article WHERE article.status =1 AND article.category_id =1  ORDER BY article.created_at DESC LIMIT ".$start.",".$limit.""; 
         }else{
             //for admin
-            $sql = "SELECT article.id , article.title, article.content, article.created_at, article.status, article.user_id FROM article INNER JOIN user ON user.id = article.user_id ORDER BY article.created_at DESC LIMIT ".$start.",".$limit."";
+            $sql = "SELECT article.id , article.title, article.content, article.created_at, article.status, article.user_id,article.category_id FROM article INNER JOIN user ON user.id = article.user_id ORDER BY article.created_at DESC LIMIT ".$start.",".$limit."";
         }
         $result = $this->createQuery($sql);
         $articles = [];
@@ -67,6 +67,16 @@ class ArticleDAO extends DAO
         $count= $countId['COUNT(id)'];
         $result->closeCursor();
         return $count;
+    }
+
+    public function showArticle($articleId)
+    {
+        $sql = 'SELECT article.id , article.title, article.content,article.filename, article.created_at, article.status, article.user_id,article.category_id FROM article INNER JOIN user ON user.id = article.user_id WHERE article.id = '.$articleId.'';
+        $result = $this->createQuery($sql);
+        $article = $result->fetch();
+        $article = $this->buildObject($article);
+        $result->closeCursor();
+        return $article;
     }
 
 }
