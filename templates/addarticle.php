@@ -1,5 +1,6 @@
 
-        <!-- ======= Actuality Section ======= -->
+ <?php $this->title = "Ajouter un article"; ?>
+ <!-- ======= Actuality Section ======= -->
         <section id="Actuality" class="actuality actuality-edit">
         <div class="container">
 

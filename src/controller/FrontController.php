@@ -26,6 +26,36 @@ class FrontController extends Controller
         
     }
 
+    public function actuality($get)
+    {
+         // Pagination
+         $count =  (int) $this->articleDAO->countArticles();
+         $artPerPage = 6;
+         $currentPage = 1;
+         $nbPage = ceil($count/$artPerPage);
+ 
+         if(isset($get)){
+            $page =  $get->get('page');
+             if(($page > 0) && ($page <=  $nbPage) )
+                 $currentPage = $page;
+         }
+         /**
+         * @param int $start sql DESC LIMIT start
+         * @param int $limit sql DESC LIMIT end
+         * @param boolean $published if the article is published
+         */
+         $start = ($currentPage - 1) * $artPerPage;
+         $limit = $artPerPage;
+ 
+         $published = true;
+         $articles = $this->articleDAO->showLastArticles($start, $limit, $published);
+         return $this->view->render('actuality', [
+             'articles' => $articles,
+             'nbPage' => $nbPage,
+             'currentPage' => $currentPage,
+             ]);
+    }
+
     public function login(Parameter $post)
     {
         if($post->get('submit')) {

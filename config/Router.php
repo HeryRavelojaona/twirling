@@ -31,6 +31,9 @@ class Router
                 if($route === 'login'){
                     $this->frontController->login($this->request->getPost());
                 }
+                elseif($route === 'actuality'){
+                    $this->frontController->actuality($this->request->getGet());
+                }
                 elseif($route === 'profile'){
                     $this->frontController->profile();
                 }

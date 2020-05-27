@@ -212,6 +212,8 @@ Read-more
   padding: 50px 30px;
   box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
   transition: all ease-in-out 0.3s;
+  height: 500px;
+  margin: 20px 0;
 }
 
 .actuality .box span {
@@ -256,6 +258,20 @@ Read-more
 .actuality .box:hover span,
 .actuality .box:hover p {
   /*color: #fff;*/
+  color: #316BA4;
+}
+.page {
+  display: flex;
+  justify-content: center;
+}
+
+.page li a {
+  margin: 0 5px;
+  color: #DB3575;
+}
+
+.page li a:hover {
+  font-weight: bold;
   color: #316BA4;
 }
 

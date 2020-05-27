@@ -58,4 +58,15 @@ class ArticleDAO extends DAO
         return $articles;
     }
 
+    /*Count number articles*/
+    public function countArticles()
+    {
+        $sql = 'SELECT COUNT(id) FROM article WHERE status=1';
+        $result = $this->createQuery($sql);
+        $countId = $result->fetch();
+        $count= $countId['COUNT(id)'];
+        $result->closeCursor();
+        return $count;
+    }
+
 }

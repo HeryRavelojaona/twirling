@@ -52,6 +52,9 @@
                   <li class="nav-item">
                     <a class="nav-link" href="#team">Team</a>
                   </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../public/index.php?route=actuality">Actualités</a>
+                  </li>
                   <li class="nav-item dropdown">
         <?php
             if($this->session->get('id'))
