@@ -10,7 +10,12 @@ class BackController extends Controller
 
     public function admin()
     {
-        return $this->view->render('administration');
+        /*$category = 1 if is for actuality*/
+        $category = 1;
+        $articles = $this->articleDAO->showArticles($category);
+        return $this->view->render('administration',[
+            'articles' => $articles
+        ]);
  
     }
 
@@ -110,4 +115,6 @@ class BackController extends Controller
             } 
             echo json_encode($response);
     }
+
+    
 }
