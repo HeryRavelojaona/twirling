@@ -21,30 +21,23 @@
               <h2>Actualités</h2>
             </div>
             <div class="row">
-
+            <?php
+                foreach ($articles as $article)
+                {
+            ?>
               <div class="col-lg-6 fade-up">
                 <div class="box">
-                  <img src="https://i.picsum.photos/id/502/200/300.jpg" class="actuality-img">
-                  <span class="actuality-date">01/02/2020</span>
-                  <h4>Début des inscriptions</h4>
-                  <p>Ulamco laboris nisi ut aliquip ex ea commodo consequat. Et consectetur ducimus vero placeat</p>
-                  <a href="article.html" class="read-more">Lire la suite...</a>
-                </div>
-                
-              </div>
-
-              <div class="col-lg-6 mt-4 mt-lg-0 fade-up">
-                <div class="box">
-                  <img src="https://picsum.photos/seed/picsum/200/300" class="actuality-img">
-                  
-                  <span class="actuality-date">02/02/1982</span>
-                  <h4>Gala</h4>
-                  <p>Dolorem est fugiat occaecati voluptate velit esse. Dicta veritatis dolor quod et vel dire leno para dest</p>
-                  <a href="article.html" class="read-more">Lire la suite...</a>
+                  <img src="../public/assets/img/upload/<?= htmlspecialchars($article->getFileName());?>" class="actuality-img">
+                  <?php $date = new Datetime($article->getCreatedAt()); ?>
+                  <span class="actuality-date"> <?= htmlspecialchars($date->format('d-m-Y'));?></span>
+                  <h4><?= htmlspecialchars($article->getTitle());?></h4>
+                  <p><?= $article->getContent();?></p>
+                  <a href="../public/index.php?route=article&articleId=<?= htmlspecialchars($article->getId());?>" class="read-more">Lire la suite...</a>
                 </div>
               </div>
-            </div>
-          </div>
+            <?php
+            }
+            ?>
         </section><!-- End Actuality Section -->
     
         <!-- ======= About Section ======= -->

@@ -14,6 +14,11 @@ class Article
      */
     private $userId;
 
+     /**
+     * @var int
+     */
+    private $categoryId;
+
     /**
      * @var string
      */
@@ -39,13 +44,12 @@ class Article
      * @var string
      */
     private $filename;
-
     /**
      * @return string
      */
     public function getFileName()
     {
-        return $this->id;
+        return $this->filename;
     }
 
     /**
@@ -54,6 +58,22 @@ class Article
     public function setFileName($filename)
     {
         $this->filename = $filename;
+    }
+
+     /**
+     * @return int
+     */
+    public function getStatus()
+    {
+        return $this->status;
+    }
+
+    /**
+     * @param int $status
+     */
+    public function setStatus($status)
+    {
+        $this->status = $status;
     }
 
     /**
@@ -87,22 +107,22 @@ class Article
     {
         $this->userId = $userId;
     }
-
-    /**
+      /**
      * @return int
      */
-    public function getStatus()
+    public function getCategoryId()
     {
-        return $this->status;
+        return $this->categoryId;
     }
 
     /**
-     * @param int $status
+     * @param int $id
      */
-    public function setStatus($status)
+    public function setCategoryId($categoryId)
     {
-        $this->status = $status;
+        $this->categoryId = $categoryId;
     }
+
 
     /**
      * @return string

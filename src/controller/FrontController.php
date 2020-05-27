@@ -10,8 +10,19 @@ class FrontController extends Controller
 
     public function home()
     {
-        
-        return $this->view->render('home');
+        /**
+        * @param boolean $published if the article is published
+        * @param int $start sql DESC LIMIT start
+        * @param int $limit sql DESC LIMIT end
+        */
+ 
+        $published = true;
+        $start = 0;
+        $limit = 2;
+        $articles = $this->articleDAO->showLastArticles( $start, $limit, $published);
+        return $this->view->render('home',[
+            'articles' => $articles,
+        ]);
         
     }
 
