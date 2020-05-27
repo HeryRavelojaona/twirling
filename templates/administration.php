@@ -31,7 +31,7 @@
                     <p><?= htmlspecialchars($article->getStatus());?></p>
                 </div>
                 <div class="action col-md-2">
-                    <a href="article.html" class="btn btn-info">Voir</a>
+                    <a href="../public/index.php?route=article&articleId=<?= htmlspecialchars($article->getId());?>" class="btn btn-info">Voir</a>
                     <a class="btn btn-warning">Modifier</a>
                     <a class="btn btn-primary">Publié</a>
                     <a class="btn btn-danger">Supprimer</a>
