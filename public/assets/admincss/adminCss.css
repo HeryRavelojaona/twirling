@@ -117,3 +117,44 @@ Profile-part
     border: none;
     border-radius: 10px;
 }
+
+/*--------------
+AddArticle
+--------------*/
+
+.addarticlebox textarea{
+    height:250px;
+}
+.addarticlebox {
+    max-height: 150vh !important;
+}
+
+.return-btn {
+    margin-top: 50px;
+    text-align: center;
+    width: 100%;
+}
+
+.return-btn .btn-info {
+    border: none;
+    background-color: rgb(223, 54, 110);
+}
+
+.actuality .preview {
+    display: none;
+}
+
+#savecontent {
+    visibility: hidden;
+}
+
+.action {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.action .btn {
+    text-align: center;
+    width: 120px;
+}

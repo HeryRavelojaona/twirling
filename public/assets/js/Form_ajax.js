@@ -6,6 +6,7 @@ class Form_ajax {
     constructor(){
         this.changePass('#change_pass');
         this.changePicture('#changeImage');
+        this.preview();
     }
 
     /**
@@ -69,5 +70,42 @@ class Form_ajax {
                 }
             })
         })
+    }
+
+    preview() {
+        $('#form_article').submit(function(e){
+            e.preventDefault();
+            let fileData = new FormData($('#form_article')[0]);
+            $.ajax({
+                type: "POST",
+                data: fileData,
+                cache: false,
+                contentType: false,
+                processData: false,
+                url: "../public/index.php?route=previewarticle",
+                success: function (data) {
+                    let response = JSON.parse(data);
+                    if(!response.error){
+                        
+                        let name = response.filename;
+                        $('#preview_file').attr("src","../public/assets/img/upload/"+name);
+                        $('.preview-title').text(response.title);
+                        $('.preview-content').text(response.content);
+                        $('.actuality-edit').hide();
+                        $('.actuality .preview').show();
+                        $('#savefilename').val(name);
+                        $('#savetitle').val(response.title);
+                        $('#savecontent').html(response.content);
+                    }else {
+                        $('.form-error').html(response.error);
+
+                    }
+                        console.log(response.error);
+                        
+                }
+            })
+            
+        })
+
     }
 }

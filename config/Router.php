@@ -34,6 +34,15 @@ class Router
                 elseif($route === 'profile'){
                     $this->frontController->profile();
                 }
+                elseif($route === 'administration'){
+                    $this->backController->admin();
+                }
+                elseif($route === 'addarticle'){
+                    $this->backController->addArticle($this->request->getPost());
+                }
+                elseif($route === 'previewarticle'){
+                    $this->backController->previewArticle($this->request->getPost());
+                }
                 elseif($route === 'updatePassword'){
                     $this->backController->updatePassword($this->request->getPost());
                 }

@@ -5,6 +5,7 @@ namespace Spac\src\controller;
 use Spac\config\Request;
 use Spac\src\model\View;
 use Spac\src\DAO\UserDAO;
+use Spac\src\DAO\ArticleDAO;
 use Spac\src\constraint\Validation;
 
 abstract class Controller
@@ -26,6 +27,7 @@ abstract class Controller
         $this->post = $this->request->getPost();
         $this->session = $this->request->getSession();
         $this->userDAO = new UserDAO();
+        $this->articleDAO = new ArticleDAO();
         $this->validation = new Validation();
         
     }
