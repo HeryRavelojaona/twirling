@@ -121,7 +121,9 @@ class FrontController extends Controller
 
     public function fileUpload($post)
     {
-        
+       /*if(!empty($post->get('articleId'))){
+            $articleId = $post->get('articleId');
+        }*/
         if($_FILES['photo']){
             if($_FILES['photo'] && $_FILES['photo'] ["error"] == 0 ){
                 $allowed = array("jpg" => "image/jpg", "jpeg" => "image/jpeg", "gif" => "image/gif", "png" => "image/png");
@@ -142,6 +144,13 @@ class FrontController extends Controller
                         move_uploaded_file($_FILES["photo"]["tmp_name"], "../public/assets/img/upload/" . $_FILES["photo"]["name"]);
                         /*save name in database*/
                         $this->userDAO->uploadPicture($this->session->get('mail'), $filename);
+
+                        /*For update article*/
+                        if(!empty($post->get('articleId'))){
+                            $articleId = $post->get('articleId');
+                            $this->articleDAO->uploadPicture($articleId, $filename);
+                        }
+                        
                         echo "Votre fichier a été téléchargé avec succès."; 
                     } 
                 } else{

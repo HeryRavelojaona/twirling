@@ -27,7 +27,8 @@
             ?>
               <div class="col-lg-6 fade-up">
                 <div class="box">
-                  <img src="../public/assets/img/upload/<?= htmlspecialchars($article->getFileName());?>" class="actuality-img">
+              
+                  <img src="assets/img/upload/<?= htmlspecialchars($article->getFileName());?>" class="actuality-img">
                   <?php $date = new Datetime($article->getCreatedAt()); ?>
                   <span class="actuality-date"> <?= htmlspecialchars($date->format('d-m-Y'));?></span>
                   <h4><?= htmlspecialchars($article->getTitle());?></h4>

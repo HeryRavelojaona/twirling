@@ -90,4 +90,25 @@ class ArticleDAO extends DAO
         return $articles;
     }
 
+    public function updateArticle(Parameter $post, $articleId, $status)
+    {                       
+
+       $sql = "UPDATE article SET title=:title, content=:content, status=:status WHERE article.id=:id";
+
+        $this->createQuery($sql, 
+        ['title'=>$post->get('title'),
+         'content'=>$post->get('content'),
+         'status'=>$status,
+         'id'=>$articleId
+        ]);
+    }
+
+    public function uploadPicture($articleId, $filename)
+    {
+        $sql = 'UPDATE article SET filename = :filename WHERE article.id = :id';
+        $this->createQuery($sql, [
+            'filename'=>$filename,
+            'id'=> $articleId]);
+    }
+
 }

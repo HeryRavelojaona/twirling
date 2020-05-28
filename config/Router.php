@@ -52,11 +52,14 @@ class Router
                 elseif($route === 'updatePassword'){
                     $this->backController->updatePassword($this->request->getPost());
                 }
+                elseif($route === 'updatearticle'){
+                    $this->backController->updateArticle($this->request->getGet(), $this->request->getPost());
+                }
                 elseif($route === 'logout'){
                     $this->frontController->logout();
                 }
                 elseif($route === 'fileUpload'){
-                    $this->frontController->fileUpload($this->request->getPost());
+                    $this->backController->fileUpload($this->request->getPost());
                 }
 
             }

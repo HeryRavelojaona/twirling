@@ -12,6 +12,7 @@
 
                 <form class="col-lg-12" id="form_article" action="" method="post" enctype="multipart/form-data">
                     <div class="box addarticlebox">
+
                         <div class="form-group ">
                             <label for="photo" class="col-lg-6 control-label">Ajouter une photo</label>
                             <div class="col-lg-12">
@@ -21,7 +22,7 @@
                         <div class="form-group">
                             <label for="title" class="col-lg-6 control-label">Titre</label>
                             <div class="col-lg-12">
-                                <input type="text" class="form-control" id="actualitytitle" name="title">
+                                <input type="text" class="form-control" id="actualitytitle" name="title"  >
                             </div>
                         </div>
                         <div class="form-group">

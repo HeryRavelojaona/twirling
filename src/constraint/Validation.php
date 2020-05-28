@@ -21,5 +21,10 @@ class Validation
             $errors = $articleValidation->check($data);
             return $errors;
         }
+        elseif($name === 'updateArticle') {
+            $articleValidation = new ArticleValidation();
+            $errors = $articleValidation->check($data);
+            return $errors;
+        }
     }
 }

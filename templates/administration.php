@@ -10,6 +10,7 @@
             <div class="section-title">
                 <h2>Publications</h2>
                 <?= $this->session->show('addarticle'); ?>
+                <?= $this->session->show('updatearticle'); ?>
             </div>
             <div class="message-for-all">
                 <a href="../public/index.php?route=addarticle" class="btn btn-primary text-message-for-all">Ajouter une nouvelle actualité <i class="fas fa-plus-circle"></i></a>
@@ -32,7 +33,7 @@
                 </div>
                 <div class="action col-md-2">
                     <a href="../public/index.php?route=article&articleId=<?= htmlspecialchars($article->getId());?>" class="btn btn-info">Voir</a>
-                    <a class="btn btn-warning">Modifier</a>
+                    <a href="../public/index.php?route=updatearticle&articleId=<?= htmlspecialchars($article->getId());?>" class="btn btn-warning">Modifier</a>
                     <a class="btn btn-primary">Publié</a>
                     <a class="btn btn-danger">Supprimer</a>
                 </div>

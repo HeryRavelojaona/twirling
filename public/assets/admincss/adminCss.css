@@ -126,7 +126,7 @@ AddArticle
     height:250px;
 }
 .addarticlebox {
-    max-height: 150vh !important;
+    height: auto !important;
 }
 
 .return-btn {

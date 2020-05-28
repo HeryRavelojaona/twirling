@@ -65,6 +65,7 @@ class Form_ajax {
                 processData: false,
                 url: "../public/index.php?route=fileUpload",
                 success: function (data) {
+                    console.log(data);
                         $('.status').text(data);
                         $(element)[0].reset();
                 }
@@ -94,14 +95,13 @@ class Form_ajax {
                         $('.actuality-edit').hide();
                         $('.actuality .preview').show();
                         $('#savefilename').val(name);
+                        console.log(response.filename);
                         $('#savetitle').val(response.title);
                         $('#savecontent').html(response.content);
                     }else {
                         $('.form-error').html(response.error);
-
-                    }
                         console.log(response.error);
-                        
+                    }        
                 }
             })
             
