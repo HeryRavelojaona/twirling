@@ -9,6 +9,35 @@
     margin: 0 auto;
 }
 
+/*---------------
+Table
+-------------*/
+.admin-table {
+    text-align: center;
+    margin: 50px 0 ;
+}
+.admin-table tr td {
+    border: 1px solid;
+    vertical-align: middle;
+}
+.action-table a {
+    display: flex;
+    margin: 10px 0; 
+}
+
+.admin-table .control-delete {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.thead-style {
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: bold;
+    background-color: #DB3575;
+}
+
  
 
 /*--------------------------------------------------------------
@@ -37,35 +66,9 @@
     margin: 30px 0;
 }
 
-.admin-box {
-    text-align: left !important;
-    display: flex;
-    justify-content: space-between;
-}
-
-.admin-box .action {
-    display: flex;
-    flex-direction: column;
-}
 
 .admin-box .action .btn {
     margin: 10px 0;
-}
-
-.admin-members {
-    text-align: center;
-}
-
-.admin-members .members {
-    margin: 30px 0;
-    padding: 15px;
-    border: solid 1px;
-    border-radius: 5px;
-}
-
-.team .planning {
-    width: 100%;
-    height: 100%;
 }
 
 #changePrice {

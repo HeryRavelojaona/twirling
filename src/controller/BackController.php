@@ -13,8 +13,15 @@ class BackController extends Controller
         /*$category = 1 if is for actuality*/
         $category = 1;
         $articles = $this->articleDAO->showArticles($category);
+        foreach($articles as $article){
+            $userId = $article->getUserId();
+            $users = $this->userDAO->getUser($userId);
+            $usersName = $users->getLastName();
+        }
+        
         return $this->view->render('administration',[
-            'articles' => $articles
+            'articles' => $articles,
+            'usersName' => $usersName
         ]);
  
     }

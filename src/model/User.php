@@ -10,24 +10,29 @@ class User
     private $id;
 
     /**
-     * @var string
+     * @var int
      */
-    private $pseudo;
+    private $fileName;
 
     /**
      * @var string
      */
-    private $password;
+    private $lastname;
 
     /**
      * @var string
      */
-    private $mail;
+    private $firstname;
+
+    /**
+     * @var string
+     */
+    private $email;
 
      /**
      * @var boolean
      */
-    private $token;
+    private $status;
 
     /**
      * @var string
@@ -35,9 +40,20 @@ class User
     private $role;
 
     /**
-     * @var int
+     * @var string
      */
-    private $status;
+    public function getFileName()
+    {
+        return $this->fileName;
+    }
+
+    /**
+     * @param int $id
+     */
+    public function setFileName($fileName)
+    {
+        $this->fileName = $fileName;
+    }
 
     /**
      * @return int
@@ -58,17 +74,33 @@ class User
     /**
      * @return string
      */
-    public function getPseudo()
+    public function getLastName()
     {
-        return $this->pseudo;
+        return $this->lastname;
     }
 
     /**
      * @param string $pseudo
      */
-    public function setPseudo($pseudo)
+    public function setLastName($lastname)
     {
-        $this->pseudo = $pseudo;
+        $this->lastname = $lastname;
+    }
+
+     /**
+     * @return string
+     */
+    public function getFirstName()
+    {
+        return $this->firstname;
+    }
+
+    /**
+     * @param string $pseudo
+     */
+    public function setFirstName($firstname)
+    {
+        $this->firstname = $firstname;
     }
 
     /**
@@ -90,7 +122,7 @@ class User
     /**
      * @return string
      */
-    public function getMail()
+    public function getEmail()
     {
         return $this->mail;
     }
@@ -98,27 +130,12 @@ class User
     /**
      * @param string $mail
      */
-    public function setMail($mail)
+    public function setEmail($email)
     {
-        $this->mail = $mail;
+        $this->email = $email;
     }
 
-    /**
-     * @return boolean
-     */
-    public function gettoken()
-    {
-        return $this->token;
-    }
-
-    /**
-     * @param boolean $token
-     */
-    public function setToken($token)
-    {
-        $this->token = $token;
-    }
-
+   
     /**
      * @return string
      */

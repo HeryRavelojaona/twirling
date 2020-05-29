@@ -8,6 +8,19 @@ use Spac\src\model\User;
 class UserDAO extends DAO
 {
     
+    private function buildObject($row)
+    {
+        $user = new User();
+        $user->setId($row['id']);
+        $user->setLastName($row['lastname']);
+        $user->setFirstName($row['firstname']);
+        $user->setEmail($row['email']);
+        $user->setStatus($row['status']);
+        $user->setRole($row['role']);
+        $user->setFileName($row['filename']);
+        return $user;
+    }
+
     public function login(Parameter $post)
     {   
         $sql = 'SELECT * FROM user WHERE email = ?';
@@ -43,5 +56,29 @@ class UserDAO extends DAO
         $filename = $result->fetchColumn();
    
         return $filename;
+    }
+
+    public function getUsers()
+    {
+        //articles for Front view
+        $sql = "SELECT user.id , user.lastname, user.firstname,user.status, user.filename FROM user ORDER BY user.id ASC "; 
+        $result = $this->createQuery($sql);
+        $users = [];
+        foreach ($result as $row){
+            $userId = $row['id'];
+            $users[$userId] = $this->buildObject($row);
+        }
+        $result->closeCursor();
+        return $users;
+    }
+
+    public function getUser($userId)
+    {
+        $sql = 'SELECT * FROM user WHERE user.id = '.$userId.'';
+        $result = $this->createQuery($sql);
+        $user= $result->fetch();
+        $user = $this->buildObject($user);
+        $result->closeCursor();
+        return $user;
     }
 }

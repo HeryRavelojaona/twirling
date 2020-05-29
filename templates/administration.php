@@ -16,23 +16,28 @@
             <div class="message-for-all">
                 <a href="../public/index.php?route=addarticle" class="btn btn-primary text-message-for-all">Ajouter une nouvelle actualité <i class="fas fa-plus-circle"></i></a>
             </div>
-        <div class="row ">
-    <?php
-        foreach ($articles as $article)
-        {
-    ?>
-            <div class="col-lg-12 actuality-admin">
+        <div >
+        <table class="table container admin-table">
+           
+            <thead class="thead-style">
+                <tr>
+                <th>TITRE</th>
+                <th>Crée par</th>
+                <th>Crée le</th>
+                <th>Actions</th>
+                </tr>
+            </thead>
+            <?php
+                    foreach ($articles as $article)
+                    {   $date = new Datetime($article->getCreatedAt()); 
+            ?>
 
-                <div class="box admin-box">
-                <?php $date = new Datetime($article->getCreatedAt()); ?>
-                    <div class="col-md-10 ">
-                        <h4>Titre: <?= htmlspecialchars($article->getTitle());?></h4>
-                        <p>Créé par: <?= htmlspecialchars($article->getUserId());?></p>
-                        <p>Le: <?= htmlspecialchars($date->format('d-m-Y'));?></p>
-                        <p>Extrait:<br/> <?= $article->getContent() ;?></p>
-                        <p><?= htmlspecialchars($article->getStatus());?></p>
-                    </div>
-                    <div class="action col-md-2">
+            <tbody>
+                <tr>
+                    <td><?= htmlspecialchars($article->getTitle());?></td>
+                    <td><?= htmlspecialchars($usersName);?></td>
+                    <td><?= htmlspecialchars($date->format('d-m-Y'));?></td>
+                    <td class="action-table">
                         <a href="index.php?route=article&articleId=<?= htmlspecialchars($article->getId());?>" class="btn btn-info">Voir</a>
                         <a href="index.php?route=updatearticle&articleId=<?= htmlspecialchars($article->getId());?>" class="btn btn-warning">Modifier</a>
                         <a class="btn btn-primary">Publié</a>
@@ -41,19 +46,21 @@
                             <p class="go-delete">Etes vous sur ?</p>
                             <form action="" method="GET">
                                 <input type="hidden" name="articleId" id="sendArticleId" value="<?= htmlspecialchars($article->getId());?>"/>
-                                <button class="btn btn-danger go-delete">Oui <i class="fas fa-trash-alt"></i></button>
+                                <button class="btn btn-danger go-delete confirm-delete">Oui <i class="fas fa-trash-alt"></i></button>
                             </form>
-                            <button class="go-delete stop-delete btn btn-secondary">Non</button>
+                            <button class="stop-delete go-delete btn btn-secondary">Non</button>
                         </div>
-                    </div>
-                    
-                </div>
-            </div>
-    <?php 
-    }
-    ?>
-  
-        </div>
-    </div>
+                    </td>
+                </tr>
+            </tbody>
+            <?php
+            }
+            ?>
+            </table>
+
 </section><!-- End Actuality Section -->
+
+
+
+
     

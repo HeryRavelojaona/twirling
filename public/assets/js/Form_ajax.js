@@ -110,7 +110,7 @@ class Form_ajax {
     }
 
     deleteArticle() {
-        $('.go-delete').click(function(e){
+        $('.confirm-delete').click(function(e){
             e.preventDefault();
             $.ajax({
                 type: 'GET',
