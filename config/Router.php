@@ -64,6 +64,9 @@ class Router
                 elseif($route === 'fileUpload'){
                     $this->backController->fileUpload($this->request->getPost());
                 }
+                elseif($route === 'publishOrnot'){
+                    $this->backController->publishOrnotArticle($this->request->getGet());
+                }
 
             }
             else {

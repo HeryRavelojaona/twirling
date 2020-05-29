@@ -29,7 +29,13 @@
             </thead>
             <?php
                     foreach ($articles as $article)
-                    {   $date = new Datetime($article->getCreatedAt()); 
+                    {   $date = new Datetime($article->getCreatedAt());
+                        if($article->getStatus()== 0){$action = 'Brouillon';
+                            $status = 'Brouillon';
+                            $color= 'secondary';
+                        }else if($article->getStatus()== 1){$action = 'Article publié';
+                                    $status = 'Publié';
+                                     $color= 'primary';} 
             ?>
 
             <tbody>
@@ -40,7 +46,7 @@
                     <td class="action-table">
                         <a href="index.php?route=article&articleId=<?= htmlspecialchars($article->getId());?>" class="btn btn-info">Voir</a>
                         <a href="index.php?route=updatearticle&articleId=<?= htmlspecialchars($article->getId());?>" class="btn btn-warning">Modifier</a>
-                        <a class="btn btn-primary">Publié</a>
+                        <a href="index.php?route=publishOrnot&articleId=<?= htmlspecialchars($article->getId());?>&action=<?= htmlspecialchars($action);?>" class="btn btn-<?= htmlspecialchars($color);?>"><?= htmlspecialchars($action);?> </a>
                         <a class="btn btn-danger check-delete">Supprimer</a>
                         <div class="control-delete">
                             <p class="go-delete">Etes vous sur ?</p>

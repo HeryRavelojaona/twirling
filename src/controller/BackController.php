@@ -94,7 +94,7 @@ class BackController extends Controller
         if($post->get('choice')== 'story'){
             $category = 2;
         }
-        
+
         if($post->get('submit') || $post->get('save')){
             $this->articleDAO->addArticle($post, $this->session->get('id'), $status, $category);
             $this->session->set('addarticle','Article bien ajouté');
@@ -220,6 +220,29 @@ class BackController extends Controller
         }
 
         echo json_encode($response);
+        
+    }
+
+    public function publishOrnotArticle(Parameter $get)
+    {
+        if($get->get('articleId')){
+            $articleId= $get->get('articleId');
+            if($get->get('action') === 'Article publié'){
+                $status = 0;
+                $this->articleDAO->publishOrnotArticle($articleId, $status);
+                $this->session->set('status_article', 'Votre article a bien été retiré');
+            }
+            if($get->get('action') === 'Brouillon'){
+                $status = 1;
+                $this->articleDAO->publishOrnotArticle($articleId, $status);
+                $this->session->set('status_article', 'Votre article a bien été publié');
+            }
+            
+            header('Location: index.php?route=administration');
+                    exit();
+        
+        }
+        $this->errorController->errorNotFound();
         
     }
 }
