@@ -158,3 +158,10 @@ AddArticle
     text-align: center;
     width: 120px;
 }
+
+/*-----------------
+Delete article
+-----------------*/
+.admin-box .action .response-message {
+    font-size: 1em;
+}

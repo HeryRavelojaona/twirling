@@ -84,14 +84,14 @@ class Utils {
         $('.check-delete').click(function(e){
         e.preventDefault();
         if($('.go-delete').hide()){
-            $('.btnAdmin').hide();
+            $('.check-delete').hide();
             $('.go-delete').show();
             $('.stop-delete').click(function(){
                 $('.go-delete').hide();
-                $('.btnAdmin').show();
+                $('.check-delete').show();
             });
         }else {
-            $('.btnAdmin').show();
+            $('.check-delete').show();
             }
         });
     

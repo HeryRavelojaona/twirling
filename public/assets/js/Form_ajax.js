@@ -7,6 +7,7 @@ class Form_ajax {
         this.changePass('#change_pass');
         this.changePicture('#changeImage');
         this.preview();
+        this.deleteArticle();
     }
 
     /**
@@ -65,7 +66,6 @@ class Form_ajax {
                 processData: false,
                 url: "../public/index.php?route=fileUpload",
                 success: function (data) {
-                    console.log(data);
                         $('.status').text(data);
                         $(element)[0].reset();
                 }
@@ -100,12 +100,37 @@ class Form_ajax {
                         $('#savecontent').html(response.content);
                     }else {
                         $('.form-error').html(response.error);
-                        console.log(response.error);
+
                     }        
                 }
             })
             
         })
 
+    }
+
+    deleteArticle() {
+        $('.go-delete').click(function(e){
+            e.preventDefault();
+            $.ajax({
+                type: 'GET',
+                url: "index.php?route=deletearticle&articleId="+$('#sendArticleId').val()+"",
+                success: function (data) {
+                    let response = JSON.parse(data);
+                    if(response['isSuccess'] == 1){
+                        console.log(response['message']);
+                        $('.response-message').text(response['message']);
+                        $('.admin-reload').load(' .admin-reload');
+                    }
+                    else{
+                        $('.go-delete').hide();
+                        $('.check-delete').show();
+                        $('.response-message').text(response['message']);
+                    }
+                    
+                    
+                }
+            })
+        });
     }
 }

@@ -187,4 +187,21 @@ class BackController extends Controller
             }
         }
     }
+
+    public function deleteArticle($get)
+    {
+        $response = array('isSuccess'=>false, 'message'=>'');
+        if($get->get('articleId')){
+            $articleId = $get->get('articleId');
+            $this->articleDAO->deleteArticle($articleId);
+            $response['isSuccess'] = TRUE;
+            $response['message'] = 'Article bien supprimer';
+        }else {
+            $response['isSuccess'] = false;
+            $response['message'] = 'Suppression impossible';
+        }
+
+        echo json_encode($response);
+        
+    }
 }

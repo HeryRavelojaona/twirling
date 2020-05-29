@@ -55,6 +55,9 @@ class Router
                 elseif($route === 'updatearticle'){
                     $this->backController->updateArticle($this->request->getGet(), $this->request->getPost());
                 }
+                elseif($route === 'deletearticle'){
+                    $this->backController->deleteArticle($this->request->getGet());
+                }
                 elseif($route === 'logout'){
                     $this->frontController->logout();
                 }
