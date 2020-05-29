@@ -29,7 +29,7 @@
                                     <div class="col-lg-12 col-lg-offset-2 button-submit">
                                         <input type="submit" name="submit" class="btn btn-info" value="Changer">
                                     </div>
-                                    <span class="status"></span>
+                                    <div class="status"></div>
                                 </div>
                                 <button type="button" class="changeImgClose">close</button>
                             </form>

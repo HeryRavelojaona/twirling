@@ -21,7 +21,7 @@ class ArticleDAO extends DAO
         return $article;
     }
 
-    public function addArticle(Parameter $post, $userId, $status)
+    public function addArticle(Parameter $post, $userId, $status, $category)
     {  
         $sql = 'INSERT INTO article (title, content, created_at, user_id,filename,category_id, status) VALUES (:title, :content, NOW(), :user_id, :filename, :category_id, :status )';
         $this->createQuery($sql, 
@@ -29,7 +29,7 @@ class ArticleDAO extends DAO
          'content'=>$post->get('content'),
          'filename'=>$post->get('filename'),
          'user_id'=>$userId,
-         'category_id'=>1,
+         'category_id'=>$category,
          'status'=> $status
          ]);
     }

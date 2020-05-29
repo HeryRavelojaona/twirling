@@ -5,13 +5,22 @@
         <div class="container">
 
             <div class="section-title">
-                <span>Actualités</span>
-                <h2>Actualités</h2>
+                <span>Publications</span>
+                <h2>Publications</h2>
             </div>
             <div class="row">
 
                 <form class="col-lg-12" id="form_article" action="" method="post" enctype="multipart/form-data">
                     <div class="box addarticlebox">
+                        <div class="form-group ">
+                            <label>Choisir la catégorie</label>
+                            <div class="col-lg-12">
+                                <select name="category" class="category-choice">
+                                    <option value="actuality" class="option">Actualité</option>
+                                    <option value="story" class="option">Histoire du club</option>
+                                </select>
+                            </div>
+                        </div>
 
                         <div class="form-group ">
                             <label for="photo" class="col-lg-6 control-label">Ajouter une photo</label>
@@ -61,14 +70,20 @@
               </div>
             </div>
             <form action="../public/index.php?route=addarticle"method="post"><div class="form-group">
-                    <div class="col-lg-12">
-                        <input type="hidden" class="form-control" id="savefilename" name="filename" value="">
-                    </div>
+                <div class="form-group">    
+                        <div class="col-lg-12">
+                            <input type="hidden" class="form-control" id="savechoice" name="choice" value="">
+                        </div>
+                </div>
+                <div class="form-group">    
+                        <div class="col-lg-12">
+                            <input type="hidden" class="form-control" id="savefilename" name="filename" value="">
+                        </div>
                 </div>
                 <div class="form-group">
                     <div class="col-lg-12">
                         <input type="hidden" class="form-control" id="savetitle" name="title" value="">
-                    </div>
+                </div>
                 </div>
                 <div class="form-group">
                     <div class="col-lg-12">

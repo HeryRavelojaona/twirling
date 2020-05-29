@@ -95,7 +95,7 @@ class Form_ajax {
                         $('.actuality-edit').hide();
                         $('.actuality .preview').show();
                         $('#savefilename').val(name);
-                        console.log(response.filename);
+                        $('#savechoice').val(response.choice);
                         $('#savetitle').val(response.title);
                         $('#savecontent').html(response.content);
                     }else {
@@ -117,15 +117,14 @@ class Form_ajax {
                 url: "index.php?route=deletearticle&articleId="+$('#sendArticleId').val()+"",
                 success: function (data) {
                     let response = JSON.parse(data);
-                    if(response['isSuccess'] == 1){
-                        console.log(response['message']);
-                        $('.response-message').text(response['message']);
+                    if(response.isSuccess == 1){
+                        $('.response-message').text(response.message);
                         $('.admin-reload').load(' .admin-reload');
                     }
                     else{
                         $('.go-delete').hide();
                         $('.check-delete').show();
-                        $('.response-message').text(response['message']);
+                        $('.response-message').text(response.message);
                     }
                     
                     

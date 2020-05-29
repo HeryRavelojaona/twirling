@@ -168,3 +168,11 @@ Delete article
 .admin-box .action .response-message {
     font-size: 1em;
 }
+
+/*----------------
+Category choice
+----------------*/
+.category-choice {
+    padding: 5px;
+    color: #316BA4 !important;
+}

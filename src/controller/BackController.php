@@ -13,6 +13,8 @@ class BackController extends Controller
         /*$category = 1 if is for actuality*/
         $category = 1;
         $articles = $this->articleDAO->showArticles($category);
+
+        /* Get user Name with is Id*/
         foreach($articles as $article){
             $userId = $article->getUserId();
             $users = $this->userDAO->getUser($userId);
@@ -28,7 +30,7 @@ class BackController extends Controller
 
     public function previewArticle(Parameter $post)
     {
-        $response = array('title'=>'', 'content'=>'', 'filepath'=>'','filename'=>'','error'=>'','articleId'=>'');
+        $response = array('title'=>'', 'content'=>'', 'filepath'=>'','filename'=>'','error'=>'','articleId'=>'','choice'=>'');
         $errors = $this->validation->validate($post, 'article');
         if($errors) {
             if($errors['title']){
@@ -39,6 +41,7 @@ class BackController extends Controller
         }
 
         if($post->get('title') && $post->get('content')) {
+            $response['choice'] = $post->get('category');
             $response['title'] = $post->get('title');
             $response['content'] = $post->get('content');
         }
@@ -83,9 +86,17 @@ class BackController extends Controller
         }
         if($post->get('save')){
             $status = 0;
-        } 
+        }
+        /*category choice*/
+        if($post->get('choice')== 'actuality'){
+            $category = 1;
+        }
+        if($post->get('choice')== 'story'){
+            $category = 2;
+        }
+        
         if($post->get('submit') || $post->get('save')){
-            $this->articleDAO->addArticle($post, $this->session->get('id'), $status);
+            $this->articleDAO->addArticle($post, $this->session->get('id'), $status, $category);
             $this->session->set('addarticle','Article bien ajouté');
             header('Location: ../public/index.php?route=administration');
             exit();

@@ -118,47 +118,5 @@ class FrontController extends Controller
             'picture'=>$picture
         ]);
     }
-
-    public function fileUpload($post)
-    {
-       /*if(!empty($post->get('articleId'))){
-            $articleId = $post->get('articleId');
-        }*/
-        if($_FILES['photo']){
-            if($_FILES['photo'] && $_FILES['photo'] ["error"] == 0 ){
-                $allowed = array("jpg" => "image/jpg", "jpeg" => "image/jpeg", "gif" => "image/gif", "png" => "image/png");
-                $filename = $_FILES["photo"]["name"];
-                $filetype = $_FILES["photo"]["type"];
-                $filesize = $_FILES["photo"]["size"];
-
-                $extension = pathinfo($filename, PATHINFO_EXTENSION);
-                if(!array_key_exists($extension, $allowed)) echo "Erreur : Veuillez sélectionner un format de fichier valide.";
-                $maxsize = 5 * 1024 * 1024;
-                if($filesize > $maxsize) echo "Error: La taille du fichier est supérieure à la limite autorisée.";
-
-                if(in_array($filetype, $allowed)){
-                    // Vérifie si le fichier existe avant de le télécharger.
-                    if(file_exists("../public/assets/img/upload/" . $_FILES["photo"]["name"])){
-                        echo $_FILES["photo"]["name"] . " existe déjà.";
-                    } else{
-                        move_uploaded_file($_FILES["photo"]["tmp_name"], "../public/assets/img/upload/" . $_FILES["photo"]["name"]);
-                        /*save name in database*/
-                        $this->userDAO->uploadPicture($this->session->get('mail'), $filename);
-
-                        /*For update article*/
-                        if(!empty($post->get('articleId'))){
-                            $articleId = $post->get('articleId');
-                            $this->articleDAO->uploadPicture($articleId, $filename);
-                        }
-                        
-                        echo "Votre fichier a été téléchargé avec succès."; 
-                    } 
-                } else{
-                    echo "Error: Il y a eu un problème de téléchargement de votre fichier. Veuillez réessayer."; 
-                }
-            } else{
-                echo "Error: Fichier absent ou probleme de fichier";
-            }
-        }
-    }
+  
 }
