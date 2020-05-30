@@ -38,14 +38,12 @@ class BackController extends Controller
             } 
         }
         
-
-
         if($post->get('title') && $post->get('content')) {
             $response['choice'] = $post->get('category');
             $response['title'] = $post->get('title');
             $response['content'] = $post->get('content');
         }
-
+        
         if($_FILES['photo'] && $_FILES['photo']["error"] == 0 ){
             $allowed = array("jpg" => "image/jpg", "jpeg" => "image/jpeg", "gif" => "image/gif", "png" => "image/png");
             $filename = $_FILES["photo"]["name"];
@@ -54,9 +52,9 @@ class BackController extends Controller
             
             
             $extension = pathinfo($filename, PATHINFO_EXTENSION);
-           
+            $filename= time().'.'.$extension;
             if(!array_key_exists(strtolower($extension), $allowed)) $response['error'] = "Erreur : Veuillez sélectionner un format de fichier valide.";
-            $maxsize = 5 * 1024 * 1024;
+            $maxsize = 5000000000;
             if($filesize > $maxsize) $response['error'] = "Error: La taille du fichier est supérieure à la limite autorisée.";
 
             if(in_array($filetype, $allowed)){
@@ -74,12 +72,15 @@ class BackController extends Controller
                 $response['error'] = "Error: Il y a eu un problème de téléchargement de votre fichier. Veuillez réessayer."; 
             }
         }else {
-            $response['error'] = 'Veuillez ajouter une photo';
+            if( $_FILES['photo']["error"]==1) {
+                $response['error'] = 'Fichier trop volumineux';
+            }else{
+                $response['error']= 'Veuillez ajouter un fichier';
+            }
+            
         }
-        echo json_encode($response); 
-        
-        
 
+        echo json_encode($response); 
     }
 
     public function addArticle(Parameter $post)
@@ -179,16 +180,17 @@ class BackController extends Controller
                 $filesize = $_FILES["photo"]["size"];
 
                 $extension = pathinfo($filename, PATHINFO_EXTENSION);
-                if(!array_key_exists($extension, $allowed)) echo "Erreur : Veuillez sélectionner un format de fichier valide.";
-                $maxsize = 5 * 1024 * 1024;
+                $filename= time().'.'.$extension;
+                if(!array_key_exists(strtolower($extension), $allowed)) echo "Erreur : Veuillez sélectionner un format de fichier valide.";
+                $maxsize = 5000000000;
                 if($filesize > $maxsize) echo "Error: La taille du fichier est supérieure à la limite autorisée.";
 
                 if(in_array($filetype, $allowed)){
                     // Vérifie si le fichier existe avant de le télécharger.
-                    if(file_exists("../public/assets/img/upload/" . $_FILES["photo"]["name"])){
+                    if(file_exists("../public/assets/img/upload/" . $filename)){
                         echo $_FILES["photo"]["name"] . " existe déjà.";
                     } else{
-                        move_uploaded_file($_FILES["photo"]["tmp_name"], "../public/assets/img/upload/" . $_FILES["photo"]["name"]);
+                        move_uploaded_file($_FILES["photo"]["tmp_name"], "../public/assets/img/upload/" . $filename);
                         /*save name in database*/
                         $this->userDAO->uploadPicture($this->session->get('mail'), $filename);
 
@@ -209,20 +211,18 @@ class BackController extends Controller
         }
     }
 
-    public function deleteArticle($get)
+    public function deleteArticle($post)
     {
-        $response = array('isSuccess'=>false, 'message'=>'');
-        if($get->get('articleId')){
-            $articleId = $get->get('articleId');
+        if($post->get('articleId')){
+            $articleId = $post->get('articleId');
             $this->articleDAO->deleteArticle($articleId);
-            $response['isSuccess'] = TRUE;
-            $response['message'] = 'Article bien supprimer';
+            $this->session->set('delete_article','Article bien supprimer');
         }else {
-            $response['isSuccess'] = false;
-            $response['message'] = 'Suppression impossible';
+            $this->session->set('delete_article','Suppression impossible');
         }
 
-        echo json_encode($response);
+        header('Location: ../public/index.php?route=administration');
+        exit();
         
     }
 

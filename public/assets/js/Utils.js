@@ -9,6 +9,7 @@ class Utils {
         this.changePrice('#openChangePrice');
         this.responsiveSlider(576, 992);
         this.openForm();
+        this.deleteArticle();
     }
 
     /**
@@ -76,26 +77,9 @@ class Utils {
         return;
     }
 
-     //Validation before Delete
+    /*part Change pass*/
     openForm() {
-        $('.control-delete').hide();
-
-        /*part delete-account*/
-
-        $('.check-delete').click(function(e){
-        if($('.control-delete').hide()){
-            $('.check-delete').hide();
-            $('.control-delete').show();
-            $('.stop-delete').click(function(){
-                $('.control-delete').hide();
-                $('.check-delete').show();
-            });
-        }else {
-            $('.check-delete').show();
-            }
-        });
-    
-        /*part Change pass*/
+      
         $('.profile-changePass').hide();
         
         $('.modif-pass').click(function(e){
@@ -104,6 +88,21 @@ class Utils {
         });
         
     }
-
     
+    /*Open form Delete article on admin*/
+    deleteArticle() {
+        // Ask confirmation   
+        $('.check-delete').click(function(e){
+            e.preventDefault();
+            $('#' + e.target.dataset.deleteid).css('display','flex');
+            $(this).hide();
+        });
+        
+        // Cancel
+        $('.stop-delete').click(function(e) {
+            e.preventDefault();
+            $(e.target).closest('.control-delete').css('display','none');
+            $('.check-delete').show();
+        });  
+    }
 };

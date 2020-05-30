@@ -7,7 +7,6 @@ class Form_ajax {
         this.changePass('#change_pass');
         this.changePicture('#changeImage');
         this.preview();
-        this.deleteArticle();
     }
 
     /**
@@ -130,33 +129,6 @@ class Form_ajax {
                 return;
             })
         }
-
-
-
-
     }
-
-    deleteArticle() {
-        $('.confirm-delete').click(function(e){
-            e.preventDefault();
-            $.ajax({
-                type: 'GET',
-                url: "index.php?route=deletearticle&articleId="+$('#sendArticleId').val()+"",
-                success: function (data) {
-                    let response = JSON.parse(data);
-                    if(response.isSuccess == 1){
-                        $('.response-message').text(response.message);
-                        $('.admin-reload').load(' .admin-reload');
-                    }
-                    else{
-                        $('.go-delete').hide();
-                        $('.check-delete').show();
-                        $('.response-message').text(response.message);
-                    }
-                    
-                    
-                }
-            })
-        });
-    }
+       
 }

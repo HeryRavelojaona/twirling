@@ -12,21 +12,21 @@
                     
                         <!---Form for change image--->
                         <div id="myModal">
-                        <form action="" method="post" enctype="multipart/form-data" id="changeImage">
-                            <div class="form-group">
-                                <label for="fileUpload" class="col-lg-6 control-label">Changer de photo</label>
-                                <div class="col-lg-12">
-                                    <input type="file" class="form-control" id="fileUpload" name="photo">
+                            <form action="" method="post" enctype="multipart/form-data" id="changeImage">
+                                <div class="form-group">
+                                    <label for="fileUpload" class="col-lg-6 control-label">Changer de photo</label>
+                                    <div class="col-lg-12">
+                                        <input type="file" class="form-control" id="fileUpload" name="photo">
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="form-group ">
-                                <div class="col-lg-12 col-lg-offset-2 button-submit">
-                                    <input type="submit" name="submit" class="btn btn-info" value="Changer">
+                                <div class="form-group ">
+                                    <div class="col-lg-12 col-lg-offset-2 button-submit">
+                                        <input type="submit" name="submit" class="btn btn-info" value="Changer">
+                                    </div>
+                                    <span class="status"></span>
                                 </div>
-                                <span class="status"></span>
-                            </div>
-                            <button type="button" class="changeImgClose">close</button>
-                        </form>
+                                <button type="button" class="changeImgClose">close</button>
+                            </form>
                         </div>
                         <!---Form for change image end----->
                         <h3 class="profile-content">Nom: <?= $this->session->get('lastname') ; ?></h3>
@@ -59,12 +59,6 @@
                                 </div>
                             </fieldset>
                         </form>
-                        <div class="control-delete">
-                            <button class="check-delete btn-danger">Supprimer votre compte</button>
-                            <p class="go-delete">Etes vous sur ?</p>
-                            <a href="../public/index.php?route=deleteAccount" class="go-delete btn btn-warning">Oui</a>
-                            <button class="go-delete stop-delete btn btn-secondary">Non</button>
-                        </div>
                     </div>
             </div>  
             

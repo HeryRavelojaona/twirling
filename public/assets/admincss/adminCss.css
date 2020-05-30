@@ -21,7 +21,12 @@ Table
     vertical-align: middle;
 }
 
-.action-table .admin-btn {
+.action-table {
+    max-width: 150px;
+}
+
+.action-table .admin-btn 
+{
     color: #fff !important;
     text-align: center ;
 }
@@ -33,7 +38,8 @@ Table
 }
 
 .admin-table .control-delete {
-    display: flex;
+    display: none;
+    /*display: flex;*/
     flex-wrap: wrap;
     justify-content: space-evenly;
 }

@@ -6,19 +6,20 @@
     </div>
         <!-- ======= Actuality Section ======= -->
         
-    <section id="Actuality" class="actuality admin-reload">
+    <section id="Actuality" class="actuality ">
         <div class="container">
             <div class="section-title">
                 <h2>Publications</h2>
                 <?= $this->session->show('addarticle'); ?>
                 <?= $this->session->show('updatearticle'); ?>
                 <?= $this->session->show('status_article'); ?>
+                <?= $this->session->show('delete_article'); ?>
             </div>
             <div class="message-for-all">
                 <a href="../public/index.php?route=addarticle" class="btn btn-primary text-message-for-all">Ajouter une nouvelle actualité <i class="fas fa-plus-circle"></i></a>
             </div>
         <div >
-        <table class="table container admin-table">
+        <table class="table container admin-table admin-reload">
            
             <thead class="thead-style">
                 <tr>
@@ -48,14 +49,15 @@
                         <a href="index.php?route=article&articleId=<?= htmlspecialchars($article->getId());?>" class="btn btn-info admin-btn">Voir</a>
                         <a href="index.php?route=updatearticle&articleId=<?= htmlspecialchars($article->getId());?>" class="btn admin-btn btn-warning">Modifier</a>
                         <a href="index.php?route=publishOrnot&articleId=<?= htmlspecialchars($article->getId());?>&action=<?= htmlspecialchars($action);?>" class="btn admin-btn btn-<?= htmlspecialchars($color);?>"><?= htmlspecialchars($action);?> </a>
-                        <a class="btn btn-danger admin-btn check-delete">Supprimer</a>
-                        <div class="control-delete" >
+                        <a class="btn btn-danger admin-btn check-delete" data-deleteid="delete-article-<?= $article->getId() ?>">Supprimer</a>
+                        <div class="control-delete" id="delete-article-<?= $article->getId() ?>">
+                            <form action="index.php?route=deletearticle" method="POST" class="delete-form" >
                             <p class="go-delete">Etes vous sur ?</p>
-                            <form action="" method="GET">
                                 <input type="hidden" name="articleId" id="sendArticleId" value="<?= htmlspecialchars($article->getId());?>"/>
-                                <button class="btn btn-danger go-delete confirm-delete">Oui <i class="fas fa-trash-alt"></i></button>
+                                <button class="btn btn-danger go-delete confirm-delete" name="submit">Oui <i class="fas fa-trash-alt"></i></button>
+                                <button class="stop-delete go-delete btn btn-secondary">Non</button>
                             </form>
-                            <button class="stop-delete go-delete btn btn-secondary" >Non</button>
+                            
                         </div>
                     </td>
                 </tr>
