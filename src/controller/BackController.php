@@ -33,12 +33,12 @@ class BackController extends Controller
         $response = array('title'=>'', 'content'=>'', 'filepath'=>'','filename'=>'','error'=>'','articleId'=>'','choice'=>'');
         $errors = $this->validation->validate($post, 'article');
         if($errors) {
-            if($errors['title']){
-                $response['error'] = $errors['title'];
-            } else {
-                $response['error'] = $errors['content'];
-            }
+            if($errors['title'] || $errors['content']){ 
+                $response['error'] = 'Veuillez remplir tous les champs';
+            } 
         }
+        
+
 
         if($post->get('title') && $post->get('content')) {
             $response['choice'] = $post->get('category');
@@ -46,34 +46,39 @@ class BackController extends Controller
             $response['content'] = $post->get('content');
         }
 
-        if($_FILES['photo'] && $_FILES['photo'] ["error"] == 0 ){
+        if($_FILES['photo'] && $_FILES['photo']["error"] == 0 ){
             $allowed = array("jpg" => "image/jpg", "jpeg" => "image/jpeg", "gif" => "image/gif", "png" => "image/png");
             $filename = $_FILES["photo"]["name"];
             $filetype = $_FILES["photo"]["type"];
             $filesize = $_FILES["photo"]["size"];
-
+            
+            
             $extension = pathinfo($filename, PATHINFO_EXTENSION);
-            if(!array_key_exists($extension, $allowed)) $response['error'] = "Erreur : Veuillez sélectionner un format de fichier valide.";
+           
+            if(!array_key_exists(strtolower($extension), $allowed)) $response['error'] = "Erreur : Veuillez sélectionner un format de fichier valide.";
             $maxsize = 5 * 1024 * 1024;
             if($filesize > $maxsize) $response['error'] = "Error: La taille du fichier est supérieure à la limite autorisée.";
 
             if(in_array($filetype, $allowed)){
                 // Vérifie si le fichier existe avant de le télécharger.
-                $location = "../public/assets/img/upload/" . $_FILES["photo"]["name"];
+                $location = "../public/assets/img/upload/" . $filename;
                 if(file_exists($location)){
-                    $response['error'] = $_FILES["photo"]["name"] . " existe déjà.";
+                    $response['error'] = $filename . " existe déjà.";
                 } else{
                     move_uploaded_file($_FILES["photo"]["tmp_name"], $location);
                     $response['filepath'] = $location;
-                    $response['filename'] = $_FILES["photo"]["name"];
+                    $response['filename'] = $filename;
                 } 
             } 
             else{
                 $response['error'] = "Error: Il y a eu un problème de téléchargement de votre fichier. Veuillez réessayer."; 
             }
-        } 
+        }else {
+            $response['error'] = 'Veuillez ajouter une photo';
+        }
+        echo json_encode($response); 
         
-        echo json_encode($response);
+        
 
     }
 
@@ -165,9 +170,7 @@ class BackController extends Controller
     
     public function fileUpload($post)
     {
-       /*if(!empty($post->get('articleId'))){
-            $articleId = $post->get('articleId');
-        }*/
+   
         if($_FILES['photo']){
             if($_FILES['photo'] && $_FILES['photo'] ["error"] == 0 ){
                 $allowed = array("jpg" => "image/jpg", "jpeg" => "image/jpeg", "gif" => "image/gif", "png" => "image/png");

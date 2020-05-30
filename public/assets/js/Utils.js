@@ -78,16 +78,16 @@ class Utils {
 
      //Validation before Delete
     openForm() {
-        $('.go-delete').hide();
+        $('.control-delete').hide();
 
         /*part delete-account*/
+
         $('.check-delete').click(function(e){
-        e.preventDefault();
-        if($('.go-delete').hide()){
+        if($('.control-delete').hide()){
             $('.check-delete').hide();
-            $('.go-delete').show();
+            $('.control-delete').show();
             $('.stop-delete').click(function(){
-                $('.go-delete').hide();
+                $('.control-delete').hide();
                 $('.check-delete').show();
             });
         }else {

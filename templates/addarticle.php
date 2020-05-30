@@ -31,13 +31,13 @@
                         <div class="form-group">
                             <label for="title" class="col-lg-6 control-label">Titre</label>
                             <div class="col-lg-12">
-                                <input type="text" class="form-control" id="actualitytitle" name="title"  >
+                                <input type="text" class="form-control" id="actualityTitle" name="title"  >
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="content" class="col-lg-6 control-label">Texte</label>
                             <div class="col-lg-12">
-                                <textarea class="form-control" id="actualitycontent" name="content"></textarea>
+                                <textarea class="form-control" id="actualityContent" name="content"></textarea>
                             </div>
                         </div>  
                         <div class="form-group ">
@@ -69,7 +69,7 @@
                 </div>
               </div>
             </div>
-            <form action="../public/index.php?route=addarticle"method="post"><div class="form-group">
+            <form action="index.php?route=addarticle"method="post">
                 <div class="form-group">    
                         <div class="col-lg-12">
                             <input type="hidden" class="form-control" id="savechoice" name="choice" value="">
