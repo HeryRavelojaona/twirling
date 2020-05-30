@@ -38,15 +38,16 @@
                         <div class="form-group">
                             <label for="title" class="col-lg-6 control-label">Titre</label>
                             <div class="col-lg-12">
-                                <input type="text" class="form-control" id="actualitytitle" name="title" value=" <?= htmlspecialchars($article->getTitle());?>">
+                                <input type="text" class="form-control" id="actualityTitle" name="title" value=" <?= htmlspecialchars($article->getTitle());?>">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="content" class="col-lg-6 control-label">Texte</label>
                             <div class="col-lg-12">
-                                <textarea class="form-control" id="actualitycontent" name="content"><?= $article->getContent();?></textarea>
+                                <textarea class="form-control" id="actualityContent" name="content"><?= $article->getContent();?></textarea>
                             </div>
                         </div>  
+                        <span class="form-error"></span>
                         <div class="action"> 
                             <div class="form-group ">
                                 <div class="col-lg-6 col-lg-offset-2">
