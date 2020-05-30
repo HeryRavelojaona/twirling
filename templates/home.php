@@ -30,7 +30,7 @@
               
                   <img src="assets/img/upload/<?= htmlspecialchars($article->getFileName());?>" class="actuality-img">
                   <?php $date = new Datetime($article->getCreatedAt()); ?>
-                  <span class="actuality-date"> <?= htmlspecialchars($date->format('d-m-Y'));?></span>
+                  <span class="actuality-date">Publié le: <?= htmlspecialchars($date->format('d-m-Y'));?></span>
                   <h4><?= htmlspecialchars($article->getTitle());?></h4>
                   <p><?= $article->getContent();?></p>
                   <a href="../public/index.php?route=article&articleId=<?= htmlspecialchars($article->getId());?>" class="read-more">Lire la suite...</a>

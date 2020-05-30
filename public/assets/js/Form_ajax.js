@@ -78,7 +78,7 @@ class Form_ajax {
         $('#actualityTitle').focusout(function(e){
             let title = $('#actualityTitle').val(); 
             if(title.length < 2){
-                $('.form-error').html('Veuillez remplir le champs titre avec minimum 2 charactères');
+                $('.form-error').html('Veuillez remplir le champ titre avec minimum 2 charactères');
                 validForm =false;
             }      
         })
@@ -86,7 +86,7 @@ class Form_ajax {
         $('#actualityContent').focusout(function(e){
             let content = $('#actualityContent').val(); 
             if(content.length < 5){
-                $('.form-error').html('Veuillez remplir le champs texte avec minimum 5 charactères');
+                $('.form-error').html('Veuillez remplir le champ texte avec minimum 5 charactères');
                 validForm =false;
             }      
         })
