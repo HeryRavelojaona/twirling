@@ -1,6 +1,6 @@
 /** 
  * Utils Class
- * For all little events
+ * For all events
  */
 class Utils {
     constructor(){
@@ -10,8 +10,19 @@ class Utils {
         this.responsiveSlider(576, 992);
         this.openForm();
         this.deleteArticle();
+        this.articleEditor('textarea.tiny');
     }
 
+
+    /**Tinymce Editarticle
+    * @params element Selector
+    */
+    articleEditor(element){
+        tinymce.init({ selector:element,
+                        height : "480"
+        });
+    }
+   
     /**
      * CLose menu if is open
         *@params Listener show listener for close nav mobile

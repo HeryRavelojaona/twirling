@@ -44,7 +44,7 @@
                         <div class="form-group">
                             <label for="content" class="col-lg-6 control-label">Texte</label>
                             <div class="col-lg-12">
-                                <textarea class="form-control" id="actualityContent" name="content"><?= $article->getContent();?></textarea>
+                                <textarea class="form-control  tiny" id="actualityContent" name="content"><?= $article->getContent();?></textarea>
                             </div>
                         </div>  
                         <span class="form-error"></span>
@@ -68,3 +68,5 @@
             </div>
         </div>
     </section><!-- End Actuality  Section -->
+    <!--Tinymce Wysiwigg-->
+    <script src="https://cdn.tiny.cloud/1/x34paag6wieet4xq5hwhj0zakt8qjxa9hpmq1btsb5vzelp8/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>

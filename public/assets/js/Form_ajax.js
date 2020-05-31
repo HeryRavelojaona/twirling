@@ -10,7 +10,7 @@ class Form_ajax {
     }
 
     /**
-     * 
+     * Change user password
      * @param element HTMLElement|string Element 
      */
     changePass(element) {
@@ -38,6 +38,7 @@ class Form_ajax {
     }
 
     /**
+     * Change user picture on profile
      * @param element HTMLElement|string Element Change picture
      */
     changePicture(element) 
@@ -47,7 +48,7 @@ class Form_ajax {
             $("#myModal").show();
             })
         }
-        
+        /*Reload Img on close part*/
         $('.changeImgClose').click(function(){
             $("#myModal").hide();
             $('#picture_profil').load(' #picture_profil');
@@ -72,9 +73,12 @@ class Form_ajax {
         })
     }
 
+    /**
+     * Show preview before Add Article
+     */
     addArticle() {
         let validForm = true;
-    
+        /*Input title Validation*/
         $('#actualityTitle').focusout(function(e){
             let title = $('#actualityTitle').val(); 
             if(title.length < 2){
@@ -82,7 +86,7 @@ class Form_ajax {
                 validForm =false;
             }      
         })
-
+        /* Input content validation*/
         $('#actualityContent').focusout(function(e){
             let content = $('#actualityContent').val(); 
             if(content.length < 5){
@@ -90,7 +94,7 @@ class Form_ajax {
                 validForm =false;
             }      
         })
-
+        /*Send form if validation success*/
         if(validForm) {
             $('#form_article').submit(function(e){
                 e.preventDefault();
@@ -109,7 +113,7 @@ class Form_ajax {
         
                             $('#preview_file').attr("src","../public/assets/img/upload/"+name);
                             $('.preview-title').text(response.title);
-                            $('.preview-content').text(response.content);
+                            $('.preview-content').html(response.content);
                             $('.actuality-edit').hide();
                             $('.actuality .preview').show();
                             $('#savefilename').val(name);
