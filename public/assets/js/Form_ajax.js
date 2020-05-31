@@ -6,7 +6,7 @@ class Form_ajax {
     constructor(){
         this.changePass('#change_pass');
         this.changePicture('#changeImage');
-        this.preview();
+        this.addArticle();
     }
 
     /**
@@ -72,7 +72,7 @@ class Form_ajax {
         })
     }
 
-    preview() {
+    addArticle() {
         let validForm = true;
     
         $('#actualityTitle').focusout(function(e){

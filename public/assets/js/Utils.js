@@ -35,7 +35,7 @@ class Utils {
         });
     }
 
-     /*Show and hide arrow at scroll*/
+     /*Show and hide arrowUp at scroll*/
      ArrowUp() {
         $(window).on('scroll',() =>{
             if(window.scrollY >400){
@@ -47,7 +47,7 @@ class Utils {
     }
 
     /**
-     * Open from fro change price
+     * Open from for change price
     *@params Listener Open form
     */
     changePrice(listener) {
@@ -55,7 +55,7 @@ class Utils {
             $('#changePrice').toggle();
         });
     }
-
+    /*Change Hero Img*/
     responsiveSlider(mobileBreakpoint, desktopBreakpoint) {
         let img = $('#hero');
         let screenSize = window.screen.width;

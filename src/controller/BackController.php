@@ -27,10 +27,12 @@ class BackController extends Controller
         ]);
  
     }
-
+    
+    /*Preview article article before validation addArticle*/
     public function previewArticle(Parameter $post)
     {
         $response = array('title'=>'', 'content'=>'', 'filepath'=>'','filename'=>'','error'=>'','articleId'=>'','choice'=>'');
+        /*Check title and content error*/
         $errors = $this->validation->validate($post, 'article');
         if($errors) {
             if($errors['title'] || $errors['content']){ 
@@ -38,27 +40,29 @@ class BackController extends Controller
             } 
         }
         
+        /*If not error save*/
         if($post->get('title') && $post->get('content')) {
             $response['choice'] = $post->get('category');
             $response['title'] = $post->get('title');
             $response['content'] = $post->get('content');
         }
-        
+
+        /*Control Uploaded file*/
         if($_FILES['photo'] && $_FILES['photo']["error"] == 0 ){
             $allowed = array("jpg" => "image/jpg", "jpeg" => "image/jpeg", "gif" => "image/gif", "png" => "image/png");
             $filename = $_FILES["photo"]["name"];
             $filetype = $_FILES["photo"]["type"];
             $filesize = $_FILES["photo"]["size"];
             
-            
             $extension = pathinfo($filename, PATHINFO_EXTENSION);
+            /*Change automatically filename*/
             $filename= time().'.'.$extension;
             if(!array_key_exists(strtolower($extension), $allowed)) $response['error'] = "Erreur : Veuillez sélectionner un format de fichier valide.";
             $maxsize = 5000000000;
             if($filesize > $maxsize) $response['error'] = "Error: La taille du fichier est supérieure à la limite autorisée.";
 
             if(in_array($filetype, $allowed)){
-                // Vérifie si le fichier existe avant de le télécharger.
+                /* Check if file exist*/
                 $location = "../public/assets/img/upload/" . $filename;
                 if(file_exists($location)){
                     $response['error'] = $filename . " existe déjà.";
@@ -75,14 +79,15 @@ class BackController extends Controller
             if( $_FILES['photo']["error"]==1) {
                 $response['error'] = 'Fichier trop volumineux';
             }else{
-                $response['error']= 'Veuillez ajouter un fichier';
+                $response['error']= 'Veuillez ajouter un fichier valide';
             }
             
         }
-
+        /* Return to ajax*/
         echo json_encode($response); 
     }
 
+    /*Add article after preview validation*/
     public function addArticle(Parameter $post)
     {   
        
@@ -109,7 +114,6 @@ class BackController extends Controller
         }
         
         return $this->view->render('addarticle');
-
     }
 
 
@@ -137,6 +141,7 @@ class BackController extends Controller
             echo json_encode($response);
     }
 
+    /*Update article*/
     public function updateArticle(Parameter $get, $post)
     {
             if($get->get('articleId')){
