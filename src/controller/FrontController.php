@@ -118,5 +118,10 @@ class FrontController extends Controller
             'picture'=>$picture
         ]);
     }
+
+    public function training()
+    {
+        return $this->view->render('training');
+    }
   
 }

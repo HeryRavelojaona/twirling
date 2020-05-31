@@ -41,7 +41,7 @@
           <div class="collapse navbar-collapse justify-content-center " id="nav_menu">
             <ul class="navbar-nav ">
                   <li class="nav-item active">
-                      <a class="nav-link" href="../public/index.php">Accueil</a>
+                      <a class="nav-link" href="index.php">Accueil</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="#about">Présentation</a>
@@ -53,7 +53,10 @@
                     <a class="nav-link" href="#team">Team</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="../public/index.php?route=actuality">Actualités</a>
+                    <a class="nav-link" href="index.php?route=actuality">Actualités</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="index.php?route=training">Entrainements</a>
                   </li>
                   <li class="nav-item dropdown">
         <?php
