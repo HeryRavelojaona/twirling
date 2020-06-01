@@ -330,4 +330,19 @@ class BackController extends Controller
         /* Return to ajax*/
         echo json_encode($response); 
     }
+
+    public function deleteEvent($post)
+    {
+        if($post->get('eventId')){
+            $eventId = $post->get('eventId');
+            $this->eventDAO->deleteEvent($eventId);
+            $this->session->set('delete_event','Article bien supprimer');
+        }else {
+            $this->session->set('delete_event','Suppression impossible');
+        }
+
+        header('Location: ../public/index.php?route=administration');
+        exit();
+        
+    }
 }

@@ -66,4 +66,10 @@ class EventDAO extends DAO
         return $event;
     }
 
+    public function deleteEvent($eventId)
+    {
+        $sql = 'DELETE FROM event WHERE id = ?';
+        $this->createQuery($sql, [$eventId]); 
+    }
+
 }

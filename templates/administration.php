@@ -115,7 +115,7 @@
                         <div class="control-delete" id="delete-event-<?= $event->getId() ?>">
                             <form action="index.php?route=deleteevent" method="POST" class="delete-form" >
                             <p class="go-delete">Etes vous sur ?</p>
-                                <input type="hidden" name="articleId" id="sendArticleId" value="<?= htmlspecialchars($article->getId());?>"/>
+                                <input type="hidden" name="eventId" id="sendEventId" value="<?= htmlspecialchars($event->getId());?>"/>
                                 <button class="btn btn-danger go-delete confirm-delete" name="submit">Oui <i class="fas fa-trash-alt"></i></button>
                                 <button class="stop-delete go-delete btn btn-secondary">Non</button>
                             </form>
