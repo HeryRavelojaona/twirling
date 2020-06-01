@@ -127,4 +127,21 @@ class ArticleDAO extends DAO
         ]);
     }
 
+    public function addEvent(Parameter $post, $userId, $status, $category)
+    {  
+      
+        $sql = 'INSERT INTO event (title, address, place, date_start, comment, user_id, date_end, category_id, status) VALUES (:title, :address, :place, :date_start, :comment, :user_id, :date_end, :category_id, :status)';
+        $this->createQuery($sql, 
+        ['title'=>$post->get('title'),
+         'address'=>$post->get('address'),
+         'place'=>$post->get('place'),
+         'date_start'=>$post->get('start'),
+         'comment'=>$post->get('content'),
+         'user_id'=>$userId,
+         'date_end'=>$post->get('end'),
+         'category_id'=>$category,
+         'status'=> $status
+         ]);
+    }
+
 }

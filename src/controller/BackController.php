@@ -174,6 +174,7 @@ class BackController extends Controller
             ]);     
     } 
     
+    /* For change picture on profil*/
     public function fileUpload($post)
     {
    
@@ -185,13 +186,14 @@ class BackController extends Controller
                 $filesize = $_FILES["photo"]["size"];
 
                 $extension = pathinfo($filename, PATHINFO_EXTENSION);
+                /*Automatically Change filename*/
                 $filename= time().'.'.$extension;
                 if(!array_key_exists(strtolower($extension), $allowed)) echo "Erreur : Veuillez sélectionner un format de fichier valide.";
                 $maxsize = 5000000000;
                 if($filesize > $maxsize) echo "Error: La taille du fichier est supérieure à la limite autorisée.";
 
                 if(in_array($filetype, $allowed)){
-                    // Vérifie si le fichier existe avant de le télécharger.
+                    /*Check if file exist.*/
                     if(file_exists("../public/assets/img/upload/" . $filename)){
                         echo $_FILES["photo"]["name"] . " existe déjà.";
                     } else{
@@ -252,5 +254,76 @@ class BackController extends Controller
         }
         $this->errorController->errorNotFound();
         
+    }
+
+    public function addEvent($post)
+    {
+          /* If $status = 1 article is published else if =0 is save*/
+          if($post->get('submit')) {
+            $status = 1;
+        }
+        if($post->get('save')){
+            $status = 0;
+        }
+
+        if($post->get('submit') || $post->get('save')){
+            /*$category = Training*/
+            $category = 3;
+            $this->articleDAO->addEvent($post, $this->session->get('id'), $status, $category);
+            $this->session->set('addevent','Article bien ajouté');
+            header('Location: ../public/index.php?route=administration');
+            exit();
+        }
+        
+        return $this->view->render('addevent');
+    }
+
+    /*Preview article article before validation addArticle*/
+    public function previewEvent(Parameter $post)
+    {
+        $response = array('title'=>'', 'content'=>'', 'place'=>'','address'=>'','error'=>'','start'=>'','end'=>'');
+        /*Check title and content error*/
+       if(empty($post->get('title')))
+       {
+        $response['error'] = 'Veuillez remplir le champ titre';
+       }
+
+       if(empty($post->get('place')))
+       {
+        $response['error'] = 'Veuillez remplir le champ lieu';
+       }
+
+       if(empty($post->get('address')))
+       {
+        $response['error'] = 'Veuillez remplir le champ Adresse';
+       }
+
+       if(empty($post->get('start')))
+       {
+        $response['error'] = 'Veuillez renseigner une heure de début';
+       }
+
+       if(empty($post->get('end')))
+       {
+        $response['error'] = 'Veuillez renseigner une heure de fin';
+       }
+
+       if(strlen($post->get('content'))> 400)
+       {
+        $response['error'] = 'Message trop long';
+       }
+        
+        /*If not error save*/
+        if(empty($response['error'])){
+            $response['title'] = $post->get('title');
+            $response['place'] = $post->get('place');
+            $response['address'] = $post->get('address');
+            $response['start'] = $post->get('start');
+            $response['end'] = $post->get('end');
+            $response['content'] = $post->get('content');
+        }
+
+        /* Return to ajax*/
+        echo json_encode($response); 
     }
 }

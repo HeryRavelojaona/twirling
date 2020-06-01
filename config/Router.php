@@ -49,8 +49,14 @@ class Router
                 elseif($route === 'addarticle'){
                     $this->backController->addArticle($this->request->getPost());
                 }
+                elseif($route === 'addevent'){
+                    $this->backController->addEvent($this->request->getPost());
+                }
                 elseif($route === 'previewarticle'){
                     $this->backController->previewArticle($this->request->getPost());
+                }
+                elseif($route === 'previewevent'){
+                    $this->backController->previewEvent($this->request->getPost());
                 }
                 elseif($route === 'updatePassword'){
                     $this->backController->updatePassword($this->request->getPost());

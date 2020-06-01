@@ -190,3 +190,10 @@ Category choice
     padding: 5px;
     color: #316BA4 !important;
 }
+
+/*-------------------
+Addevent
+-----------------------*/
+.event-preview {
+    display:none;
+}
