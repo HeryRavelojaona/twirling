@@ -56,4 +56,14 @@ class EventDAO extends DAO
          ]);
     }
 
+    public function showEvent($eventId)
+    {
+        $sql = 'SELECT event.id , event.title, event.address, event.place , event.filename, event.date_start, event.date_end, event.status, event.user_id, event.category_id FROM event INNER JOIN user ON user.id = event.user_id WHERE event.id = '.$eventId.'';
+        $result = $this->createQuery($sql);
+        $event = $result->fetch();
+        $event = $this->buildObject($event);
+        $result->closeCursor();
+        return $event;
+    }
+
 }

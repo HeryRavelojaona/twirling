@@ -40,6 +40,9 @@ class Router
                 elseif($route === 'article'){
                     $this->frontController->article($this->request->getGet());
                 }
+                elseif($route === 'event'){
+                    $this->frontController->event($this->request->getGet());
+                }
                 elseif($route === 'profile'){
                     $this->frontController->profile();
                 }

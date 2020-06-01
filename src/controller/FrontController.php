@@ -123,5 +123,20 @@ class FrontController extends Controller
     {
         return $this->view->render('training');
     }
+
+    public function event(Parameter $get)
+    {
+        if($get->get('eventId')){
+            $eventId =  $get->get('eventId');
+                $event = $this->eventDAO->showEvent($eventId);
+
+                return $this->view->render('event',[
+                    'event' => $event
+                ]);
+            
+        }
+     
+         $this->errorController->errorNotFound();
+    }
   
 }

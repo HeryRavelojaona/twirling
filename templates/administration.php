@@ -84,16 +84,14 @@
            
             <thead class="thead-style">
                 <tr>
-                <th>Jour</th>
+                <th>Jour et<br/> heure</th>
                 <th>Lieu</th>
-                <th>Horaires</th>
-                <th>Info</th>
                 <th>Actions</th>
                 </tr>
             </thead>
             <?php
                     foreach ($events as $event)
-                    {   
+                    {  
                         if($event->getStatus()== 0){$action = 'Brouillon';
                             $status = 'Brouillon';
                             $color= 'secondary';
@@ -104,14 +102,13 @@
 
             <tbody>
                 <tr>
-                    <td><?= htmlspecialchars($event->getTitle());?></td>
-                    <td><?= htmlspecialchars($event->getPlace());?></td>
-                    <td><?= htmlspecialchars($event->getDateStart());?><br/>
-                        <?= htmlspecialchars($event->getDateEnd());?>                                      
+                    <td><?= htmlspecialchars($event->getTitle());?><br/>
+                        <?= htmlspecialchars(substr($event->getDateStart(), 0,5));?><br/>
+                        <?= htmlspecialchars(substr($event->getDateEnd(), 0,5));?>
                     </td>
-                    <td><?= isset($event) ? $event->getComment() : ''; ?></td>
+                    <td><?= htmlspecialchars($event->getPlace());?></td>
                     <td class="action-table">
-                        <a href="index.php?route=event&eventId=<?= htmlspecialchars($article->getId());?>" class="btn btn-info admin-btn">Voir</a>
+                        <a href="index.php?route=event&eventId=<?= htmlspecialchars($event->getId());?>" class="btn btn-info admin-btn">Voir</a>
                         <a href="index.php?route=updateevent&eventId=<?= htmlspecialchars($event->getId());?>" class="btn admin-btn btn-warning">Modifier</a>
                         <a href="index.php?route=publishOrnot&eveventId=<?= htmlspecialchars($event->getId());?>&action=<?= htmlspecialchars($action);?>" class="btn admin-btn btn-<?= htmlspecialchars($color);?>"><?= htmlspecialchars($action);?> </a>
                         <a class="btn btn-danger admin-btn check-delete" data-deleteid="delete-event-<?= $event->getId() ?>">Supprimer</a>
