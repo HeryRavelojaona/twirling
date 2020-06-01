@@ -96,7 +96,7 @@
                         if($event->getStatus()== 0){$action = 'Brouillon';
                             $status = 'Brouillon';
                             $color= 'secondary';
-                        }else if($event->getStatus()== 1){$action = 'publié';
+                        }else if($event->getStatus()== 1){$action = 'Article publié';
                                     $status = 'Publié';
                                      $color= 'primary';} 
             ?>

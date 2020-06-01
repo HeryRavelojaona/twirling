@@ -55,6 +55,9 @@ class Router
                 elseif($route === 'deletearticle'){
                     $this->backController->deleteArticle($this->request->getPost());
                 }
+                elseif($route === 'updatearticle'){
+                    $this->backController->updateArticle($this->request->getPost(), $this->request->getGet() );
+                }
                 elseif($route === 'addevent'){
                     $this->backController->addEvent($this->request->getPost());
                 }

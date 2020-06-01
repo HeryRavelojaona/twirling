@@ -147,9 +147,9 @@ class BackController extends Controller
 
     /*Update article*/
     public function updateArticle(Parameter $get, $post)
-    {
-            if($get->get('articleId')){
-                $articleId = $get->get('articleId');
+    { 
+            if($post->get('articleId')){
+                $articleId = $post->get('articleId');
                 $article = $this->articleDAO->showArticle($articleId);
             }
             if($post->get('save') || $post->get('submit')) {
@@ -173,6 +173,7 @@ class BackController extends Controller
                     'errors' => $errors
                 ]);
             }
+
             return $this->view->render('updatearticle', [
                 'article'=>$article,
             ]);     
@@ -258,6 +259,7 @@ class BackController extends Controller
 
             /*for Event*/
         if($get->get('eventId')){
+          
             $eventId= $get->get('eventId');
             if($get->get('action') === 'Article publié'){
                 $status = 0;
