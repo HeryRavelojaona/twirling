@@ -237,8 +237,9 @@ class BackController extends Controller
         
     }
 
-    public function publishOrnotArticle(Parameter $get)
+    public function publishOrNot(Parameter $get)
     {
+        /*For article*/
         if($get->get('articleId')){
             $articleId= $get->get('articleId');
             if($get->get('action') === 'Article publié'){
@@ -251,11 +252,27 @@ class BackController extends Controller
                 $this->articleDAO->publishOrnotArticle($articleId, $status);
                 $this->session->set('status_article', 'Votre article a bien été publié');
             }
-            
+            header('Location: index.php?route=administration');
+            exit();
+        }
+
+            /*for Event*/
+        if($get->get('eventId')){
+            $eventId= $get->get('eventId');
+            if($get->get('action') === 'Article publié'){
+                $status = 0;
+                $this->eventDAO->publishOrnotEvent($eventId, $status);
+                $this->session->set('status_event', 'Votre article a bien été retiré');
+            }
+            if($get->get('action') === 'Brouillon'){
+                $status = 1;
+                $this->eventDAO->publishOrnotEvent($eventId, $status);
+                $this->session->set('status_event', 'Votre article a bien été publié');
+            }
             header('Location: index.php?route=administration');
                     exit();
-        
         }
+
         $this->errorController->errorNotFound();
         
     }

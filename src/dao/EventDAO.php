@@ -72,4 +72,14 @@ class EventDAO extends DAO
         $this->createQuery($sql, [$eventId]); 
     }
 
+    public function publishOrnotEvent($eventId, $status)
+    {                       
+       $sql = "UPDATE event SET status=:status WHERE id=:id";
+        $this->createQuery($sql, 
+        [
+         'status'=>$status,
+         'id'=>$eventId
+        ]);
+    }
+
 }

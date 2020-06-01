@@ -70,6 +70,9 @@ class Router
                 elseif($route === 'updatePassword'){
                     $this->backController->updatePassword($this->request->getPost());
                 }
+                elseif($route === 'publishOrNot'){
+                    $this->backController->publishOrNot($this->request->getGet());
+                }
                 elseif($route === 'logout'){
                     $this->frontController->logout();
                 }

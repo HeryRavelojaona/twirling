@@ -11,6 +11,7 @@
             <div class="section-title">
                 <h2>Publications</h2>
                 <?= $this->session->show('addarticle'); ?>
+                <?= $this->session->show('status_event'); ?>
                 <?= $this->session->show('updatearticle'); ?>
                 <?= $this->session->show('status_article'); ?>
                 <?= $this->session->show('delete_article'); ?>
@@ -49,7 +50,7 @@
                     <td class="action-table">
                         <a href="index.php?route=article&articleId=<?= htmlspecialchars($article->getId());?>" class="btn btn-info admin-btn">Voir</a>
                         <a href="index.php?route=updatearticle&articleId=<?= htmlspecialchars($article->getId());?>" class="btn admin-btn btn-warning">Modifier</a>
-                        <a href="index.php?route=publishOrnot&articleId=<?= htmlspecialchars($article->getId());?>&action=<?= htmlspecialchars($action);?>" class="btn admin-btn btn-<?= htmlspecialchars($color);?>"><?= htmlspecialchars($action);?> </a>
+                        <a href="index.php?route=publishOrNot&articleId=<?= htmlspecialchars($article->getId());?>&action=<?= htmlspecialchars($action);?>" class="btn admin-btn btn-<?= htmlspecialchars($color);?>"><?= htmlspecialchars($action);?> </a>
                         <a class="btn btn-danger admin-btn check-delete" data-deleteid="delete-article-<?= $article->getId() ?>">Supprimer</a>
                         <div class="control-delete" id="delete-article-<?= $article->getId() ?>">
                             <form action="index.php?route=deletearticle" method="POST" class="delete-form" >
@@ -110,7 +111,7 @@
                     <td class="action-table">
                         <a href="index.php?route=event&eventId=<?= htmlspecialchars($event->getId());?>" class="btn btn-info admin-btn">Voir</a>
                         <a href="index.php?route=updateevent&eventId=<?= htmlspecialchars($event->getId());?>" class="btn admin-btn btn-warning">Modifier</a>
-                        <a href="index.php?route=publishOrnot&eveventId=<?= htmlspecialchars($event->getId());?>&action=<?= htmlspecialchars($action);?>" class="btn admin-btn btn-<?= htmlspecialchars($color);?>"><?= htmlspecialchars($action);?> </a>
+                        <a href="index.php?route=publishOrNot&eventId=<?= htmlspecialchars($event->getId());?>&action=<?= htmlspecialchars($action);?>" class="btn admin-btn btn-<?= htmlspecialchars($color);?>"><?= htmlspecialchars($action);?> </a>
                         <a class="btn btn-danger admin-btn check-delete" data-deleteid="delete-event-<?= $event->getId() ?>">Supprimer</a>
                         <div class="control-delete" id="delete-event-<?= $event->getId() ?>">
                             <form action="index.php?route=deleteevent" method="POST" class="delete-form" >
