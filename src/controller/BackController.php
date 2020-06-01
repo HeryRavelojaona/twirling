@@ -20,10 +20,14 @@ class BackController extends Controller
             $users = $this->userDAO->getUser($userId);
             $usersName = $users->getLastName();
         }
+
+        /*$category = 3 For training event*/
+        $events = $this->eventDAO->showEvents(3);
         
         return $this->view->render('administration',[
             'articles' => $articles,
-            'usersName' => $usersName
+            'usersName' => $usersName,
+            'events' => $events
         ]);
  
     }
@@ -269,7 +273,7 @@ class BackController extends Controller
         if($post->get('submit') || $post->get('save')){
             /*$category = Training*/
             $category = 3;
-            $this->articleDAO->addEvent($post, $this->session->get('id'), $status, $category);
+            $this->eventDAO->addEvent($post, $this->session->get('id'), $status, $category);
             $this->session->set('addevent','Article bien ajouté');
             header('Location: ../public/index.php?route=administration');
             exit();

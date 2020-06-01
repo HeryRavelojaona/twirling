@@ -92,31 +92,31 @@
                 </tr>
             </thead>
             <?php
-                    foreach ($articles as $article)
-                    {   $date = new Datetime($article->getCreatedAt());
-                        if($article->getStatus()== 0){$action = 'Brouillon';
+                    foreach ($events as $event)
+                    {   
+                        if($event->getStatus()== 0){$action = 'Brouillon';
                             $status = 'Brouillon';
                             $color= 'secondary';
-                        }else if($article->getStatus()== 1){$action = 'publié';
+                        }else if($event->getStatus()== 1){$action = 'publié';
                                     $status = 'Publié';
                                      $color= 'primary';} 
             ?>
 
             <tbody>
                 <tr>
-                    <td><?= htmlspecialchars($article->getTitle());?></td>
-                    <td><?= htmlspecialchars($usersName);?></td>
-                    <td><?= htmlspecialchars($date->format('d-m-Y'));?><br/>
-                        <?= htmlspecialchars($date->format('d-m-Y'));?>                                      
+                    <td><?= htmlspecialchars($event->getTitle());?></td>
+                    <td><?= htmlspecialchars($event->getPlace());?></td>
+                    <td><?= htmlspecialchars($event->getDateStart());?><br/>
+                        <?= htmlspecialchars($event->getDateEnd());?>                                      
                     </td>
-                    <td>Prenez vos chaussures</td>
+                    <td><?= isset($event) ? $event->getComment() : ''; ?></td>
                     <td class="action-table">
-                        <a href="index.php?route=article&articleId=<?= htmlspecialchars($article->getId());?>" class="btn btn-info admin-btn">Voir</a>
-                        <a href="index.php?route=updatearticle&articleId=<?= htmlspecialchars($article->getId());?>" class="btn admin-btn btn-warning">Modifier</a>
-                        <a href="index.php?route=publishOrnot&articleId=<?= htmlspecialchars($article->getId());?>&action=<?= htmlspecialchars($action);?>" class="btn admin-btn btn-<?= htmlspecialchars($color);?>"><?= htmlspecialchars($action);?> </a>
-                        <a class="btn btn-danger admin-btn check-delete" data-deleteid="delete-article-<?= $article->getId() ?>">Supprimer</a>
-                        <div class="control-delete" id="delete-article-<?= $article->getId() ?>">
-                            <form action="index.php?route=deletearticle" method="POST" class="delete-form" >
+                        <a href="index.php?route=event&eventId=<?= htmlspecialchars($article->getId());?>" class="btn btn-info admin-btn">Voir</a>
+                        <a href="index.php?route=updateevent&eventId=<?= htmlspecialchars($event->getId());?>" class="btn admin-btn btn-warning">Modifier</a>
+                        <a href="index.php?route=publishOrnot&eveventId=<?= htmlspecialchars($event->getId());?>&action=<?= htmlspecialchars($action);?>" class="btn admin-btn btn-<?= htmlspecialchars($color);?>"><?= htmlspecialchars($action);?> </a>
+                        <a class="btn btn-danger admin-btn check-delete" data-deleteid="delete-event-<?= $event->getId() ?>">Supprimer</a>
+                        <div class="control-delete" id="delete-event-<?= $event->getId() ?>">
+                            <form action="index.php?route=deleteevent" method="POST" class="delete-form" >
                             <p class="go-delete">Etes vous sur ?</p>
                                 <input type="hidden" name="articleId" id="sendArticleId" value="<?= htmlspecialchars($article->getId());?>"/>
                                 <button class="btn btn-danger go-delete confirm-delete" name="submit">Oui <i class="fas fa-trash-alt"></i></button>
