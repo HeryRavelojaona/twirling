@@ -78,13 +78,13 @@ class Form_ajax {
      * Show preview before Add Article
      */
     addArticle() {
-        let validForm = false;
+        let validForm = true;
         /*Input title Validation*/
         $('#actualityTitle').focusout(function(e){
             let title = $('#actualityTitle').val(); 
             if(title.length < 2){
                 $('.form-error').html('Veuillez remplir le champ titre avec minimum 2 charactères');
-                validForm =false;
+                validForm = false;
             }else{validForm = true;}   
         })
         /* Input content validation*/
@@ -92,9 +92,10 @@ class Form_ajax {
             let content = $('#actualityContent').val(); 
             if(content.length < 5){
                 $('.form-error').html('Veuillez remplir le champ texte avec minimum 5 charactères');
-                validForm =false;
+                validForm = false;
             }else{validForm = true;}      
         })
+        console.log(validForm);
         /*Send form if validation success*/
         if(validForm) {
             $('#form_article').submit(function(e){
@@ -132,7 +133,7 @@ class Form_ajax {
             $('#form_article').submit(function(e){
                 e.preventDefault();
                 $('.form-error').html('Veuillez remplir les champs');
-                return;
+              
             })
         }
     }
