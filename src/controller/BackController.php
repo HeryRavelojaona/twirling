@@ -146,10 +146,10 @@ class BackController extends Controller
     }
 
     /*Update article*/
-    public function updateArticle(Parameter $get, $post)
+    public function updateArticle(Parameter $post, $get)
     { 
-            if($post->get('articleId')){
-                $articleId = $post->get('articleId');
+            if($get->get('articleId')){
+                $articleId = $get->get('articleId');
                 $article = $this->articleDAO->showArticle($articleId);
             }
             if($post->get('save') || $post->get('submit')) {

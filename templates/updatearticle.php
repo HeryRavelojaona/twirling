@@ -34,7 +34,7 @@
                                 <button type="button" class="changeImgClose">close</button>
                             </form>
                         </div>
-                <form class="col-lg-12" action="../public/index.php?route=updatearticle&articleId=<?= htmlspecialchars($article->getId());?>" method="post" enctype="multipart/form-data">
+                <form class="col-lg-12" action="../public/index.php?route=updatearticle&articleId=<?= htmlspecialchars($article->getId());?>" method="post">
                         <div class="form-group">
                             <label for="title" class="col-lg-6 control-label">Titre</label>
                             <div class="col-lg-12">

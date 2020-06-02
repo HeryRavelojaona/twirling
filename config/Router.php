@@ -80,7 +80,7 @@ class Router
                     $this->frontController->logout();
                 }
                 elseif($route === 'fileUpload'){
-                    $this->frontController->fileUpload($this->request->getPost());
+                    $this->backController->fileUpload($this->request->getPost());
                 }
 
             }
