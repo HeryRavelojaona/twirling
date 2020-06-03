@@ -228,7 +228,7 @@ class BackController extends Controller
         if($post->get('articleId')){
             $articleId = $post->get('articleId');
             $this->articleDAO->deleteArticle($articleId);
-            $this->session->set('delete_article','Article bien supprimer');
+            $this->session->set('delete_article','Evènement bien supprimer');
         }else {
             $this->session->set('delete_article','Suppression impossible');
         }
@@ -282,8 +282,8 @@ class BackController extends Controller
     public function addEvent($post)
     {
           /* If $status = 1 article is published else if =0 is save*/
-          if($post->get('submit')) {
-            $status = 1;
+        if($post->get('submit')) {
+        $status = 1;
         }
         if($post->get('save')){
             $status = 0;
@@ -364,4 +364,37 @@ class BackController extends Controller
         exit();
         
     }
+
+     /*Update event*/
+     public function updateEvent(Parameter $post, $get)
+     { 
+             if($get->get('eventId')){
+                 $eventId = $get->get('eventId');
+                 $event = $this->eventDAO->showEvent($eventId);
+             }
+             if($post->get('save') || $post->get('submit')) {
+                     if($post->get('save')){
+                         $status = 0;
+                         $session = 'Evènement mis à jour et bien enregistrer';
+                     }
+                     elseif($post->get('submit')){
+                         $status = 1;
+                         $session = 'Evènement mis à jour et publié';
+                     }
+                    
+                     $this->eventDAO->updateEvent($post, $eventId, $status);
+                     $this->session->set('updateevent', $session);
+                     header('Location: ../public/index.php?route=administration');
+                     exit(); 
+            }else{
+                 
+                 return $this->view->render('updateevent', [
+                     'event'=>$event,
+                 ]);
+             }
+ 
+             return $this->view->render('updateevent', [
+                 'event'=>$event,
+             ]);     
+     } 
 }

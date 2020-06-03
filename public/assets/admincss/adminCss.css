@@ -197,3 +197,8 @@ Addevent
 .event-preview {
     display:none;
 }
+
+.training .admin-update{
+    margin-top : 100px;
+    height: 60vh;
+}

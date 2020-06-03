@@ -82,4 +82,22 @@ class EventDAO extends DAO
         ]);
     }
 
+    public function updateEvent(Parameter $post, $eventId, $status)
+    {                       
+
+       $sql = "UPDATE event SET title=:title, address=:address, place=:place, date_start=:date_start, date_end=:date_end,  comment=:comment, status=:status WHERE event.id=:id";
+       var_dump($post);
+        $this->createQuery($sql, 
+        [
+        'title'=>$post->get('title'),
+        'address'=>$post->get('address'),
+        'place'=>$post->get('place'),
+        'date_start'=>$post->get('start'),
+        'comment'=>$post->get('content'),
+        'date_end'=>$post->get('end'),
+        'status'=>$status,
+        'id'=>$eventId
+        ]);
+    }
+
 }

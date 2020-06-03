@@ -16,6 +16,8 @@
                 <?= $this->session->show('status_article'); ?>
                 <?= $this->session->show('delete_article'); ?>
                 <?= $this->session->show('addevent'); ?>
+                <?= $this->session->show('delete_event'); ?>
+                <?= $this->session->show('updateevent'); ?>
             </div>
             <div class="message-for-all">
                 <a href="../public/index.php?route=addarticle" class="btn btn-primary text-message-for-all">Ajouter une nouvelle actualité <i class="fas fa-plus-circle"></i></a>

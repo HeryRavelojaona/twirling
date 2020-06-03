@@ -61,6 +61,9 @@ class Router
                 elseif($route === 'addevent'){
                     $this->backController->addEvent($this->request->getPost());
                 }
+                elseif($route === 'updateevent'){
+                    $this->backController->updateEvent($this->request->getPost(), $this->request->getGet() );
+                }
                 elseif($route === 'deleteevent'){
                     $this->backController->deleteEvent($this->request->getPost());
                 }

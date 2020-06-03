@@ -95,7 +95,6 @@ class Form_ajax {
                 validForm = false;
             }else{validForm = true;}      
         })
-        console.log(validForm);
         /*Send form if validation success*/
         if(validForm) {
             $('#form_article').submit(function(e){
@@ -142,12 +141,14 @@ class Form_ajax {
      * Show preview before Add Event
      */
     addEvent() {
-        let validForm = false;
+        let validForm = true;
         /*Input title Validation*/
+        
         $('#event_title').focusout(function(e){
             let title = $('#event_title').val(); 
             if(title.length < 2){
                 $('.form-error').html('Veuillez remplir le champ titre avec minimum 2 charactères');
+                validForm = false;
             }else{validForm = true;}      
         })
         /* Input address validation*/
@@ -155,6 +156,7 @@ class Form_ajax {
             let address = $('#event_address').val(); 
             if(address.length < 5){
                 $('.form-error').html('Veuillez remplir le champ adresse avec minimum 5 charactères');
+                validForm = false;
 
             }else{validForm = true;}      
         })
@@ -163,6 +165,7 @@ class Form_ajax {
             let place = $('#event_place').val(); 
             if(place.length < 2){
                 $('.form-error').html('Veuillez remplir le champ Lieu avec minimum 2 charactères');
+                validForm = false;
             }else{validForm = true;}       
         })
         /* Input start validation*/
@@ -170,7 +173,7 @@ class Form_ajax {
             let start = $('#event_start').val(); 
             if(start.length < 4){
                 $('.form-error').html('Veuillez renseigner une heure de début');
-
+                validForm = false;
             }else{validForm = true;}       
         })
 
@@ -179,6 +182,7 @@ class Form_ajax {
             let end = $('#event_end').val(); 
             if(end.length < 4){
                 $('.form-error').html('Veuillez renseigner une heure de fin');
+                validForm = false;
             }else{validForm = true;}       
         })
         
@@ -192,7 +196,7 @@ class Form_ajax {
        })
 
         /*Send form if validation success*/
-        if(!validForm) {
+        if(validForm) {
             $('#form_event').submit(function(e){
                 e.preventDefault();
                 let fileData = $('#form_event').serialize();
