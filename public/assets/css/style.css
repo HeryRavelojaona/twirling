@@ -440,6 +440,9 @@ Read-more
 /*--------------------------------------------------------------
 # Training
 --------------------------------------------------------------*/
+#Training {
+  min-height: 85vh;
+}
 .training .box {
   padding: 20px;
   background: #f9f9f9;
@@ -447,6 +450,7 @@ Read-more
   border-radius: 8px;
   position: relative;
   overflow: hidden;
+  margin: 10px;
 }
 
 .training .box h3 {

@@ -121,7 +121,11 @@ class FrontController extends Controller
 
     public function training()
     {
-        return $this->view->render('training');
+        /*Call with category Id trainig=3*/
+        $events = $this->eventDAO->showEvents(3);
+        return $this->view->render('training',[
+            'events' => $events
+        ]);
     }
 
     public function event(Parameter $get)
@@ -129,11 +133,9 @@ class FrontController extends Controller
         if($get->get('eventId')){
             $eventId =  $get->get('eventId');
                 $event = $this->eventDAO->showEvent($eventId);
-
                 return $this->view->render('event',[
                     'event' => $event
                 ]);
-            
         }
      
          $this->errorController->errorNotFound();

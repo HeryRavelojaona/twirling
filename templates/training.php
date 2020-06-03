@@ -1,4 +1,4 @@
-<?php $this->title = "Entrainement"; ?>
+<?php $this->title = "Entrainements"; ?>
  <!-- ======= Training ======= -->
  <main id="main">
   <!-- ======= Training Section ======= -->
@@ -13,54 +13,24 @@
 
       <div class="row">
 
+      <?php foreach($events as $event)
+      {
+      ?>
         <div class="col-lg-3 col-md-6 fade-left">
           <div class="box">
-            <h3>Lundi</h3>
-            <h4>Gymnase Salvador Allende</h4>
+            <h3><?= htmlspecialchars($event->getTitle());?></h3>
+            <h4><?= htmlspecialchars($event->getPlace());?></h4>
             <ul>
-              <li>Avenue Charles Garcia
-                94120 Fontenay-sous-Bois</li>
-              <li><strong class="training-date">De 18h30 à 20h</strong></li>
+              <li><?= htmlspecialchars($event->getAddress());?></li>
+              <li>De <strong class="training-date"><?= htmlspecialchars(substr($event->getDateStart(), 0,5));?></strong> à <strong class="training-date"><?= htmlspecialchars(substr($event->getDateEnd(), 0,5));?></strong></li>
             </ul>
+            <p><?= isset($event)? htmlspecialchars($event->getComment()):'';?></p>
           </div>
         </div>
-
-        <div class="col-lg-3 col-md-6  mt-md-0 fade-left">
-          <div class="box">
-            <h3>Mercredi</h3>
-            <h4>Gymnase Salvador Allende</h4>
-            <ul>
-              <li>Avenue Charles Garcia
-                94120 Fontenay-sous-Bois</li>
-              <li><strong class="training-date">De 18h30 à 20h</strong></li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="col-lg-3 col-md-6  mt-lg-0 fade-left">
-          <div class="box">
-            <h3>Jeudi</h3>
-            <h4>Gymnase Salvador Allende</h4>
-            <ul>
-              <li>Avenue Charles Garcia
-                94120 Fontenay-sous-Bois</li>
-              <li><strong class="training-date">De 18h30 à 20h</strong></li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="col-lg-3 col-md-6  mt-lg-0 fade-left">
-          <div class="box">
-            <h3>Dimanche</h3>
-            <h4>Gymnase Salvador Allende</h4>
-            <ul>
-              <li>Avenue Charles Garcia
-                94120 Fontenay-sous-Bois</li>
-              <li><strong class="training-date">De 18h30 à 20h</strong></li>
-            </ul>
-          </div>
-        </div>
-
+      <?php
+      }
+      ?>
+       
       </div>
 
     </div>

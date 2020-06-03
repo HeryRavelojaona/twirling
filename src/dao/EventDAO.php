@@ -27,7 +27,7 @@ class EventDAO extends DAO
     public function showEvents($category)
     {
         //for admin
-        $sql = "SELECT event.id , event.title, event.address, event.place , event.filename, event.date_start, event.date_end, event.status, event.user_id, event.category_id FROM event INNER JOIN user ON user.id = event.user_id  WHERE event.category_id = $category ORDER BY event.id DESC";
+        $sql = "SELECT event.id , event.title, event.address, event.place , event.filename, event.date_start, event.date_end, event.status, event.user_id, event.category_id FROM event INNER JOIN user ON user.id = event.user_id  WHERE event.category_id = $category ORDER BY event.id ASC";
         
         $result = $this->createQuery($sql);
         $events = [];
