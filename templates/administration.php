@@ -192,6 +192,56 @@
 
 </section><!-- End Actuality Section -->
 
+<section id="Actuality" class="actuality ">
+        <div class="container">
+            <div class="section-title">
+                <h2>Membres du bureau</h2>
+            </div>
+            <div class="message-for-all">
+                <a href="../public/index.php?route=adduser" class="btn btn-primary text-message-for-all">Ajouter un membre <i class="fas fa-plus-circle"></i></a>
+            </div>
+        <div >
+        <table class="table container admin-table admin-reload">
+           
+            <thead class="thead-style">
+                <tr>
+                <th>Nom/Prénom</th>
+                <th>Rôle</th>
+                <th>Actions</th>
+                </tr>
+            </thead>
+            <?php
+                    foreach ($allUsers as $AllUser)
+                    { 
+                        if($AllUser->getStatus()== 0){$action = "Non visible";
+                            $color= 'secondary';
+                        }else if($AllUser->getStatus()== 1){$action = 'Visible';
+
+                                     $color= 'primary';} 
+            ?>
+
+            <tbody>
+                <tr>
+                    <td><?= htmlspecialchars($AllUser->getLastName());?><br/><?= htmlspecialchars($AllUser->getFirstName());?> </td>
+                    <td><?= htmlspecialchars($AllUser->getRole());?></td>
+                    <td class="action-table">
+                        <a href="index.php?route=contactuser&userId=<?= htmlspecialchars($AllUser->getId());?>" class="btn btn-info admin-btn">Contacter</a>
+                        <?php if($this->session->get('id')== htmlspecialchars($AllUser->getId()))
+                        {;?>
+                         <a href="index.php?route=profile" class="btn admin-btn btn-warning">Profil</a>
+                        <?php 
+                        };?>
+                        <a href="index.php?route=publishOrNot&userId=<?= htmlspecialchars($AllUser->getId());?>&action=<?= htmlspecialchars($action);?>" class="btn admin-btn btn-<?= htmlspecialchars($color);?>"><?= htmlspecialchars($action);?> </a>
+                    </td>
+                </tr>
+            </tbody>
+            <?php
+            }
+            ?>
+            </table>
+
+</section><!-- End Actuality Section -->
+
 
 
 

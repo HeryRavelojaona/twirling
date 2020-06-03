@@ -16,6 +16,11 @@ class Validation
             $errors = $userValidation->check($data);
             return $errors;
         }
+        elseif($name === 'adduser') {
+            $userValidation = new UserValidation();
+            $errors = $userValidation->check($data);
+            return $errors;
+        }
         elseif($name === 'article') {
             $articleValidation = new ArticleValidation();
             $errors = $articleValidation->check($data);

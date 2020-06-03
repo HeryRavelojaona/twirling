@@ -37,7 +37,7 @@
                     <!---Form for change Password---> 
                     <div class="profile-part col-xl-6 ">
                         <button  class="btn btn-warning profile-content modif-pass">Modifier votre mot de passe</button><br/>
-                        <form class="connexion profile-changePass" id="change_pass" method="post" action="">
+                        <form class="connexion profile-changePass" id="change_password" method="post" action="">
                         <fieldset>
                                 <div class="form-group">
                                     <label for="pass" class="col-lg-2 control-label">Nouveau mot de passe</label>
@@ -54,13 +54,18 @@
                                 </div>
                                 <div class="form-group ">
                                     <div class="col-lg-12 col-lg-offset-2 button-submit">
-                                    <input type="submit" name="submit" class="btn btn-info" id="submit" value="Changer">
+                                    <button type="button" name="submit" class="btn btn-info" id="pass_validation" >Changer</button>
                                     </div>
                                 </div>
                             </fieldset>
                         </form>
                     </div>
             </div>  
-            
+            <div class="article-return">
+                <a href="index.php" class="btn btn-info return">Accueil</a>
+                <a href="index.php?route=administration" class="btn btn-info return">Admin</a>
+            </div>
         </section>
-        <a href="../public/index.php" class="btn btn-info profile-content">Retour</a>
+        
+          <!--Tinymce Wysiwigg-->
+     <script src="https://cdn.tiny.cloud/1/x34paag6wieet4xq5hwhj0zakt8qjxa9hpmq1btsb5vzelp8/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>

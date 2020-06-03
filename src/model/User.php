@@ -42,6 +42,11 @@ class User
     /**
      * @var string
      */
+    private $comment;
+
+    /**
+     * @var string
+     */
     public function getFileName()
     {
         return $this->fileName;
@@ -53,6 +58,22 @@ class User
     public function setFileName($fileName)
     {
         $this->fileName = $fileName;
+    }
+
+     /**
+     * @var string
+     */
+    public function getComment()
+    {
+        return $this->comment;
+    }
+
+    /**
+     * @param string $comment
+     */
+    public function setComment($comment)
+    {
+        $this->comment = $comment;
     }
 
     /**

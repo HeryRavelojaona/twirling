@@ -14,13 +14,14 @@ class BackController extends Controller
         $category = 1;
         $articles = $this->articleDAO->showArticles($category);
 
+        
         /* Get user Name with is Id*/
         foreach($articles as $article){
             $userId = $article->getUserId();
             $users = $this->userDAO->getUser($userId);
-            $usersName = $users->getLastName();
+            $usersName = $users->getFirstName();
         }
-
+        $allUsers = $this->userDAO->getUsers();
         $category = 2;
         $stories = $this->articleDAO->showArticles($category);
 
@@ -31,7 +32,9 @@ class BackController extends Controller
             'articles' => $articles,
             'usersName' => $usersName,
             'events' => $events,
-            'stories' => $stories
+            'stories' => $stories,
+            'users' => $users,
+            'allUsers' => $allUsers
         ]);
  
     }
@@ -279,6 +282,24 @@ class BackController extends Controller
                     exit();
         }
 
+        if($get->get('userId')){
+            $userId= $get->get('userId');
+            if($get->get('action') == 'Visible'){
+                $status = 0;
+                $this->userDAO->updateStatus($userId, $status);
+                
+                $this->session->set('status_event', 'Votre article a bien été retiré');
+            }
+            if($get->get('action') == 'Non visible'){
+                $status = 1;
+                $this->userDAO->updateStatus($userId, $status);
+                $this->session->set('status_event', 'Votre article a bien été publié');
+            }
+           
+            header('Location: index.php?route=administration');
+                    exit();
+        }
+
         $this->errorController->errorNotFound();
         
     }
@@ -401,4 +422,76 @@ class BackController extends Controller
                  'event'=>$event,
              ]);     
      } 
+
+      /*Add article after preview validation*/
+    public function addUser(Parameter $post)
+    {   
+        if(isset($_FILES['photo'])){
+            if($_FILES['photo'] && $_FILES['photo'] ["error"] == 0 ){
+                $allowed = array("jpg" => "image/jpg", "jpeg" => "image/jpeg", "gif" => "image/gif", "png" => "image/png");
+                $filename = $_FILES["photo"]["name"];
+                $filetype = $_FILES["photo"]["type"];
+                $filesize = $_FILES["photo"]["size"];
+
+                $extension = pathinfo($filename, PATHINFO_EXTENSION);
+                /*Automatically Change filename*/
+                $filename= time().'.'.$extension;
+                if(!array_key_exists(strtolower($extension), $allowed)) echo "Erreur : Veuillez sélectionner un format de fichier valide.";
+                $maxsize = 5000000000;
+                if($filesize > $maxsize) echo "Error: La taille du fichier est supérieure à la limite autorisée.";
+
+                if(in_array($filetype, $allowed)){
+                    /*Check if file exist.*/
+                    if(file_exists("../public/assets/img/upload/" . $filename)){
+                        echo $_FILES["photo"]["name"] . " existe déjà.";
+                    } else{
+                        move_uploaded_file($_FILES["photo"]["tmp_name"], "../public/assets/img/upload/" . $filename);
+                        echo "Votre fichier a été téléchargé avec succès."; 
+                    } 
+                } else{
+                    echo "Error: Il y a eu un problème de téléchargement de votre fichier. Veuillez réessayer."; 
+                }
+            } 
+        }
+
+        $errors = $this->validation->validate($post, 'adduser');
+        if($post->get('password') != $post->get('samepassword') ){
+            $errors['password'] = '<p>mot de passe non identique</p>';
+        }
+        /* If $status = 1 article is published else if =0 is save*/
+        if(!$errors){
+            if($post->get('submit')) {
+                $status = 1;
+            }
+            if($post->get('save')){
+                $status = 0;
+            }
+            /*Status choice*/
+            if($post->get('choice')== 'admin'){
+                $function = 1;
+            }
+            if($post->get('choice')== 'member'){
+                $function = 2;
+            }
+    
+            if($post->get('submit') || $post->get('save')){
+                $this->userDAO->addUser($post, $function, $filename);
+                $this->session->set('adduser','Utilisateur bien ajouté');
+                header('Location: ../public/index.php?route=administration');
+                exit();
+            }
+
+        }else {
+            return $this->view->render('adduser',[
+                'post' => $post,
+                'errors' => $errors
+            ]);
+        }
+
+        return $this->view->render('adduser');
+            
+            
+            
+ 
+    }
 }

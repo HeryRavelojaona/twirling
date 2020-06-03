@@ -17,8 +17,26 @@ class UserDAO extends DAO
         $user->setEmail($row['email']);
         $user->setStatus($row['status']);
         $user->setRole($row['role']);
+        $user->setComment($row['comment']);
         $user->setFileName($row['filename']);
         return $user;
+    }
+
+    public function addUser(Parameter $post, $function, $filename=NULL)
+    {  
+        $sql = 'INSERT INTO user (lastname, firstname, email, password, filename, role, status, comment) VALUES (:lastname, :firstname, :email, :password, :filename, :role, :status, :comment)';
+        var_dump( $post);
+        $this->createQuery($sql, 
+        ['lastname'=>$post->get('lastName'),
+         'firstname'=>$post->get('firstName'),
+         'email'=>$post->get('mail'),
+         'password'=>password_hash($post->get('password'), PASSWORD_BCRYPT),
+         'filename' =>$filename,
+         'role' =>$post->get('role'),
+         'status'=> $function,
+         'comment'=> $post->get('comment')
+
+         ]);
     }
 
     public function login(Parameter $post)
@@ -41,6 +59,15 @@ class UserDAO extends DAO
             'mail'=> $mail]);
     }
 
+    public function updateStatus($userId, $status)
+    {
+        
+        $sql = 'UPDATE user SET status = :status WHERE id = :userId';
+        $this->createQuery($sql, [
+            'status'=>$status,
+            'userId'=> $userId]);
+    }
+
     public function uploadPicture($mail, $filename)
     {
         $sql = 'UPDATE user SET filename = :filename WHERE email = :mail';
@@ -61,7 +88,7 @@ class UserDAO extends DAO
     public function getUsers()
     {
         //articles for Front view
-        $sql = "SELECT user.id , user.lastname, user.firstname,user.status, user.filename FROM user ORDER BY user.id ASC "; 
+        $sql = "SELECT user.id , user.lastname, user.firstname, user.email, user.status, user.filename, user.role, user.comment FROM user ORDER BY user.id ASC "; 
         $result = $this->createQuery($sql);
         $users = [];
         foreach ($result as $row){

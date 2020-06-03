@@ -47,7 +47,7 @@ class Utils {
     }
 
      /*Show and hide arrowUp at scroll*/
-     ArrowUp() {
+    ArrowUp() {
         $(window).on('scroll',() =>{
             if(window.scrollY >400){
             $('.back-to-top').fadeIn();
@@ -66,6 +66,7 @@ class Utils {
             $('#changePrice').toggle();
         });
     }
+
     /*Change Hero Img*/
     responsiveSlider(mobileBreakpoint, desktopBreakpoint) {
         let img = $('#hero');
@@ -91,10 +92,9 @@ class Utils {
     /*part Change pass*/
     openForm() {
       
-        $('.profile-changePass').hide();
+       $('.profile-changePass').hide();
         
         $('.modif-pass').click(function(e){
-            e.preventDefault();
                 $('.profile-changePass').toggle();
         });
         

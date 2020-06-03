@@ -4,7 +4,7 @@
  */
 class Form_ajax {
     constructor(){
-        this.changePass('#change_pass');
+        this.changePass();
         this.changePicture('#changeImage');
         this.addArticle();
         this.addEvent();
@@ -14,24 +14,25 @@ class Form_ajax {
      * Change user password
      * @param element HTMLElement|string Element 
      */
-    changePass(element) {
-        $(element).submit(function(e){
-            e.preventDefault();
-            let postdata= $(element).serialize();
+    changePass() {
+        $('#pass_validation').click(function(){
+
+            console.log('ok');
+            let postdata= $('.profile-changePass').serialize();
     
             $.ajax({
                 type: "POST",
                 data: postdata,
-                dataType: "json",
-                url: "../public/index.php?route=updatePassword",
+                url: "index.php?route=updatePassword",
                 success: function (data) {
-                    if(data['isSuccess']) {
-                        $(element).hide();
+                    let response = JSON.parse(data);
+                    if(response.isSuccess) {
+                        $('.profile-changePass').hide();
                         $('.modif-pass').text('Changement bien effectuer').css('color','#007bff');
-                    }else {
-                        $('.form-error').text(data['validationpass']);
+                    }else {console.log(response);
+                        $('.form-error').text(response.validationpass);
                     }
-                    $(element)[0].reset();
+                    $('.profile-changePass')[0].reset();
                 }
             })
         })
@@ -74,9 +75,11 @@ class Form_ajax {
         })
     }
 
+
     /**
      * Show preview before Add Article
      */
+
     addArticle() {
         let validForm = true;
         /*Input title Validation*/

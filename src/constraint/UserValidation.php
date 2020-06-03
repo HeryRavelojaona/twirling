@@ -35,6 +35,18 @@ class UserValidation extends Validation
             $error = $this->checkPass($name, $value );
             $this->addError($name, $error);
         }
+        elseif($name === 'lastName') {
+            $error = $this->checkName($name, $value);
+            $this->addError($name, $error);
+        }
+        elseif($name === 'role') {
+            $error = $this->checkRole($name, $value);
+            $this->addError($name, $error);
+        }
+        elseif($name === 'firstName') {
+            $error = $this->checkName($name, $value);
+            $this->addError($name, $error);
+        }
   
     }
 
@@ -49,10 +61,32 @@ class UserValidation extends Validation
     private function checkMail($name, $value)
     {
         if($this->constraint->notBlank($name, $value)) {
-            return $this->constraint->notBlank('mail', $value);
+            return $this->constraint->notBlank('Email', $value);
         }
         if($this->constraint->minLength($name, $value, 2)) {
-            return $this->constraint->minLength('mail', $value, 2);
+            return $this->constraint->minLength('Email', $value, 2);
+        }
+ 
+    }
+
+    private function checkRole($name, $value)
+    {
+        if($this->constraint->notBlank($name, $value)) {
+            return $this->constraint->notBlank('Role', $value);
+        }
+        if($this->constraint->minLength($name, $value, 2)) {
+            return $this->constraint->minLength('Role', $value, 2);
+        }
+ 
+    }
+
+    private function checkName($name, $value)
+    {
+        if($this->constraint->notBlank($name, $value)) {
+            return $this->constraint->notBlank('Nom/Prénom', $value);
+        }
+        if($this->constraint->minLength($name, $value, 2)) {
+            return $this->constraint->minLength('Nom/Prénom', $value, 2);
         }
  
     }

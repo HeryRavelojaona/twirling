@@ -79,12 +79,13 @@ class FrontController extends Controller
             if(!$errors) {
                 $result = $this->userDAO->login($post);
                 if($result && $result['isPasswordValid']) {
-                    $this->session->set('login', 'Bonjour '.$result['result']['lastname'].'');
+                    $this->session->set('login', 'Bonjour '.$result['result']['firstname'].'');
                     $this->session->set('id', $result['result']['id']);
                     $this->session->set('lastname', $result['result']['lastname']);
                     $this->session->set('firstname', $result['result']['firstname']);
                     $this->session->set('mail', $result['result']['email']);
                     $this->session->set('role', $result['result']['role']);
+                    $this->session->set('status', $result['result']['status']);
                     $this->session->set('filename', $result['result']['filename']);
                     header('Location: ../public/index.php');
                     exit();

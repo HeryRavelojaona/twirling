@@ -52,6 +52,9 @@ class Router
                 elseif($route === 'administration'){
                     $this->backController->admin();
                 }
+                elseif($route === 'adduser'){
+                    $this->backController->addUser($this->request->getPost());
+                }
                 elseif($route === 'addarticle'){
                     $this->backController->addArticle($this->request->getPost());
                 }
