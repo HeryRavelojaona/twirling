@@ -121,10 +121,20 @@ class FrontController extends Controller
 
     public function training()
     {
-        /*Call with category Id trainig=3*/
+        /*Call with category Id training=3*/
         $events = $this->eventDAO->showEvents(3);
         return $this->view->render('training',[
             'events' => $events
+        ]);
+    }
+
+    public function story()
+    {
+        /*Call with category Id story=2*/
+        $category = 2;
+        $stories = $this->articleDAO->showArticles($category, 'ASC');
+        return $this->view->render('story',[
+            'stories' => $stories
         ]);
     }
 

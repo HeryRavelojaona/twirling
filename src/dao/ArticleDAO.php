@@ -57,7 +57,7 @@ class ArticleDAO extends DAO
     /*Count number articles*/
     public function countArticles()
     {
-        $sql = 'SELECT COUNT(id) FROM article WHERE status=1';
+        $sql = 'SELECT COUNT(id) FROM article WHERE status=1 AND category_id=1';
         $result = $this->createQuery($sql);
         $countId = $result->fetch();
         $count= $countId['COUNT(id)'];
@@ -75,10 +75,16 @@ class ArticleDAO extends DAO
         return $article;
     }
 
-    public function showArticles($category)
+    public function showArticles($category, $order = NULL)
     {
-        //for admin
-        $sql = "SELECT article.id , article.title, article.content,article.filename, article.created_at, article.status, article.user_id, article.category_id FROM article INNER JOIN user ON user.id = article.user_id  WHERE article.category_id = $category ORDER BY article.created_at DESC";
+        //for Actuality
+        if(empty($order))
+        {
+            $sql = "SELECT article.id , article.title, article.content,article.filename, article.created_at, article.status, article.user_id, article.category_id FROM article INNER JOIN user ON user.id = article.user_id  WHERE article.category_id = $category ORDER BY article.created_at DESC";
+        }else{
+            $sql = "SELECT article.id , article.title, article.content,article.filename, article.created_at, article.status, article.user_id, article.category_id FROM article INNER JOIN user ON user.id = article.user_id  WHERE article.category_id = $category ORDER BY article.created_at $order";
+        }
+        
         
         $result = $this->createQuery($sql);
         $articles = [];
@@ -125,23 +131,6 @@ class ArticleDAO extends DAO
          'status'=>$status,
          'id'=>$articleId
         ]);
-    }
-
-    public function addEvent(Parameter $post, $userId, $status, $category)
-    {  
-      
-        $sql = 'INSERT INTO event (title, address, place, date_start, comment, user_id, date_end, category_id, status) VALUES (:title, :address, :place, :date_start, :comment, :user_id, :date_end, :category_id, :status)';
-        $this->createQuery($sql, 
-        ['title'=>$post->get('title'),
-         'address'=>$post->get('address'),
-         'place'=>$post->get('place'),
-         'date_start'=>$post->get('start'),
-         'comment'=>$post->get('content'),
-         'user_id'=>$userId,
-         'date_end'=>$post->get('end'),
-         'category_id'=>$category,
-         'status'=> $status
-         ]);
     }
 
 }

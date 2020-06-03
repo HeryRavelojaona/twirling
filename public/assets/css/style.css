@@ -403,7 +403,7 @@ Read-more
 }
 
 .story-img {
-  width: 40% !important;
+  height: 300px;
   position: relative;
   left: 50%;
   transform: translateX(-50%);

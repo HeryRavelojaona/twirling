@@ -21,13 +21,17 @@ class BackController extends Controller
             $usersName = $users->getLastName();
         }
 
+        $category = 2;
+        $stories = $this->articleDAO->showArticles($category);
+
         /*$category = 3 For training event*/
         $events = $this->eventDAO->showEvents(3);
         
         return $this->view->render('administration',[
             'articles' => $articles,
             'usersName' => $usersName,
-            'events' => $events
+            'events' => $events,
+            'stories' => $stories
         ]);
  
     }

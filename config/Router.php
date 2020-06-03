@@ -37,6 +37,9 @@ class Router
                 elseif($route === 'training'){
                     $this->frontController->training();
                 }
+                elseif($route === 'story'){
+                    $this->frontController->story();
+                }
                 elseif($route === 'article'){
                     $this->frontController->article($this->request->getGet());
                 }
