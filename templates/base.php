@@ -31,7 +31,7 @@
   <body data-spy="scroll" data-target=".navbar" data-offset="60">
   
       <!-- ======= Header ======= -->
-      <header id="header" class="fixed-top">
+  <header id="header" class="fixed-top">
         <nav class="navbar navbar-dark navbar-expand-lg fixed-top">
           <a class="navbar-brand logo" href="">SPAC</a>
 
@@ -42,15 +42,6 @@
             <ul class="navbar-nav ">
                   <li class="nav-item active">
                       <a class="nav-link" href="index.php">Accueil</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#about">Présentation</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#services">Rejoignez-nous</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#team">Team</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="index.php?route=actuality">Actualités</a>

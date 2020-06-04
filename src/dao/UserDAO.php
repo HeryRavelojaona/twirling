@@ -91,7 +91,7 @@ class UserDAO extends DAO
         if($status){
             $sql = "SELECT user.id , user.lastname, user.firstname, user.email, user.status, user.filename, user.role, user.comment FROM user WHERE status=$status ORDER BY user.id ASC "; 
         }
-        if($invisible){
+        elseif($invisible){
             $sql = "SELECT user.id , user.lastname, user.firstname, user.email, user.status, user.filename, user.role, user.comment FROM user WHERE status=$invisible ORDER BY user.id ASC "; 
         }
         else{

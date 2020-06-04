@@ -1,5 +1,6 @@
 <?php $this->title = "Accueil"; ?>
 <!-- ======= Hero Section ======= -->
+<?php include 'homeNavbar.php';?>
 <section id="hero" class="align-items-center">
         <div class="container fade-up">
           <img src="https://www.gifsanimes.com/data/media/1622/twirling-baton-image-animee-0003.gif" alt="twirling-baton-image-animee-0003" class="gif-baton fade-right " />
