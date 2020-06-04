@@ -85,15 +85,34 @@ class UserDAO extends DAO
         return $filename;
     }
 
-    public function getUsers($status=NULL)
+    public function getUsers($status=NULL, $invisible=NULL)
     {
         //User for Front view
         if($status){
             $sql = "SELECT user.id , user.lastname, user.firstname, user.email, user.status, user.filename, user.role, user.comment FROM user WHERE status=$status ORDER BY user.id ASC "; 
-        }else{
+        }
+        if($invisible){
+            $sql = "SELECT user.id , user.lastname, user.firstname, user.email, user.status, user.filename, user.role, user.comment FROM user WHERE status=$invisible ORDER BY user.id ASC "; 
+        }
+        else{
             $sql = "SELECT user.id , user.lastname, user.firstname, user.email, user.status, user.filename, user.role, user.comment FROM user ORDER BY user.id ASC "; 
         }
         
+        $result = $this->createQuery($sql);
+        $users = [];
+        foreach ($result as $row){
+            $userId = $row['id'];
+            $users[$userId] = $this->buildObject($row);
+        }
+        $result->closeCursor();
+        return $users;
+    }
+
+    public function getMembers()
+    {
+      
+        $sql = "SELECT user.id , user.lastname, user.firstname, user.email, user.status, user.filename, user.role, user.comment FROM user WHERE status=2 ORDER BY user.id ASC "; 
+   
         $result = $this->createQuery($sql);
         $users = [];
         foreach ($result as $row){
@@ -112,5 +131,11 @@ class UserDAO extends DAO
         $user = $this->buildObject($user);
         $result->closeCursor();
         return $user;
+    }
+
+    public function deleteUser($userId)
+    {
+        $sql = 'DELETE FROM user WHERE id = ?';
+        $this->createQuery($sql, [$userId]); 
     }
 }

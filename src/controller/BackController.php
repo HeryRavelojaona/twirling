@@ -14,17 +14,21 @@ class BackController extends Controller
         $category = 1;
         $articles = $this->articleDAO->showArticles($category);
 
-        
         /* Get user Name with is Id*/
         foreach($articles as $article){
             $userId = $article->getUserId();
             $users = $this->userDAO->getUser($userId);
             $usersName = $users->getFirstName();
         }
-        $allUsers = $this->userDAO->getUsers();
+        $visible = 1;
+        $invisible = 0;
+        $allUsers = $this->userDAO->getUsers($visible, $invisible);
+        /*Story article*/
         $category = 2;
         $stories = $this->articleDAO->showArticles($category);
 
+        /*members ADHERENTS*/
+        $members = $this->userDAO->getMembers();
         /*$category = 3 For training event*/
         $events = $this->eventDAO->showEvents(3);
         
@@ -34,7 +38,8 @@ class BackController extends Controller
             'events' => $events,
             'stories' => $stories,
             'users' => $users,
-            'allUsers' => $allUsers
+            'allUsers' => $allUsers,
+            'members' => $members
         ]);
  
     }
@@ -489,9 +494,20 @@ class BackController extends Controller
         }
 
         return $this->view->render('adduser');
-            
-            
-            
- 
+    }
+
+    public function deleteUser($post)
+    {
+        if($post->get('userId')){
+            $userId = $post->get('userId');
+            $this->userDAO->deleteUser($userId);
+            $this->session->set('delete_user','Utilisateur bien supprimer');
+        }else {
+            $this->session->set('delete_user','Suppression impossible');
+        }
+
+        header('Location: ../public/index.php?route=administration');
+        exit();
+        
     }
 }
