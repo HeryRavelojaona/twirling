@@ -215,9 +215,9 @@
             <?php
                     foreach ($allUsers as $AllUser)
                     { 
-                        if($AllUser->getStatus()== 0){$action = "Non visible";
+                        if($AllUser->getVisible()== 0){$action = "Non visible";
                             $color= 'secondary';
-                        }else if($AllUser->getStatus()== 1){$action = 'Visible';
+                        }else if($AllUser->getVisible()== 1){$action = 'Visible';
 
                                      $color= 'primary';} 
             ?>

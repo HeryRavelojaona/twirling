@@ -34,6 +34,11 @@ class User
      */
     private $status;
 
+     /**
+     * @var boolean
+     */
+    private $visible;
+
     /**
      * @var string
      */
@@ -90,6 +95,22 @@ class User
     public function setId($id)
     {
         $this->id = $id;
+    }
+
+     /**
+     * @return int
+     */
+    public function getVisible()
+    {
+        return $this->visible;
+    }
+
+    /**
+     * @param int $visible
+     */
+    public function setVisible($visible)
+    {
+        $this->visible = $visible;
     }
 
     /**

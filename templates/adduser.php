@@ -80,7 +80,7 @@
                         <div class="form-group ">
                             <span class="form-error"></span>
                             <div class="col-lg-12 col-lg-offset-2">
-                            <input type="submit" name="submit" class="btn btn-secondary" id="submit" value="Visualiser">
+                            <input type="submit" name="submit" class="btn btn-secondary" id="submit" value="Valider">
                             </div>
                         </div>
                     </div>
@@ -88,7 +88,7 @@
                 <div class="article-return">
                 <a href="index.php" class="btn btn-info return">Accueil</a>
                 <a href="index.php?route=administration" class="btn btn-info return">Admin</a>
-            </div>
+                </div>
             </div>
         </div>
     </section><!-- End Actuality  Section -->

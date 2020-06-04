@@ -11,8 +11,8 @@ class FrontController extends Controller
     public function home()
     {
         /*show users on Team part */
-        $status= 1;
-        $team = $this->userDAO->getUsers($status);
+        $visible = 1;
+        $team = $this->userDAO->getUsers($visible);
         /**
         * @param boolean $published if the article is published
         * @param int $start sql DESC LIMIT start

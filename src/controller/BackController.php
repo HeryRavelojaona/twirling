@@ -20,13 +20,13 @@ class BackController extends Controller
             $users = $this->userDAO->getUser($userId);
             $usersName = $users->getFirstName();
         }
-        $visible = 1;
-        $invisible = 0;
-        $allUsers = $this->userDAO->getUsers($visible, $invisible);
+
         /*Story article*/
         $category = 2;
         $stories = $this->articleDAO->showArticles($category);
 
+        /*All admin members*/
+        $allUsers = $this->userDAO->getAdmins();
         /*members ADHERENTS*/
         $members = $this->userDAO->getMembers();
         /*$category = 3 For training event*/
@@ -290,15 +290,15 @@ class BackController extends Controller
         if($get->get('userId')){
             $userId= $get->get('userId');
             if($get->get('action') == 'Visible'){
-                $status = 0;
-                $this->userDAO->updateStatus($userId, $status);
+                $visible = 0;
+                $this->userDAO->updateVisibility($userId, $visible);
                 
-                $this->session->set('status_event', 'Votre article a bien été retiré');
+                $this->session->set('status_event', 'Le membre a bien été retiré');
             }
             if($get->get('action') == 'Non visible'){
-                $status = 1;
-                $this->userDAO->updateStatus($userId, $status);
-                $this->session->set('status_event', 'Votre article a bien été publié');
+                $visible = 1;
+                $this->userDAO->updateVisibility($userId, $visible);
+                $this->session->set('status_event', 'Le membre a bien été publié');
             }
            
             header('Location: index.php?route=administration');
@@ -463,14 +463,8 @@ class BackController extends Controller
         if($post->get('password') != $post->get('samepassword') ){
             $errors['password'] = '<p>mot de passe non identique</p>';
         }
-        /* If $status = 1 article is published else if =0 is save*/
         if(!$errors){
-            if($post->get('submit')) {
-                $status = 1;
-            }
-            if($post->get('save')){
-                $status = 0;
-            }
+    
             /*Status choice*/
             if($post->get('choice')== 'admin'){
                 $function = 1;

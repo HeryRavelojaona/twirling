@@ -19,12 +19,13 @@ class UserDAO extends DAO
         $user->setRole($row['role']);
         $user->setComment($row['comment']);
         $user->setFileName($row['filename']);
+        $user->setVisible($row['visible']);
         return $user;
     }
 
     public function addUser(Parameter $post, $function, $filename=NULL)
     {  
-        $sql = 'INSERT INTO user (lastname, firstname, email, password, filename, role, status, comment) VALUES (:lastname, :firstname, :email, :password, :filename, :role, :status, :comment)';
+        $sql = 'INSERT INTO user (lastname, firstname, email, password, filename, role, status, visible, comment) VALUES (:lastname, :firstname, :email, :password, :filename, :role, :status, :visible, :comment)';
         var_dump( $post);
         $this->createQuery($sql, 
         ['lastname'=>$post->get('lastName'),
@@ -34,6 +35,7 @@ class UserDAO extends DAO
          'filename' =>$filename,
          'role' =>$post->get('role'),
          'status'=> $function,
+         'visible'=>0,
          'comment'=> $post->get('comment')
 
          ]);
@@ -59,12 +61,12 @@ class UserDAO extends DAO
             'mail'=> $mail]);
     }
 
-    public function updateStatus($userId, $status)
+    public function updateVisibility($userId, $visible)
     {
         
-        $sql = 'UPDATE user SET status = :status WHERE id = :userId';
+        $sql = 'UPDATE user SET visible = :visible WHERE id = :userId';
         $this->createQuery($sql, [
-            'status'=>$status,
+            'visible'=>$visible,
             'userId'=> $userId]);
     }
 
@@ -85,19 +87,31 @@ class UserDAO extends DAO
         return $filename;
     }
 
-    public function getUsers($status=NULL, $invisible=NULL)
+    public function getUsers($visible=NULL)
     {
         //User for Front view
-        if($status){
-            $sql = "SELECT user.id , user.lastname, user.firstname, user.email, user.status, user.filename, user.role, user.comment FROM user WHERE status=$status ORDER BY user.id ASC "; 
-        }
-        elseif($invisible){
-            $sql = "SELECT user.id , user.lastname, user.firstname, user.email, user.status, user.filename, user.role, user.comment FROM user WHERE status=$invisible ORDER BY user.id ASC "; 
+        if($visible){
+            $sql = "SELECT user.id , user.lastname, user.firstname, user.email, user.status, user.filename, user.role, user.visible, user.comment FROM user WHERE visible=$visible ORDER BY user.id ASC "; 
         }
         else{
-            $sql = "SELECT user.id , user.lastname, user.firstname, user.email, user.status, user.filename, user.role, user.comment FROM user ORDER BY user.id ASC "; 
+            $sql = "SELECT user.id , user.lastname, user.firstname, user.email, user.status, user.filename, user.role, user.visible, user.comment FROM user ORDER BY user.id ASC "; 
         }
         
+        $result = $this->createQuery($sql);
+        $users = [];
+        foreach ($result as $row){
+            $userId = $row['id'];
+            $users[$userId] = $this->buildObject($row);
+        }
+        $result->closeCursor();
+        return $users;
+    }
+
+    public function getAdmins()
+    {
+      
+        $sql = "SELECT user.id , user.lastname, user.firstname, user.email, user.status, user.filename, user.role, user.visible, user.comment FROM user WHERE status=1 ORDER BY user.id ASC "; 
+   
         $result = $this->createQuery($sql);
         $users = [];
         foreach ($result as $row){
@@ -111,7 +125,7 @@ class UserDAO extends DAO
     public function getMembers()
     {
       
-        $sql = "SELECT user.id , user.lastname, user.firstname, user.email, user.status, user.filename, user.role, user.comment FROM user WHERE status=2 ORDER BY user.id ASC "; 
+        $sql = "SELECT user.id , user.lastname, user.firstname, user.email, user.status, user.filename, user.role, user.visible, user.comment FROM user WHERE status=2 ORDER BY user.id ASC "; 
    
         $result = $this->createQuery($sql);
         $users = [];
