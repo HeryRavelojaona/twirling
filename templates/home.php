@@ -145,7 +145,7 @@
             </div>
 
             <div class="col-lg-6 col-md-12 col-12">
-              <p class="tarif-info">Tarif: 180 euros de cotisation annuelle</p>
+              <p class="tarif-info">Tarif: <?= htmlspecialchars($config->getContribution()) ;?> euros de cotisation annuelle</p>
             </div>
 
             <div class="col-lg-12 col-md-12 col-12">

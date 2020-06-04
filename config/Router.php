@@ -94,6 +94,9 @@ class Router
                 elseif($route === 'fileUpload'){
                     $this->backController->fileUpload($this->request->getPost());
                 }
+                elseif($route === 'changeprice'){
+                    $this->backController->changePrice($this->request->getPost());
+                }
 
             }
             else {

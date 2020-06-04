@@ -6,6 +6,7 @@ use Spac\config\Request;
 use Spac\src\model\View;
 use Spac\src\DAO\UserDAO;
 use Spac\src\DAO\ArticleDAO;
+use Spac\src\DAO\ConfigDAO;
 use Spac\src\DAO\EventDAO;
 use Spac\src\constraint\Validation;
 
@@ -17,6 +18,7 @@ abstract class Controller
     protected $session;
     protected $userDAO;
     protected $eventDAO;
+    protected $configDAO;
     protected $get;
     protected $post;
     protected $validation;
@@ -31,6 +33,7 @@ abstract class Controller
         $this->userDAO = new UserDAO();
         $this->articleDAO = new ArticleDAO();
         $this->eventDAO = new EventDAO();
+        $this->configDAO = new ConfigDAO();
         $this->validation = new Validation();
         
     }

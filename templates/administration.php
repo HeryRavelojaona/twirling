@@ -52,10 +52,10 @@
                     <td><?= htmlspecialchars($usersName);?></td>
                     <td><?= htmlspecialchars($date->format('d-m-Y'));?></td>
                     <td class="action-table">
-                        <a href="index.php?route=article&articleId=<?= htmlspecialchars($article->getId());?>" class="btn btn-info admin-btn">Voir</a>
-                        <a href="index.php?route=updatearticle&articleId=<?= htmlspecialchars($article->getId());?>" class="btn admin-btn btn-warning">Modifier</a>
-                        <a href="index.php?route=publishOrNot&articleId=<?= htmlspecialchars($article->getId());?>&action=<?= htmlspecialchars($action);?>" class="btn admin-btn btn-<?= htmlspecialchars($color);?>"><?= htmlspecialchars($action);?> </a>
-                        <a class="btn btn-danger admin-btn check-delete" data-deleteid="delete-article-<?= $article->getId() ?>">Supprimer</a>
+                        <a href="index.php?route=article&articleId=<?= htmlspecialchars($article->getId());?>" class="btn btn-info admin-btn" title="voir"><i class="fas fa-eye"></i></a>
+                        <a href="index.php?route=updatearticle&articleId=<?= htmlspecialchars($article->getId());?>" class="btn admin-btn btn-warning"><i class="fas fa-eye"></i></a>
+                        <a href="index.php?route=publishOrNot&articleId=<?= htmlspecialchars($article->getId());?>&action=<?= htmlspecialchars($action);?>" class="btn admin-btn btn-<?= htmlspecialchars($color);?>"><?= htmlspecialchars($action);?></a>
+                        <a class="btn btn-danger admin-btn check-delete" data-deleteid="delete-article-<?= $article->getId() ?>"><i class="fas fa-eye"></i></a>
                         <div class="control-delete" id="delete-article-<?= $article->getId() ?>">
                             <form action="index.php?route=deletearticle" method="POST" class="delete-form" >
                             <p class="go-delete">Etes vous sur ?</p>
@@ -292,6 +292,22 @@
             </table>
 
 </section><!-- End Actuality Section -->
+
+<section id="Info" class="info">
+        <div class="container">
+
+          <div class="row d-flex align-items-center fade-left">
+            <div class="col-lg-12">
+              <button class="tarif-info" id="openChangePrice">Changer le tarif: <span class="show-price"><?= htmlspecialchars($config->getContribution()) ;?></span> euros de cotisation annuelle</button>
+              <form action="" method="post" id="changePrice">
+                  <label for="price">Tarif: </label>
+                  <input type="number" name="price" placeholder="Tarif en euros">
+                  <button type="button" name="submit" id="btn_change_price" class="btn btn-warning">Changer</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section><!-- End Info Section -->
 
 
 

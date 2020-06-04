@@ -91,6 +91,9 @@ integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
 crossorigin="anonymous"></script>
 <script src=https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js></script>
 <script src="https://unpkg.com/scrollreveal"></script>
+  <!--Tinymce Wysiwigg-->
+<script src="https://cdn.tiny.cloud/1/x34paag6wieet4xq5hwhj0zakt8qjxa9hpmq1btsb5vzelp8/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+
 <script src="../public/assets/js/Animation.js"></script>
 <script src="../public/assets/js/Utils.js"></script>
 <script src="../public/assets/js/Form_ajax.js"></script>

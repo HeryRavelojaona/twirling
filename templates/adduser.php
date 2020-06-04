@@ -93,6 +93,3 @@
         </div>
     </section><!-- End Actuality  Section -->
   
-
-    <!--Tinymce Wysiwigg-->
-     <script src="https://cdn.tiny.cloud/1/x34paag6wieet4xq5hwhj0zakt8qjxa9hpmq1btsb5vzelp8/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>

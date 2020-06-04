@@ -24,7 +24,7 @@
                     <a class="nav-link" href="#Members">Membres</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="#Price">Tarif</a>
+                    <a class="nav-link" href="#Info">Tarif</a>
                   </li>
                   <li class="nav-item dropdown">
         <?php

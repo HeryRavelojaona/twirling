@@ -8,6 +8,7 @@ class Form_ajax {
         this.changePicture('#changeImage');
         this.addArticle();
         this.addEvent();
+        this.newPrice();
     }
 
     /**
@@ -238,5 +239,26 @@ class Form_ajax {
             })
         }
     }
+
+    newPrice(){
+        $('#btn_change_price').click(function(e){
+            e.preventDefault();
+            if(!$('#changePrice').val()){
+                $('#btn_change_price').text('veuillez rentrer une somme');
+            }
+            let fileData = $('#changePrice').serialize();
+            $.ajax({
+                type: "POST",
+                data: fileData,
+                url: "../public/index.php?route=changeprice",
+                success: function (data) {
+                        $('#changePrice').hide();
+                        $('#changePrice')[0].reset();
+                        $('.show-price').load(' .show-price');
+                }
+            })
+        })
+    }
+
        
 }

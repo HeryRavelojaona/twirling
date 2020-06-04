@@ -6,7 +6,7 @@ use Spac\config\Parameter;
 
 class BackController extends Controller
 {
-   
+    
 
     public function admin()
     {
@@ -31,7 +31,7 @@ class BackController extends Controller
         $members = $this->userDAO->getMembers();
         /*$category = 3 For training event*/
         $events = $this->eventDAO->showEvents(3);
-        
+        $config = $this->configDAO->getConfig();
         return $this->view->render('administration',[
             'articles' => $articles,
             'usersName' => $usersName,
@@ -39,7 +39,8 @@ class BackController extends Controller
             'stories' => $stories,
             'users' => $users,
             'allUsers' => $allUsers,
-            'members' => $members
+            'members' => $members,
+            'config' => $config
         ]);
  
     }
@@ -503,5 +504,14 @@ class BackController extends Controller
         header('Location: ../public/index.php?route=administration');
         exit();
         
+    }
+
+    public function changePrice($post)
+    {
+        if($post->get('price')){
+            $contribution = $post->get('price');
+            $this->configDAO->updateContribution($contribution);
+            echo 'Changement effectuer';
+        }
     }
 }

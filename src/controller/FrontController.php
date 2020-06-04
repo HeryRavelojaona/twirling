@@ -23,9 +23,12 @@ class FrontController extends Controller
         $start = 0;
         $limit = 2;
         $articles = $this->articleDAO->showLastArticles( $start, $limit, $published);
+        $config = $this->configDAO->getConfig();
         return $this->view->render('home',[
             'articles' => $articles,
-            'team' => $team
+            'team' => $team,
+            'config' => $config
+
         ]);
         
     }
