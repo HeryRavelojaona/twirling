@@ -46,7 +46,7 @@
                         <a href="index.php?route=event&eventId=<?= htmlspecialchars($event->getId());?>" class="btn btn-info admin-btn" title="voir"><i class="fas fa-eye"></i></a>
                         <a href="index.php?route=updateevent&eventId=<?= htmlspecialchars($event->getId());?>" class="btn admin-btn btn-warning" title="Modifier"><i class="fas fa-exchange-alt"></i></a>
                         <a href="index.php?route=publishOrNot&eventId=<?= htmlspecialchars($event->getId());?>&action=<?= htmlspecialchars($action);?>" class="btn admin-btn btn-<?= htmlspecialchars($color);?>" title="<?= htmlspecialchars($title);?>"><i class="far <?= htmlspecialchars($icon);?>"></i></a>
-                        <a class="btn btn-danger admin-btn check-delete" data-deleteid="delete-event-<?= $event->getId() ?>" title="Supprimer"><i class="fas fa-trash-alt"></i></a>
+                        <a class="btn btn-danger admin-btn check-delete" data-deleteid="delete-event-<?= $event->getId() ?>" title="Supprimer"><i class="fas fa-trash-alt" data-deleteid="delete-article-<?= $event->getId() ?>"></i></a>
                         <div class="control-delete" id="delete-event-<?= $event->getId() ?>">
                             <form action="index.php?route=deleteevent" method="POST" class="delete-form" >
                             <p class="go-delete">Etes vous sur ?</p>

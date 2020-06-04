@@ -40,7 +40,7 @@
                         }else if($article->getStatus()== 1){$action = 'Article publié';
                                     $icon = 'fa-check-square';
                                     $title = 'Publié';
-                                     $color= 'primary';
+                                    $color= 'primary';
                         } 
             ?>
 
@@ -53,7 +53,7 @@
                         <a href="index.php?route=article&articleId=<?= htmlspecialchars($article->getId());?>" class="btn btn-info admin-btn" title="voir"><i class="fas fa-eye"></i></a>
                         <a href="index.php?route=updatearticle&articleId=<?= htmlspecialchars($article->getId());?>" class="btn admin-btn btn-warning" title="Modifier"><i class="fas fa-exchange-alt"></i></a>
                         <a href="index.php?route=publishOrNot&articleId=<?= htmlspecialchars($article->getId());?>&action=<?= htmlspecialchars($action);?>" class="btn admin-btn btn-<?= htmlspecialchars($color);?>" title="<?= htmlspecialchars($title);?>"><i class="far <?= htmlspecialchars($icon);?>"></i></a>
-                        <a class="btn btn-danger admin-btn check-delete" data-deleteid="delete-article-<?= $article->getId() ?>" title="Supprimer"><i class="fas fa-trash-alt"></i></a>
+                        <a class="btn btn-danger admin-btn check-delete" data-deleteid="delete-article-<?= $article->getId() ?>" title="Supprimer"><i class="fas fa-trash-alt" data-deleteid="delete-article-<?= $article->getId() ?>"></i></a>
                         <div class="control-delete" id="delete-article-<?= $article->getId() ?>">
                             <form action="index.php?route=deletearticle" method="POST" class="delete-form" >
                             <p class="go-delete">Etes vous sur ?</p>

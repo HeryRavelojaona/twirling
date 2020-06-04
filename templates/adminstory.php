@@ -40,7 +40,7 @@
                         <a href="index.php?route=article&articleId=<?= htmlspecialchars($story->getId());?>" class="btn btn-info admin-btn" title="voir"><i class="fas fa-eye"></i></a>
                         <a href="index.php?route=updatearticle&articleId=<?= htmlspecialchars($story->getId());?>" class="btn admin-btn btn-warning" title="Modifier"><i class="fas fa-exchange-alt"></i></a>
                         <a href="index.php?route=publishOrNot&articleId=<?= htmlspecialchars($story->getId());?>&action=<?= htmlspecialchars($action);?>" class="btn admin-btn btn-<?= htmlspecialchars($color);?>" title="<?= htmlspecialchars($title);?>"><i class="far <?= htmlspecialchars($icon);?>"></i></a>
-                        <button class="btn btn-danger admin-btn check-delete" data-deleteid="delete-article-<?= $story->getId() ?>" title="Supprimer"><i class="fas fa-trash-alt"></i></button>
+                        <button class="btn btn-danger admin-btn check-delete" data-deleteid="delete-article-<?= $story->getId() ?>" title="Supprimer"><i class="fas fa-trash-alt" data-deleteid="delete-article-<?= $story->getId() ?>"></i></button>
                         <div class="control-delete" id="delete-article-<?= $story->getId() ?>">
                             <form action="index.php?route=deletearticle" method="POST" class="delete-form" >
                             <p class="go-delete">Etes vous sur ?</p>
