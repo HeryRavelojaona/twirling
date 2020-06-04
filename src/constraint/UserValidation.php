@@ -35,10 +35,6 @@ class UserValidation extends Validation
             $error = $this->checkPass($name, $value );
             $this->addError($name, $error);
         }
-        elseif($name === 'lastName') {
-            $error = $this->checkName($name, $value);
-            $this->addError($name, $error);
-        }
         elseif($name === 'role') {
             $error = $this->checkRole($name, $value);
             $this->addError($name, $error);

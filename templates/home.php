@@ -191,51 +191,21 @@
             </div>
 
             <div class="row">
-              <div class="col-lg-4 col-md-6 d-flex align-items-stretch fade-right">
-                <div class="member">
-                  <img src="../public/assets/img/hoby.png" class="img-fluid " alt="">
-                  <h4>Hoby Ravelojaona</h4>
-                  <span>Président</span>
-                  <p>
-                    Dans l'association depuis 2003 et
-                    successeur de Christian Roncone.
-                  </p>
-                </div>
-              </div>
+            <?php foreach($team as $user)
+            {
+            ;?>
 
-              <div class="col-lg-4 col-md-6 d-flex align-items-stretch fade-up">
-                <div class="member">
-                  <img src="../public/assets/img/entraineur.jpg" class="img-fluid" alt="entraineur">
-                  <h4>Sindy</h4>
-                  <span>Entraineur</span>
-                  <p>
-                    Ancienne licenciée depuis 1994, diplôme d'instructeur de club obtenu en 2008.
-                    Juge national 3 en 2009 Sindy saura vous guider au mieux dans votre pratique pour vous faire progresser.
-                  </p>
-                </div>
+            <div class="col-lg-4 col-md-6 d-flex align-items-stretch fade-right">
+                  <div class="member">
+                      <img src="../public/assets/img/upload/<?= htmlspecialchars($user->getFileName());?>" class="img-fluid " alt="Photo des membres">
+                      <h4><?= htmlspecialchars($user->getLastName());?> <?= htmlspecialchars($user->getFirstName());?> </h4>
+                      <span><?= htmlspecialchars($user->getRole());?></span>
+                      <p><?= isset($user)? $user->getComment():'';?></p>
+                  </div>
               </div>
-
-              <div class="col-lg-4 col-md-6 d-flex align-items-stretch fade-left">
-                <div class="member">
-                  <img class="img-fluid thumbnail" src="../public/assets/img/tresoriere.jpg" alt="photo">
-                  <h4>Sonia</h4>
-                  <span>Trésorière</span>
-                  <p>
-                    Voluptas necessitatibus occaecati quia. Earum totam consequuntur qui porro et laborum toro des clara
-                  </p>
-                </div>
-              </div>
-
-              <div class="col-lg-4 col-md-6 d-flex align-items-stretch fade-right">
-                <div class="member">
-                  <img class="img-fluid thumbnail" src="../public/assets/img/aurore.jpg" alt="photo">
-                  <h4>Aurore</h4>
-                  <span>Secrétaire</span>
-                  <p>
-                    Voluptas necessitatibus occaecati quia. Earum totam consequuntur qui porro et laborum toro des clara
-                  </p>
-                </div>
-              </div>
+            <?php
+            }
+            ;?>
 
             </div>
 

@@ -85,10 +85,15 @@ class UserDAO extends DAO
         return $filename;
     }
 
-    public function getUsers()
+    public function getUsers($status=NULL)
     {
-        //articles for Front view
-        $sql = "SELECT user.id , user.lastname, user.firstname, user.email, user.status, user.filename, user.role, user.comment FROM user ORDER BY user.id ASC "; 
+        //User for Front view
+        if($status){
+            $sql = "SELECT user.id , user.lastname, user.firstname, user.email, user.status, user.filename, user.role, user.comment FROM user WHERE status=$status ORDER BY user.id ASC "; 
+        }else{
+            $sql = "SELECT user.id , user.lastname, user.firstname, user.email, user.status, user.filename, user.role, user.comment FROM user ORDER BY user.id ASC "; 
+        }
+        
         $result = $this->createQuery($sql);
         $users = [];
         foreach ($result as $row){

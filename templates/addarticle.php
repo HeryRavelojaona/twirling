@@ -57,7 +57,10 @@
              <!-- ======= Actuality Section ======= -->
     <section id="Actuality" class="actuality preview" >
           <div class="container actuality preview">
-            <div class="section-title"></div>
+          
+            <div class="section-title">
+                <h2>Aperçu</h2>
+            </div>
             
             <div class="row">
               <div class="col-lg-12">
@@ -103,7 +106,7 @@
                     </div>
                 </div>
             </form>
-            <div class="return-btn">
+                <div class="return-btn">
                     <a href="../public/index.php?route=addarticle" class="btn btn-info ">Retour</a>
                 </div>
           </div>

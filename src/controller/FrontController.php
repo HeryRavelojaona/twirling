@@ -10,6 +10,9 @@ class FrontController extends Controller
 
     public function home()
     {
+        /*show users on Team part */
+        $status= 1;
+        $team = $this->userDAO->getUsers($status);
         /**
         * @param boolean $published if the article is published
         * @param int $start sql DESC LIMIT start
@@ -22,9 +25,11 @@ class FrontController extends Controller
         $articles = $this->articleDAO->showLastArticles( $start, $limit, $published);
         return $this->view->render('home',[
             'articles' => $articles,
+            'team' => $team
         ]);
         
     }
+
     public function article(Parameter $get)
     {
         if(isset($get)){
