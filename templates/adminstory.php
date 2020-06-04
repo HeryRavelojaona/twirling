@@ -22,11 +22,13 @@
                     foreach ($stories as $story)
                     {   $date = new Datetime($story->getCreatedAt());
                         if($story->getStatus()== 0){$action = 'Brouillon';
-                            $status = 'Brouillon';
+                            $title = 'Brouillon';
+                            $icon = 'fa-pause-circle';
                             $color= 'secondary';
                         }else if($story->getStatus()== 1){$action = 'Article publié';
-                                    $status = 'Publié';
-                                     $color= 'primary';} 
+                                    $title = 'Publié';
+                                    $color= 'primary';
+                                    $icon = 'fa-check-square';} 
             ?>
 
             <tbody>
@@ -35,10 +37,10 @@
                     <td><?= htmlspecialchars($usersName);?></td>
                     <td><?= htmlspecialchars($date->format('d-m-Y'));?></td>
                     <td class="action-table">
-                        <a href="index.php?route=article&articleId=<?= htmlspecialchars($story->getId());?>" class="btn btn-info admin-btn">Voir</a>
-                        <a href="index.php?route=updatearticle&articleId=<?= htmlspecialchars($story->getId());?>" class="btn admin-btn btn-warning">Modifier</a>
-                        <a href="index.php?route=publishOrNot&articleId=<?= htmlspecialchars($story->getId());?>&action=<?= htmlspecialchars($action);?>" class="btn admin-btn btn-<?= htmlspecialchars($color);?>"><?= htmlspecialchars($action);?> </a>
-                        <a class="btn btn-danger admin-btn check-delete" data-deleteid="delete-article-<?= $story->getId() ?>">Supprimer</a>
+                        <a href="index.php?route=article&articleId=<?= htmlspecialchars($story->getId());?>" class="btn btn-info admin-btn" title="voir"><i class="fas fa-eye"></i></a>
+                        <a href="index.php?route=updatearticle&articleId=<?= htmlspecialchars($story->getId());?>" class="btn admin-btn btn-warning" title="Modifier"><i class="fas fa-exchange-alt"></i></a>
+                        <a href="index.php?route=publishOrNot&articleId=<?= htmlspecialchars($story->getId());?>&action=<?= htmlspecialchars($action);?>" class="btn admin-btn btn-<?= htmlspecialchars($color);?>" title="<?= htmlspecialchars($title);?>"><i class="far <?= htmlspecialchars($icon);?>"></i></a>
+                        <button class="btn btn-danger admin-btn check-delete" data-deleteid="delete-article-<?= $story->getId() ?>" title="Supprimer"><i class="fas fa-trash-alt"></i></button>
                         <div class="control-delete" id="delete-article-<?= $story->getId() ?>">
                             <form action="index.php?route=deletearticle" method="POST" class="delete-form" >
                             <p class="go-delete">Etes vous sur ?</p>

@@ -3,6 +3,7 @@
         <div class="container">
             <div class="section-title">
                 <h2>Membres du bureau</h2>
+                <?= $this->session->show('delete_user'); ?>
             </div>
             <div class="message-for-all">
                 <a href="../public/index.php?route=adduser" class="btn btn-primary text-message-for-all">Ajouter un membre <i class="fas fa-plus-circle"></i></a>
