@@ -1,4 +1,5 @@
 <?php $this->title = "Administration"; ?>
+<?php include 'adminNavbar.php';?>
 <main id="main">
     <div class="message-for-all">
         <a class="btn btn-secondary text-message-for-all">Envoyer un message collectif <i class="fas fa-envelope-square"></i></a><br/>
@@ -135,7 +136,7 @@
 
 </section><!-- End Actuality Section -->
 
-<section id="Actuality" class="actuality ">
+<section id="Story" class="actuality ">
         <div class="container">
             <div class="section-title">
                 <h2>Histoire du club</h2>
@@ -243,7 +244,7 @@
 
 </section><!-- End Actuality Section -->
 
-<section id="Members" class="actuality ">
+<section id="Adherents" class="actuality ">
         <div class="container">
             <div class="section-title">
                 <h2>Adhérents</h2>
