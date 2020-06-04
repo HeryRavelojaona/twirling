@@ -1,7 +1,7 @@
   <!-- ======= Header ======= -->
   <header id="header" class="fixed-top">
         <nav class="navbar navbar-dark navbar-expand-lg fixed-top">
-          <a class="navbar-brand logo" href="">SPAC</a>
+          <a class="navbar-brand logo" href="index.php">SPAC</a>
 
           <button class="navbar-toggler" type="button" data-target="#nav_menu" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon "></span>

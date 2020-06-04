@@ -97,7 +97,18 @@ class Router
                 elseif($route === 'changeprice'){
                     $this->backController->changePrice($this->request->getPost());
                 }
-
+                elseif($route === 'admintraining'){
+                    $this->backController->adminTraining();
+                }
+                elseif($route === 'adminstory'){
+                    $this->backController->adminStory();
+                }
+                elseif($route === 'adminmembers'){
+                    $this->backController->adminMembers();
+                }
+                elseif($route === 'adminconfig'){
+                    $this->backController->adminConfig();
+                }
             }
             else {
                 $this->frontController->home();

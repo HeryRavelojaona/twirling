@@ -20,29 +20,69 @@ class BackController extends Controller
             $users = $this->userDAO->getUser($userId);
             $usersName = $users->getFirstName();
         }
+    
+        return $this->view->render('administration',[
+            'articles' => $articles,
+            'usersName' => $usersName,
+            'users' => $users
+        ]);
+ 
+    }
+
+    /*Page config on admin*/
+    public function adminConfig()
+    {
+        $config = $this->configDAO->getConfig();
+        return $this->view->render('adminconfig',[
+            'config' => $config
+        ]);
+    }
+
+
+    /*Page Members on admin*/
+    public function adminMembers()
+    {
+        /*All admin members*/
+    $allUsers = $this->userDAO->getAdmins();
+    /*members ADHERENTS*/
+    $members = $this->userDAO->getMembers();
+        return $this->view->render('adminmembers',[
+        'allUsers' => $allUsers,
+        'members' => $members
+
+        ]);
+    }
+
+    /*Page training on admin*/
+    public function adminTraining()
+    {
+        /*$category = 3 For training event*/
+        $events = $this->eventDAO->showEvents(3);
+        return $this->view->render('adminTraining',[
+            'events' => $events
+
+        ]);
+    }
+
+    /*Page Storyon admin*/
+    public function adminStory()
+    {
+        $category = 1;
+        $articles = $this->articleDAO->showArticles($category);
+        /* Get user Name with is Id*/
+        foreach($articles as $article){
+            $userId = $article->getUserId();
+            $users = $this->userDAO->getUser($userId);
+            $usersName = $users->getFirstName();
+        }
 
         /*Story article*/
         $category = 2;
         $stories = $this->articleDAO->showArticles($category);
-
-        /*All admin members*/
-        $allUsers = $this->userDAO->getAdmins();
-        /*members ADHERENTS*/
-        $members = $this->userDAO->getMembers();
-        /*$category = 3 For training event*/
-        $events = $this->eventDAO->showEvents(3);
-        $config = $this->configDAO->getConfig();
-        return $this->view->render('administration',[
-            'articles' => $articles,
-            'usersName' => $usersName,
-            'events' => $events,
+        return $this->view->render('adminstory',[
             'stories' => $stories,
-            'users' => $users,
-            'allUsers' => $allUsers,
-            'members' => $members,
-            'config' => $config
+            'usersName' => $usersName
         ]);
- 
     }
     
     /*Preview article article before validation addArticle*/

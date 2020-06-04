@@ -1,7 +1,7 @@
   <!-- ======= Header ======= -->
   <header id="header" class="fixed-top">
         <nav class="navbar navbar-dark navbar-expand-lg fixed-top">
-          <a class="navbar-brand logo" href="">SPAC</a>
+          <a class="navbar-brand logo" href="index.php">SPAC</a>
 
           <button class="navbar-toggler" type="button" data-target="#nav_menu" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon "></span>
@@ -12,19 +12,19 @@
                       <a class="nav-link" href="index.php">Site</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="#Actuality">Publications</a>
+                    <a class="nav-link" href="index.php?route=administration">Publications</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="#Training">Entrainements</a>
+                    <a class="nav-link" href="index.php?route=admintraining">Entrainements</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="#Story">Histoire du club</a>
+                    <a class="nav-link" href="index.php?route=adminstory">Histoire du club</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="#Members">Membres</a>
+                    <a class="nav-link" href="index.php?route=adminmembers">Membres</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="#Info">Tarif</a>
+                    <a class="nav-link" href="index.php?route=adminconfig">Config</a>
                   </li>
                   <li class="nav-item dropdown">
         <?php
