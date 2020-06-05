@@ -86,7 +86,6 @@
                     </div>
                 </form>
                 <div class="article-return">
-                <a href="index.php" class="btn btn-info return">Accueil</a>
                 <a href="index.php?route=administration" class="btn btn-info return">Admin</a>
                 </div>
             </div>

@@ -9,7 +9,7 @@
             </div>
             <div class="row">
 
-              <div class="col-lg-12 fade-right">
+              <div class="col-lg-12">
                 <div class="box article-box">
                 <?php $date = new Datetime($article->getCreatedAt()); ?>
                   <img src="assets/img/upload/<?= htmlspecialchars($article->getFileName());?>" class="actuality-img">
@@ -20,8 +20,13 @@
               </div>
             </div>
             <div class="article-return">
-                <a href="index.php" class="btn btn-info return">Accueil</a>
-                <a href="index.php?route=administration" class="btn btn-info return">Admin</a>
+              <?php if($this->session->get('status')== 1)
+              {?>
+                <a href="index.php?route=updatearticle&articleId=<?= htmlspecialchars($article->getId());?>" class="btn btn-info return">Editer</a>
+              <?php
+              }
+              ;?>
+                
             </div>
           </div>
           

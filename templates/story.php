@@ -1,15 +1,14 @@
 <!-- ======= History Section ======= -->
 <?php $this->title = "Histoire du club"; ?>
-<main id="main">
-<section id="Story" class="story container-fluid">
+
+<section id="Story" class=" container-fluid">
 
     <div class="section-title">
         <span>Histoire du club</span>
         <h2>Histoire du club</h2>
-        <p></p>
     </div>
 
-    <div class="row story-container fade-up">
+    <div class="row story story-container fade-up">
     <?php foreach($stories as $story)
     {
     ?>
@@ -32,8 +31,5 @@
                 <p>Aussi, pour finir cette présentation, nous souhaitons rendre hommage à toute la famille Roncone pour leur dévouement. Ce qui a permis au club d'être ce qu'il est aujourd'hui. Tout particulièrement à nos présidents historiques,
                         Françoise Roncone et Christian Roncone. </p>
             </div>
-            </div>
-
-    </div>
-    </div>
+        </div>
 </section><!-- End history Section -->
