@@ -16,30 +16,32 @@
       <main id="main">
          <!-- ======= Actuality Section ======= -->
          <section id="Actuality" class="actuality">
-          <div class="container">
-            <div class="section-title">
-              <span>Dernières</span>
-              <h2>Actualités</h2>
-            </div>
-            <div class="row">
-            <?php
-                foreach ($articles as $article)
-                {
-            ?>
-              <div class="col-lg-6 fade-up">
-                <div class="box">
-              
-                  <img src="assets/img/upload/<?= htmlspecialchars($article->getFileName());?>" class="actuality-img">
-                  <?php $date = new Datetime($article->getCreatedAt()); ?>
-                  <span class="actuality-date">Publié le: <?= htmlspecialchars($date->format('d-m-Y'));?></span>
-                  <h4><?= htmlspecialchars($article->getTitle());?></h4>
-                  <p><?= $article->getContent();?></p>
-                  <a href="../public/index.php?route=article&articleId=<?= htmlspecialchars($article->getId());?>" class="read-more">Lire la suite...</a>
+            <div class="container">
+                <div class="section-title">
+                  <span>Dernières</span>
+                  <h2>Actualités</h2>
                 </div>
-              </div>
-            <?php
-            }
-            ?>
+                <div class="row">
+              <?php
+                  foreach ($articles as $article)
+                  {
+              ?>
+                      <div class="col-lg-6 fade-up">
+                          <div class="box">
+                              <a class=" actuality-click" href="../public/index.php?route=article&articleId=<?= htmlspecialchars($article->getId());?>">
+                                <img src="assets/img/upload/<?= htmlspecialchars($article->getFileName());?>" class="actuality-img">
+                                <?php $date = new Datetime($article->getCreatedAt()); ?>
+                                <span class="actuality-date">Publié le: <?= htmlspecialchars($date->format('d-m-Y'));?></span>
+                                <h4><?= htmlspecialchars($article->getTitle());?></h4>
+                                <p><?= $article->getContent();?></p>
+                                <a href="../public/index.php?route=article&articleId=<?= htmlspecialchars($article->getId());?>" class="read-more">Lire la suite...</a>
+                              </a>
+                          </div>
+                    </div>
+              <?php
+              }
+              ?>
+                </div>
         </section><!-- End Actuality Section -->
     
         <!-- ======= About Section ======= -->
@@ -199,7 +201,7 @@
             <div class="col-lg-4 col-md-6 d-flex align-items-stretch fade-right">
                   <div class="member">
                       <img src="../public/assets/img/upload/<?= htmlspecialchars($user->getFileName());?>" class="img-fluid " alt="Photo des membres">
-                      <h4><?= htmlspecialchars($user->getLastName());?> <?= htmlspecialchars($user->getFirstName());?> </h4>
+                      <h4><?= htmlspecialchars($user->getFirstName());?> </h4>
                       <span><?= htmlspecialchars($user->getRole());?></span>
                       <p><?= isset($user)? $user->getComment():'';?></p>
                   </div>
