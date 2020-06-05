@@ -5,7 +5,7 @@
                 <h2>Configuration</h2>
             </div>
 
-          <div class="row d-flex align-items-center fade-left">
+          <div class="row d-flex align-items-center">
             <div class="col-lg-12">
               <button class="tarif-info" id="openChangePrice">Changer le tarif: <span class="show-price"><?= htmlspecialchars($config->getContribution()) ;?></span> euros de cotisation annuelle</button>
               <form action="" method="post" id="changePrice">

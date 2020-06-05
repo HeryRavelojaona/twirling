@@ -8,7 +8,7 @@
           </button>
           <div class="collapse navbar-collapse justify-content-center " id="nav_menu">
             <ul class="navbar-nav ">
-                  <li class="nav-item active">
+                  <li class="nav-item">
                       <a class="nav-link" href="index.php">Site</a>
                   </li>
                   <li class="nav-item">

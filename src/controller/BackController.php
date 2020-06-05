@@ -110,6 +110,8 @@ class BackController extends Controller
             $filename = $_FILES["photo"]["name"];
             $filetype = $_FILES["photo"]["type"];
             $filesize = $_FILES["photo"]["size"];
+            $tmpname= $_FILES['photo']['tmp_name'];
+            $filemime = mime_content_type($tmpname);
             
             $extension = pathinfo($filename, PATHINFO_EXTENSION);
             /*Change automatically filename*/
@@ -118,7 +120,7 @@ class BackController extends Controller
             $maxsize = 5000000000;
             if($filesize > $maxsize) $response['error'] = "Error: La taille du fichier est supérieure à la limite autorisée.";
 
-            if(in_array($filetype, $allowed)){
+            if(in_array($filemime, $allowed)){
                 /* Check if file exist*/
                 $location = "../public/assets/img/upload/" . $filename;
                 if(file_exists($location)){
@@ -130,7 +132,7 @@ class BackController extends Controller
                 } 
             } 
             else{
-                $response['error'] = "Error: Il y a eu un problème de téléchargement de votre fichier. Veuillez réessayer."; 
+                $response['error'] = "Error: Il y a eu un problème de téléchargement de votre fichier, ou votre fichier est invalide."; 
             }
         }else {
             if( $_FILES['photo']["error"]==1) {
@@ -234,23 +236,28 @@ class BackController extends Controller
     
     /* For change picture on profil*/
     public function fileUpload($post)
-    {
-   
-        if($_FILES['photo']){
+    {   
+        if(isset($_FILES['photo'])){
+          
             if($_FILES['photo'] && $_FILES['photo'] ["error"] == 0 ){
                 $allowed = array("jpg" => "image/jpg", "jpeg" => "image/jpeg", "gif" => "image/gif", "png" => "image/png");
-                $filename = $_FILES["photo"]["name"];
+                $filename = htmlspecialchars($_FILES["photo"]["name"]);
                 $filetype = $_FILES["photo"]["type"];
                 $filesize = $_FILES["photo"]["size"];
-
+                $tmpname= $_FILES['photo']['tmp_name'];
+                $filemime = mime_content_type($tmpname);
+              
                 $extension = pathinfo($filename, PATHINFO_EXTENSION);
+    
                 /*Automatically Change filename*/
                 $filename= time().'.'.$extension;
+                /*Check file extension*/
                 if(!array_key_exists(strtolower($extension), $allowed)) echo "Erreur : Veuillez sélectionner un format de fichier valide.";
+                /*Check file size*/
                 $maxsize = 5000000000;
                 if($filesize > $maxsize) echo "Error: La taille du fichier est supérieure à la limite autorisée.";
-
-                if(in_array($filetype, $allowed)){
+                /*check Filemime type*/
+                if(in_array($filemime, $allowed)){
                     /*Check if file exist.*/
                     if(file_exists("../public/assets/img/upload/" . $filename)){
                         echo $_FILES["photo"]["name"] . " existe déjà.";
@@ -268,7 +275,7 @@ class BackController extends Controller
                         echo "Votre fichier a été téléchargé avec succès."; 
                     } 
                 } else{
-                    echo "Error: Il y a eu un problème de téléchargement de votre fichier. Veuillez réessayer."; 
+                    echo "Error: Il y a eu un problème de téléchargement de votre fichier. Ou votre fichier est invalide."; 
                 }
             } else{
                 echo "Error: Fichier absent ou probleme de fichier";
@@ -478,6 +485,8 @@ class BackController extends Controller
                 $filename = $_FILES["photo"]["name"];
                 $filetype = $_FILES["photo"]["type"];
                 $filesize = $_FILES["photo"]["size"];
+                $tmpname= $_FILES['photo']['tmp_name'];
+                $filemime = mime_content_type($tmpname);
 
                 $extension = pathinfo($filename, PATHINFO_EXTENSION);
                 /*Automatically Change filename*/
@@ -486,7 +495,7 @@ class BackController extends Controller
                 $maxsize = 5000000000;
                 if($filesize > $maxsize) echo "Error: La taille du fichier est supérieure à la limite autorisée.";
 
-                if(in_array($filetype, $allowed)){
+                if(in_array($filemime, $allowed)){
                     /*Check if file exist.*/
                     if(file_exists("../public/assets/img/upload/" . $filename)){
                         echo $_FILES["photo"]["name"] . " existe déjà.";
@@ -495,7 +504,7 @@ class BackController extends Controller
                         echo "Votre fichier a été téléchargé avec succès."; 
                     } 
                 } else{
-                    echo "Error: Il y a eu un problème de téléchargement de votre fichier. Veuillez réessayer."; 
+                    echo "Error: Il y a eu un problème de téléchargement de votre fichier. Ou votre fichier est invalide."; 
                 }
             } 
         }

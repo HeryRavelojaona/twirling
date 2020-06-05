@@ -38,8 +38,8 @@
             <tbody>
                 <tr>
                     <td><?= htmlspecialchars($event->getTitle());?><br/>
-                        <?= htmlspecialchars(substr($event->getDateStart(), 0,5));?><br/>
-                        <?= htmlspecialchars(substr($event->getDateEnd(), 0,5));?>
+                    <i class="far fa-clock" aria-hidden="true" title="début"></i> <?= htmlspecialchars(substr($event->getDateStart(), 0,5));?><br/>
+                    <i class="fas fa-clock" title="fin"></i> <?= htmlspecialchars(substr($event->getDateEnd(), 0,5));?>
                     </td>
                     <td><?= htmlspecialchars($event->getPlace());?></td>
                     <td class="action-table">
