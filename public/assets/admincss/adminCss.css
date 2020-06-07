@@ -83,7 +83,10 @@ Table
     margin: 10px 0;
 }
 
-#changePrice {
+#changePrice,
+#changeAddress,
+#changeEmail,
+#changePhone {
     display: none;
     margin: 10px 0;
 }
@@ -164,7 +167,6 @@ AddArticle
 }
 
 .action {
-
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -201,3 +203,28 @@ Addevent
     margin-top : 100px;
     height: 60vh;
 }
+
+/*-----------------
+Config admin
+----------------------*/
+.admin-info-part {
+    height: 90vh;
+}
+
+.config-part {
+    margin: 30px;
+}
+
+.admin-info {
+    width: 600px ;
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 30px;
+}
+
+@media screen and (max-width: 600px) {
+     .admin-info {
+        width: 300px;
+    }
+}
+

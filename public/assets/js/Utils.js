@@ -6,7 +6,10 @@ class Utils {
     constructor(){
         this.btnClose(".navbar-toggler-icon");
         this.ArrowUp();
-        this.changePrice('#openChangePrice');
+        this.changeConfig('#openChangePrice', '#changePrice');
+        this.changeConfig('#openChangeAddress', '#changeAddress');
+        this.changeConfig('#openChangeEmail', '#changeEmail');
+        this.changeConfig('#openChangePhone', '#changePhone');
         this.responsiveSlider(576, 992);
         this.openForm();
         this.deleteArticle();
@@ -60,10 +63,11 @@ class Utils {
     /**
      * Open from for change price
     *@params Listener Open form
+    *@params Element HTMLElement|string Element 
     */
-    changePrice(listener) {
+    changeConfig(listener, element) {
         $(listener).click(function(){
-            $('#changePrice').toggle();
+            $(element).toggle();
         });
     }
 

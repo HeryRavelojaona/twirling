@@ -33,8 +33,29 @@ class ConfigDAO extends DAO
         $sql = 'UPDATE config SET contribution = :contribution';
         $this->createQuery($sql, [
             'contribution'=>$contribution]);
-  
     }
+
+    public function updateAddress($address)
+    {     
+        $sql = 'UPDATE config SET address = :address';
+        $this->createQuery($sql, [
+            'address'=>$address]);
+    }
+
+    public function updateMail($mail)
+    {     
+        $sql = 'UPDATE config SET email  = :email';
+        $this->createQuery($sql, [
+            'email'=>$mail]);
+    }
+
+    public function updatePhone($phone)
+    {     
+        $sql = 'UPDATE config SET phone  = :phone';
+        $this->createQuery($sql, [
+            'phone'=>$phone]);
+    }
+
 
 
 

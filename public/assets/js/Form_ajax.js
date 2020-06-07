@@ -9,6 +9,9 @@ class Form_ajax {
         this.addArticle();
         this.addEvent();
         this.newPrice();
+        this.newAddress();
+        this.newEmail();
+        this.newPhone();
     }
 
     /**
@@ -246,6 +249,7 @@ class Form_ajax {
         }
     }
 
+/*Change contribution*/
     newPrice(){
         $('#btn_change_price').click(function(e){
             e.preventDefault();
@@ -256,11 +260,77 @@ class Form_ajax {
             $.ajax({
                 type: "POST",
                 data: fileData,
-                url: "../public/index.php?route=changeprice",
+                url: "../public/index.php?route=changeconfig",
                 success: function (data) {
                         $('#changePrice').hide();
                         $('#changePrice')[0].reset();
                         $('.show-price').load(' .show-price');
+                }
+            })
+        })
+    }
+
+/*Change address*/
+    newAddress(){
+        $('#btn_change_address').click(function(e){
+            e.preventDefault();
+            if(!$('#new_address').val()){
+                $('#btn_change_address').text('veuillez rentrer une adresse');
+            }
+            let fileData = $('#changeAddress').serialize();
+            $.ajax({
+                type: "POST",
+                data: fileData,
+                url: "../public/index.php?route=changeconfig",
+                success: function (data) {
+                    console.log(data);
+                       /* $('#changeAddress').hide();*/
+                        $('#changeAddress')[0].reset();
+                        $('.show-address').load(' .show-address');
+                }
+            })
+        })
+    }
+
+/*Change mail*/
+    newEmail(){
+        $('#btn_change_email').click(function(e){
+            e.preventDefault();
+            if(!$('#new_email').val()){
+                $('#btn_change_email').text('veuillez rentrer un email');
+            }
+            let fileData = $('#changeEmail').serialize();
+            $.ajax({
+                type: "POST",
+                data: fileData,
+                url: "../public/index.php?route=changeconfig",
+                success: function (data) {
+                    console.log(data);
+                       /* $('#changeAddress').hide();*/
+                        $('#changeEmail')[0].reset();
+                        $('.show-email').load(' .show-email');
+                }
+            })
+        })
+    }
+
+/*Change phonenumber*/
+    newPhone(){
+        $('#btn_change_phone').click(function(e){
+            e.preventDefault();
+            if(!$('#new_phone').val()){
+                $('#btn_change_phone').text('veuillez rentrer un numéro');
+            }
+            let fileData = $('#changePhone').serialize();
+            $.ajax({
+                type: "POST",
+                data: fileData,
+                url: "../public/index.php?route=changeconfig",
+                success: function (data) {
+                    console.log(data);
+                       /* $('#changeAddress').hide();*/
+                        $('#changePhone')[0].reset();
+                        $('.show-phone').load(' .show-phone');
                 }
             })
         })

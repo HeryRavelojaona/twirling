@@ -568,11 +568,29 @@ class BackController extends Controller
         
     }
 
-    public function changePrice($post)
+    public function changeConfig($post)
     {
         if($post->get('price')){
-            $contribution = $post->get('price');
+            $contribution = htmlspecialchars($post->get('price'));
             $this->configDAO->updateContribution($contribution);
+            echo 'Changement effectuer';
+        }
+
+        if($post->get('address')){
+            $address = htmlspecialchars($post->get('address'));
+            $this->configDAO->updateAddress($address);
+            echo 'Changement effectuer';
+        }
+
+        if($post->get('email')){
+            $mail = htmlspecialchars($post->get('email'));
+            $this->configDAO->updateMail($mail);
+            echo 'Changement effectuer';
+        }
+
+        if($post->get('phone')){
+            $phone = htmlspecialchars($post->get('phone'));
+            $this->configDAO->updatePhone($phone);
             echo 'Changement effectuer';
         }
     }
