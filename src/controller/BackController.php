@@ -372,7 +372,7 @@ class BackController extends Controller
             $category = 3;
             $this->eventDAO->addEvent($post, $this->session->get('id'), $status, $category);
             $this->session->set('addevent','Article bien ajouté');
-            header('Location: ../public/index.php?route=administration');
+            header('Location: ../public/index.php?route=admintraining');
             exit();
         }
         
@@ -382,40 +382,53 @@ class BackController extends Controller
     /*Preview article article before validation addArticle*/
     public function previewEvent(Parameter $post)
     {
-        $response = array('title'=>'', 'content'=>'', 'place'=>'','address'=>'','error'=>'','start'=>'','end'=>'');
+        $response = array('title'=>'', 'content'=>'', 'place'=>'','address'=>'','errortitle'=>'','errorplace'=>'','erroraddress'=>'','errorstart'=>''
+        ,'errorend'=>'','errorcontent'=>'','error'=>'','start'=>'','end'=>'');
         /*Check title and content error*/
+        $response['error'] = true;
        if(empty($post->get('title')))
        {
-        $response['error'] = 'Veuillez remplir le champ titre';
+        $response['error'] = false;
+        $response['errortitle'] = 'Veuillez remplir le champ titre';
        }
 
-       if(empty($post->get('place')))
+      elseif(empty($post->get('place')))
        {
-        $response['error'] = 'Veuillez remplir le champ lieu';
+        $response['error'] = false;
+        $response['errorplace'] = 'Veuillez remplir le champ lieu';
        }
 
-       if(empty($post->get('address')))
+      elseif(empty($post->get('address')))
        {
-        $response['error'] = 'Veuillez remplir le champ Adresse';
+        $response['error'] = false;
+        $response['erroraddress'] = 'Veuillez remplir le champ Adresse';
        }
 
-       if(empty($post->get('start')))
+       elseif(empty($post->get('start')))
        {
-        $response['error'] = 'Veuillez renseigner une heure de début';
+        $response['error'] = false;
+        $response['errorstart'] = 'Veuillez renseigner une heure de début';
        }
 
-       if(empty($post->get('end')))
+       elseif(empty($post->get('end')))
        {
-        $response['error'] = 'Veuillez renseigner une heure de fin';
+        $response['error'] = false;
+        $response['errorend'] = 'Veuillez renseigner une heure de fin';
        }
 
-       if(strlen($post->get('content'))> 400)
+       elseif(strlen($post->get('content'))> 400)
        {
-        $response['error'] = 'Message trop long';
+        $response['error'] = false;
+        $response['errorcontent'] = 'Message trop long';
        }
-        
+
+       elseif($post->get('end')< $post->get('start') )
+       {
+        $response['error'] = false;
+        $response['errorend'] = 'Veuillez saisir une heure de fin supérieur à la date de début';
+       }
         /*If not error save*/
-        if(empty($response['error'])){
+        if($response['error'] == true){
             $response['title'] = $post->get('title');
             $response['place'] = $post->get('place');
             $response['address'] = $post->get('address');
@@ -438,7 +451,7 @@ class BackController extends Controller
             $this->session->set('delete_event','Suppression impossible');
         }
 
-        header('Location: ../public/index.php?route=administration');
+        header('Location: ../public/index.php?route=admintraining');
         exit();
         
     }
@@ -462,7 +475,7 @@ class BackController extends Controller
                     
                      $this->eventDAO->updateEvent($post, $eventId, $status);
                      $this->session->set('updateevent', $session);
-                     header('Location: ../public/index.php?route=administration');
+                     header('Location: ../public/index.php?route=admintraining');
                      exit(); 
             }else{
                  
@@ -526,7 +539,7 @@ class BackController extends Controller
             if($post->get('submit') || $post->get('save')){
                 $this->userDAO->addUser($post, $function, $filename);
                 $this->session->set('adduser','Utilisateur bien ajouté');
-                header('Location: ../public/index.php?route=administration');
+                header('Location: ../public/index.php?route=adminmembers');
                 exit();
             }
 
@@ -550,7 +563,7 @@ class BackController extends Controller
             $this->session->set('delete_user','Suppression impossible');
         }
 
-        header('Location: ../public/index.php?route=administration');
+        header('Location: ../public/index.php?route=adminmembers');
         exit();
         
     }

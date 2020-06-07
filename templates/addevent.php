@@ -18,36 +18,42 @@
                             <div class="col-lg-12">
                                 <input type="text" class="form-control" id="event_title" name="title"  >
                             </div>
+                            <span class="form-error errortitle"></span>
                         </div>
                         <div class="form-group">
                             <label for="place" class="col-lg-6 control-label">Lieu</label>
                             <div class="col-lg-12">
                                 <input type="text" class="form-control" id="event_place" name="place"  >
                             </div>
+                            <span class="form-error errorplace"></span>
                         </div>
                         <div class="form-group">
                             <label for="address" class="col-lg-6 control-label">Adresse</label>
                             <div class="col-lg-12">
                                 <input type="text" class="form-control" id="event_address" name="address"  >
                             </div>
+                            <span class="form-error erroraddress"></span>
                         </div>
                         <div class="form-group">
                             <label for="start" class="col-lg-6 control-label">Début</label>
                             <div class="col-lg-12">
                                 <input type="time" class="form-control" id="event_start" name="start"  >
                             </div>
+                            <span class="form-error errorstart"></span>
                         </div>
                         <div class="form-group">
                             <label for="end" class="col-lg-6 control-label">Fin</label>
                             <div class="col-lg-12">
                                 <input type="time" class="form-control" id="event_end" name="end"  >
                             </div>
+                            <span class="form-error errorend"></span>
                         </div>
                         <div class="form-group">
                             <label for="content" class="col-lg-6 control-label">Message</label>
                             <div class="col-lg-12">
                                 <textarea class="form-control  tiny" id="event_content" name="content"></textarea>
                             </div>
+                            <span class="form-error errorcontent"></span>
                         </div>  
                         <div class="form-group">
                             <span class="form-error"></span>
@@ -58,7 +64,7 @@
                     </div>
                 </form>
                 <div class="return-btn">
-                    <a href="../public/index.php?route=administration" class="btn btn-info ">Retour</a>
+                    <a href="../public/index.php?route=admintraining" class="btn btn-info ">Retour</a>
                 </div>
             </div>
         </div>

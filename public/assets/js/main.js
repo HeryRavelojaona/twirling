@@ -10,5 +10,6 @@ $(document).ready(function() {
 
     /*form*/
     const form_ajax = new Form_ajax();
+    console.log(window.location);
     
 });

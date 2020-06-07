@@ -453,17 +453,15 @@ Read-more
 }
 
 .training .box h3 {
-  font-weight: 400;
   padding: 15px;
-  font-size: 18px;
+  font-size: 20px;
   text-transform: uppercase;
-  font-weight: 600;
+  font-weight: 700;
   color: #191919;
 
 }
 
 .training .box h4 {
-  font-size: 42px;
   color: #DB3575;
   font-weight: 500;
   font-family: "Open Sans", sans-serif;
@@ -849,5 +847,6 @@ Read-more
 }
 
 .form-error {
-  color: red;
+  color: red !important;
+  font-weight: 700;
 }

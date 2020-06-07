@@ -151,7 +151,7 @@ class Form_ajax {
         $('#event_title').focusout(function(e){
             let title = $('#event_title').val(); 
             if(title.length < 2){
-                $('.form-error').html('Veuillez remplir le champ titre avec minimum 2 charactères');
+                $('.errortitle').text('Veuillez remplir le champ titre avec minimum 2 charactères');
                 validForm = false;
             }else{validForm = true;}      
         })
@@ -159,7 +159,7 @@ class Form_ajax {
         $('#event_address').focusout(function(e){
             let address = $('#event_address').val(); 
             if(address.length < 5){
-                $('.form-error').html('Veuillez remplir le champ adresse avec minimum 5 charactères');
+                $('.erroraddress').text('Veuillez remplir le champ adresse avec minimum 5 charactères');
                 validForm = false;
 
             }else{validForm = true;}      
@@ -168,7 +168,7 @@ class Form_ajax {
         $('#event_place').focusout(function(e){
             let place = $('#event_place').val(); 
             if(place.length < 2){
-                $('.form-error').html('Veuillez remplir le champ Lieu avec minimum 2 charactères');
+                $('.errorplace').text('Veuillez remplir le champ Lieu avec minimum 2 charactères');
                 validForm = false;
             }else{validForm = true;}       
         })
@@ -176,7 +176,7 @@ class Form_ajax {
         $('#event_start').focusout(function(e){
             let start = $('#event_start').val(); 
             if(start.length < 4){
-                $('.form-error').html('Veuillez renseigner une heure de début');
+                $('.errorstart').text('Veuillez renseigner une heure de début');
                 validForm = false;
             }else{validForm = true;}       
         })
@@ -185,7 +185,7 @@ class Form_ajax {
          $('#event_end').focusout(function(e){
             let end = $('#event_end').val(); 
             if(end.length < 4){
-                $('.form-error').html('Veuillez renseigner une heure de fin');
+                $('.errorend').text('Veuillez renseigner une heure de fin');
                 validForm = false;
             }else{validForm = true;}       
         })
@@ -194,7 +194,7 @@ class Form_ajax {
         $('#event_content').focusout(function(e){
            let content = $('#event_content').val(); 
            if(content.length > 400){
-               $('.form-error').html('Le message est trop long');
+               $('.errorcontent').text('Le message est trop long');
                validForm =false;
            }else{validForm = true;}       
        })
@@ -210,7 +210,8 @@ class Form_ajax {
                     url: "../public/index.php?route=previewevent",
                     success: function (data) {
                         let response = JSON.parse(data);
-                        if(!response.error){
+                        console.log(response);
+                        if(response.error ==true){
                             $('.preview-title').text(response.title);
                             $('.preview-place').text(response.place);
                             $('.preview-address').text(response.address);
@@ -225,7 +226,12 @@ class Form_ajax {
                             $('#savestart').val(response.start);
                             $('#saveend').val(response.end);
                         }else {
-                            $('.form-error').html(response.error);
+                            $('.errortitle').text(response.errortitle);
+                            $('.errorplace').text(response.errorplace);
+                            $('.erroraddress').text(response.erroraddress);
+                            $('.errorstart').text(response.errorstart);
+                            $('.errorend').text(response.errorend);
+                            $('.errorcontent').text(response.errorcontent);
                         }        
                     }
                 })
