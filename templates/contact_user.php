@@ -1,11 +1,11 @@
-<section id="contactmember" class="contact">
+<section id="contactuser" class="contact">
         <div class="container">
         <div class="section-title">
-                <h2>Message aux membres</h2>
+                <h2>Message pour <?= htmlspecialchars($user->getFirstName());?> </h2>
             
             </div>
             <div class="col-lg-12">
-              <form action="index.php?route=contactmembers" method="post" role="form" class="email-form" id="newsletter">
+              <form action="index.php?route=contactuser&userId=<?= htmlspecialchars($user->getId());?>" method="post" role="form" class="email-form" id="newsletter">
                 <div class="form-group">
                   <input type="text" class="form-control" name="subject" id="subject" placeholder="Sujet"/>
                   <span class="error-contact"><?= isset($errors['subject'])? $errors['subject'] : '';?></span>

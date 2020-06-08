@@ -166,7 +166,7 @@ class User
      */
     public function getEmail()
     {
-        return $this->mail;
+        return $this->email;
     }
 
     /**

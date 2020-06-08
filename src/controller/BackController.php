@@ -596,8 +596,8 @@ class BackController extends Controller
     }
 
     public function contactMembers($post)
-    {
-
+    {   
+       
         if($post->get('submit')){
             $errors = $this->validation->validate($post, 'contact');
             if(!$errors){
@@ -610,10 +610,39 @@ class BackController extends Controller
             return $this->view->render('contact_member',[
                     'errors'=> $errors
                 ]);
-
         }
 
         return $this->view->render('contact_member');
+    }
+
+    /*Contact user*/
+    public function contactUser($post, $get)
+    {
+        if($get->get('userId')){
+            $userId = $get->get('userId') ;
+            $user = $this->userDAO->getUser($userId);
+            $userEmail = $user->getEmail();
+        }
+        
+        if($post->get('submit')){
+            $errors = $this->validation->validate($post, 'contact');
+            if(!$errors){
+    
+                $this->mailing->contactUser($post,$this->session->get('firstname'),$userEmail);
+                $this->session->set('user_message', 'Message bien envoyé à '.$user->getFirstName().'');
+                header('Location: index.php?route=adminmembers');
+                exit();
+            }
+            return $this->view->render('contact_user',[
+                    'errors'=> $errors,
+                    'user'=> $user
+                ]);
+
+        }
+
+        return $this->view->render('contact_user',[
+            'user'=> $user
+        ]);
         
         
     

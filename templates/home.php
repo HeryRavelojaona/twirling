@@ -200,7 +200,18 @@
 
       <div class="col-lg-4 col-md-6 d-flex align-items-stretch fade-right">
             <div class="member">
+              <?php if(!$user->getFileName())
+              {
+              ;?>
+                <img src="../public/assets/img/upload/1591624659.jpg" class="img-fluid " alt="Photo des membres">
+              <?php
+              }else
+              {?>
                 <img src="../public/assets/img/upload/<?= htmlspecialchars($user->getFileName());?>" class="img-fluid " alt="Photo des membres">
+              <?php
+              }
+              ;?>
+               
                 <h4><?= htmlspecialchars($user->getFirstName());?> </h4>
                 <span><?= htmlspecialchars($user->getRole());?></span>
                 <p><?= isset($user)? $user->getComment():'';?></p>

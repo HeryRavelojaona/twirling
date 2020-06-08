@@ -115,6 +115,9 @@ class Router
                 elseif($route === 'contactmembers'){
                     $this->backController->contactMembers($this->request->getPost());
                 }
+                elseif($route === 'contactuser'){
+                    $this->backController->contactUser($this->request->getPost(), $this->request->getGet() );
+                }
             }
             else {
                 $this->frontController->home();
