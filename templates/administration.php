@@ -1,10 +1,6 @@
 <?php $this->title = "Administration"; ?>
 <?php include 'adminNavbar.php';?>
 <main id="main">
-    <div class="message-for-all">
-        <a class="btn btn-secondary text-message-for-all">Envoyer un message collectif <i class="fas fa-envelope-square"></i></a><br/>
-        <span class="response-message"></span>
-    </div>
         <!-- ======= Actuality Section ======= -->
         
     <section id="Actuality" class="actuality ">

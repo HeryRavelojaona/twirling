@@ -69,7 +69,7 @@ Table
 }
 
 .text-message-for-all i {
-    color: rgb(223, 54, 110) !important;
+  
     margin: 0 10px;
     font-size: 30px;
 }
@@ -226,5 +226,17 @@ Config admin
      .admin-info {
         width: 300px;
     }
+}
+
+
+/*----------------------
+Contact all
+---------------------------*/
+#contactall_sent {
+    background-color: #e83e8c;
+    border-radius: 3px;
+    border: none;
+    font-weight: 700;
+    color: #fff;
 }
 

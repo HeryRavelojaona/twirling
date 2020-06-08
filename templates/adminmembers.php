@@ -4,9 +4,15 @@
             <div class="section-title">
                 <h2>Membres du bureau</h2>
                 <?= $this->session->show('delete_user'); ?>
+                <?= $this->session->show('send_message'); ?>
+                <div class="message-for-all">
+                    <a href="index.php?route=contactmembers" class="btn btn-secondary text-message-for-all">Envoyer un message collectif <i class="fas fa-envelope-square"></i></a><br/>
+                    <span class="response-message"></span>
+                </div>
             </div>
+           
             <div class="message-for-all">
-                <a href="../public/index.php?route=adduser" class="btn btn-primary text-message-for-all">Ajouter un membre <i class="fas fa-plus-circle"></i></a>
+                <a href="index.php?route=adduser" class="btn btn-primary text-message-for-all">Ajouter un membre <i class="fas fa-plus-circle"></i></a>
             </div>
         <div >
         <table class="table container admin-table admin-reload">
@@ -23,9 +29,10 @@
                     { 
                         if($AllUser->getVisible()== 0){$action = "Non visible";
                             $color= 'secondary';
+                            $icon = 'fa-pause-circle';
                         }else if($AllUser->getVisible()== 1){$action = 'Visible';
-
-                                     $color= 'primary';} 
+                            $icon = 'fa-check-square';
+                            $color= 'primary';} 
             ?>
 
             <tbody>

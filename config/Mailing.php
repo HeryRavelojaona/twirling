@@ -48,4 +48,30 @@ class Mailing
         // Send the message
         $result = $this->mailer->send($message);
     }
+
+    public function contactAll($post, $postname, $postmail)
+    {
+        $email = $postmail;
+        $name = $postname;
+        $content = $post->get('message');
+        $subject = $post->get('subject');;
+        $body = '<!DOCTYPE html>
+                        <html>
+                            <head>
+                                <title>Message</title>
+                            </head>
+                            <body style="text-align:center">
+                                '.$content.'<br/>
+                               <p><strong> Message de '.$name.' </strong></p><br/> '.$email.' 
+                            </body>
+                        </html>';
+                        
+        $message = (new Swift_Message($subject))
+        ->setFrom([$this->fromEmail => $this->fromUser])
+         ->setTo([EMAIL_USERNAME])
+        ->setBody($body, 'text/html');
+       
+        // Send the message
+        $result = $this->mailer->send($message);
+    }
 }

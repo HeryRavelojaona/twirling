@@ -594,4 +594,28 @@ class BackController extends Controller
             echo 'Changement effectuer';
         }
     }
+
+    public function contactMembers($post)
+    {
+
+        if($post->get('submit')){
+            $errors = $this->validation->validate($post, 'contact');
+            if(!$errors){
+               
+                $this->mailing->contactAll($post,$this->session->get('firstname'), $this->session->get('mail'));
+                $this->session->set('send_message', 'Message bien envoyé');
+                header('Location: index.php?route=adminmembers');
+                exit();
+            }
+            return $this->view->render('contact_member',[
+                    'errors'=> $errors
+                ]);
+
+        }
+
+        return $this->view->render('contact_member');
+        
+        
+    
+    }
 }

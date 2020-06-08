@@ -112,6 +112,9 @@ class Router
                 elseif($route === 'adminconfig'){
                     $this->backController->adminConfig();
                 }
+                elseif($route === 'contactmembers'){
+                    $this->backController->contactMembers($this->request->getPost());
+                }
             }
             else {
                 $this->frontController->home();
