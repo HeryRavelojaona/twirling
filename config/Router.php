@@ -43,6 +43,9 @@ class Router
                 elseif($route === 'article'){
                     $this->frontController->article($this->request->getGet());
                 }
+                elseif($route === 'contact'){
+                    $this->frontController->contact($this->request->getPost());
+                }
                 elseif($route === 'event'){
                     $this->frontController->event($this->request->getGet());
                 }

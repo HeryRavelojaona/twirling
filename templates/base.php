@@ -96,6 +96,7 @@ crossorigin="anonymous"></script>
 
 <script src="../public/assets/js/Animation.js"></script>
 <script src="../public/assets/js/Utils.js"></script>
+<script src="../public/assets/js/Contact_form.js"></script>
 <script src="../public/assets/js/Form_ajax.js"></script>
 <script src="../public/assets/js/main.js"></script>
         

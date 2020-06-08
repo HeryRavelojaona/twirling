@@ -258,30 +258,26 @@
             </div>
 
             <div class="col-lg-6">
-              <form action="#" method="post" role="form" class="email-form">
+              <form action="#" method="post" role="form" class="email-form" id="contact_form">
                 <div class="form-row">
                   <div class="col-md-6 form-group">
                     <input type="text" name="name" class="form-control" id="name" placeholder="NOM"/>
-                    <span class="error-message"></span>
+                    <span class="error-contact error-name"></span>
                   </div>
                   <div class="col-md-6 form-group">
                     <input type="email" class="form-control" name="email" id="email" placeholder="Email"/>
-                    <span class="error-message"></span>
+                    <span class="error-contact error-email"></span>
                   </div>
                 </div>
                 <div class="form-group">
                   <input type="text" class="form-control" name="subject" id="subject" placeholder="Sujet"/>
-                  <span class="error-message"></span>
+                  <span class="error-contact error-subject"></span>
                 </div>
                 <div class="form-group">
                   <textarea class="form-control" name="message" rows="5" placeholder="Message"></textarea>
-                  <span class="error-message"></span>
+                  <span class="error-contact error-content"></span>
                 </div>
-                <div class="mb-3">
-                  <span class="error-message"></span>
-                  <span class="sent-message">Message bien envoyé</span>
-                </div>
-                <div class="text-center"><button type="submit">Envoyez</button></div>
+                <div class="text-center"><button type="submit" name="submit" id="contact_sent">Envoyez</button></div>
               </form>
             </div>
           </div>

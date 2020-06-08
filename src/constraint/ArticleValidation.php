@@ -31,6 +31,11 @@ class ArticleValidation extends Validation
             $error = $this->checkContent($name, $value);
             $this->addError($name, $error);
         }
+
+        elseif ($name === 'subject') {
+            $error = $this->checkContent($name, $value);
+            $this->addError($name, $error);
+        }
     }
 
     private function addError($name, $error) {
