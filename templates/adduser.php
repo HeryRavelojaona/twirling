@@ -1,4 +1,5 @@
 <?php $this->title = "Ajouter un article"; ?>
+<?php include 'adminNavbar.php';?>
  <!-- ======= Actuality Section ======= -->
         <section id="Actuality" class="actuality actuality-edit">
         <div class="container">
@@ -16,7 +17,7 @@
                             <div class="col-lg-12">
                                 <select name="choice" class="category-choice">
                                     <option value="admin" class="option">Membre du bureau</option>
-                                    <option value="member" class="option">Adhérent</option>
+                                    <option value="member" class="option" id="adherent_choice">Adhérent</option>
                                 </select>
                             </div>
                         </div>
@@ -26,7 +27,6 @@
                             <div class="col-lg-12">
                                 <input type="file" class="form-control" id="fileActuality" name="photo">
                             </div>
-                            <span>Photo non obligatoire</span>
                         </div>
                         <div class="form-group">
                             <label for="lastName" class="col-lg-6 control-label">Nom</label>
@@ -42,11 +42,16 @@
                                 <span class="form-error"><?= isset($errors['firstName'])? $errors['firstName'] : '';?></span>
                             </div>
                         </div> 
-                        <div class="form-group">
+                        <div class="form-group create-role">
                             <label for="role" class="col-lg-6 control-label">Rôle</label>
-                            <div class="col-lg-12">
-                                <input type="text" class="form-control" id="new_user_role" name="role">
-                                <?=isset($errors['role'])? $errors['role'] : '';?>
+                            <div class="col-lg-12 ">
+                                <select name="role" class="form-control">
+                                    <option class="form-control" value="20">Bénévole</option>
+                                    <option class="form-control" value="40">Entraineur</option>
+                                    <option class="form-control" value="80">Secrétaire</option>
+                                    <option class="form-control" value="60">Trésorier/e</option>
+                                    <option class="form-control select-role" value="100">Président</option>
+                                </select>
                             </div>
                         </div> 
                         <div class="form-group">
@@ -84,10 +89,11 @@
                             </div>
                         </div>
                     </div>
-                </form>
-                <div class="article-return">
-                <a href="index.php?route=administration" class="btn btn-info return">Admin</a>
+                    <div class="article-return">
+                <a href="index.php?route=adminmembers" class="btn btn-info return">Admin</a>
                 </div>
+                </form>
+                
             </div>
         </div>
     </section><!-- End Actuality  Section -->

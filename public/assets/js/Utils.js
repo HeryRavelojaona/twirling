@@ -14,6 +14,7 @@ class Utils {
         this.openForm();
         this.deleteArticle();
         this.articleEditor('textarea.tiny');
+        this.selectRole('.category-choice');
     }
 
 
@@ -28,7 +29,7 @@ class Utils {
    
     /**
      * CLose menu if is open
-        *@params Listener show listener for close nav mobile
+    *@params Listener show listener for close nav mobile
     */
     btnClose(listener) {
         const btnMenu =  $(listener);
@@ -119,5 +120,16 @@ class Utils {
             $(e.target).closest('.control-delete').css('display','none');
             $('.check-delete').show();
         });  
+    }
+
+    /**Adduser close part role
+    *@params element Selector
+    */
+    selectRole(element) {
+        $(element).focusout(function(){
+                if($(this).val() == 'member'){
+                    $('.create-role').hide();
+                }else{$('.create-role').show();}
+            });
     }
 };

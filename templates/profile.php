@@ -1,5 +1,5 @@
 <?php $this->title = "Profil"; ?>
-
+<?php include 'navbarbase.php';?>
         <section class="container profile">
             <div class="row">
                     <div class="profile-part col-xl-6">
@@ -62,7 +62,6 @@
                     </div>
             </div>  
             <div class="article-return">
-                <a href="index.php" class="btn btn-info return">Accueil</a>
                 <a href="index.php?route=administration" class="btn btn-info return">Admin</a>
             </div>
         </section>

@@ -18,7 +18,7 @@
             <thead class="thead-style">
                 <tr>
                 <th>Jour et<br/> heure</th>
-                <th>Lieu</th>
+                <th>Lieux</th>
                 <th>Actions</th>
                 </tr>
             </thead>

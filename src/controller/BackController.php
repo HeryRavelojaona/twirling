@@ -489,7 +489,7 @@ class BackController extends Controller
              ]);     
      } 
 
-      /*Add article after preview validation*/
+    /*Add article after preview validation*/
     public function addUser(Parameter $post)
     {   
         if(isset($_FILES['photo'])){
@@ -527,7 +527,6 @@ class BackController extends Controller
             $errors['password'] = '<p>mot de passe non identique</p>';
         }
         if(!$errors){
-    
             /*Status choice*/
             if($post->get('choice')== 'admin'){
                 $function = 1;
@@ -535,9 +534,16 @@ class BackController extends Controller
             if($post->get('choice')== 'member'){
                 $function = 2;
             }
-    
+
+            /*UserRole and userLaw*/
+            if($post->get('role') == 20){ $role = 'Bénévole';}
+            if($post->get('role') == 40){ $role = 'Entraineur';}
+            if($post->get('role') == 60){ $role = 'Trésorièr/e';}
+            if($post->get('role') == 80){ $role = 'Secrétaire';}
+            if($post->get('role') == 100){ $role = 'Président';}
+            else{$role = 'Adhérent';}
             if($post->get('submit') || $post->get('save')){
-                $this->userDAO->addUser($post, $function, $filename);
+                $this->userDAO->addUser($post, $function, $filename, $role);
                 $this->session->set('adduser','Utilisateur bien ajouté');
                 header('Location: ../public/index.php?route=adminmembers');
                 exit();
@@ -553,10 +559,10 @@ class BackController extends Controller
         return $this->view->render('adduser');
     }
 
-    public function deleteUser($post)
+    public function deleteUser($get)
     {
-        if($post->get('userId')){
-            $userId = $post->get('userId');
+        if($get->get('userId')){
+            $userId = $get->get('userId');
             $this->userDAO->deleteUser($userId);
             $this->session->set('delete_user','Utilisateur bien supprimer');
         }else {
@@ -597,12 +603,18 @@ class BackController extends Controller
 
     public function contactMembers($post)
     {   
+
        
         if($post->get('submit')){
             $errors = $this->validation->validate($post, 'contact');
             if(!$errors){
-               
-                $this->mailing->contactAll($post,$this->session->get('firstname'), $this->session->get('mail'));
+                $users = $this->userDAO->getUsers();
+                foreach($users as $user)
+                {
+                    $userMail = $user->getEmail();
+                    $this->mailing->contactAll($post,$this->session->get('firstname'), $this->session->get('mail'), $userMail);
+                }
+                
                 $this->session->set('send_message', 'Message bien envoyé');
                 header('Location: index.php?route=adminmembers');
                 exit();

@@ -1,5 +1,6 @@
     
  <?php $this->title = "Actualités"; ?>
+ <?php include 'navbarbase.php';?>
  <!-- ======= Actuality ======= -->
     <section id="Actuality" class="actuality">
         <div class="container">

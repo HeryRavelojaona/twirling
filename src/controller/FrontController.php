@@ -93,6 +93,7 @@ class FrontController extends Controller
                     $this->session->set('firstname', $result['result']['firstname']);
                     $this->session->set('mail', $result['result']['email']);
                     $this->session->set('role', $result['result']['role']);
+                    $this->session->set('law', $result['result']['law']);
                     $this->session->set('status', $result['result']['status']);
                     $this->session->set('filename', $result['result']['filename']);
                     header('Location: ../public/index.php');

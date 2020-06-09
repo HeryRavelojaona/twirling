@@ -1,3 +1,5 @@
+<?php $this->title = "Contact"; ?>
+<?php include 'adminNavbar.php';?>
 <section id="contactmember" class="contact">
         <div class="container">
         <div class="section-title">

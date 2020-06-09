@@ -1,5 +1,6 @@
 
- <?php $this->title = "Ajouter un article"; ?>
+<?php $this->title = "Ajouter un article"; ?>
+<?php include 'adminNavbar.php';?>
  <!-- ======= Actuality Section ======= -->
         <section id="Actuality" class="actuality actuality-edit">
         <div class="container">

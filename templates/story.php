@@ -1,6 +1,6 @@
 <!-- ======= History Section ======= -->
 <?php $this->title = "Histoire du club"; ?>
-
+<?php include 'navbarbase.php';?>
 <section id="Story" class=" container-fluid">
 
     <div class="section-title">

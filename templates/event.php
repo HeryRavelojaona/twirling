@@ -1,5 +1,6 @@
  <!-- ======= Training Section ======= -->
  <?php $this->title = "Evenements"; ?>
+ <?php include 'navbarbase.php';?>
 <section id="Training" class="training">
 <div class="container">
     <div class="row">

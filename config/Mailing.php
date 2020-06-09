@@ -17,7 +17,7 @@ class Mailing
         //->setEncryption(EMAIL_ENCRYPTION) //For Gmail
         // Create the Mailer using your created Transport
         $this->mailer = new Swift_Mailer($this->transport);
-        $this->fromEmail = 'Contact@spac.fr';
+        $this->fromEmail = 'contact@spac.fr';
         $this->fromUser = 'Site SPAC';
 
     }
@@ -42,14 +42,14 @@ class Mailing
                         
         $message = (new Swift_Message($subject))
         ->setFrom([$this->fromEmail => $this->fromUser])
-         ->setTo([EMAIL_USERNAME])
+         ->setTo(['hery.ravelojaona@gmail.com'])
         ->setBody($body, 'text/html');
        
         // Send the message
         $result = $this->mailer->send($message);
     }
 
-    public function contactAll($post, $postname, $postmail)
+    public function contactAll($post, $postname, $postmail, $userMail)
     {
         $email = $postmail;
         $name = $postname;
@@ -68,7 +68,7 @@ class Mailing
                         
         $message = (new Swift_Message($subject))
         ->setFrom([$this->fromEmail => $this->fromUser])
-         ->setTo([EMAIL_USERNAME])
+         ->setTo([$userMail])
         ->setBody($body, 'text/html');
        
         // Send the message

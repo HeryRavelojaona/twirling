@@ -1,4 +1,5 @@
 <?php $this->title = "Entrainements"; ?>
+<?php include 'navbarbase.php';?>
  <!-- ======= Training ======= -->
  <main id="main">
   <!-- ======= Training Section ======= -->

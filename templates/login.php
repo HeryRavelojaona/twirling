@@ -1,4 +1,5 @@
 <?php $this->title = "Connexion"; ?>
+<?php include 'navbarbase.php';?>
 <section id="login_form" class="contact">
     <div class="container">
             <form class="form-horizontal connexion all-forms" method="post" action="../public/index.php?route=login">

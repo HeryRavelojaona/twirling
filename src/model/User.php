@@ -45,6 +45,11 @@ class User
     private $role;
 
     /**
+    * @var int
+    */
+    private $law;
+
+    /**
      * @var string
      */
     private $comment;
@@ -58,16 +63,16 @@ class User
     }
 
     /**
-     * @param int $id
+     * @var string $fileName
      */
     public function setFileName($fileName)
     {
         $this->fileName = $fileName;
     }
 
-     /**
-     * @var string
-     */
+    /**
+    * @var string
+    */
     public function getComment()
     {
         return $this->comment;
@@ -95,6 +100,22 @@ class User
     public function setId($id)
     {
         $this->id = $id;
+    }
+
+     /**
+     * @return int
+     */
+    public function getLaw()
+    {
+        return $this->law;
+    }
+
+    /**
+     * @param int $law
+     */
+    public function setLaw($law)
+    {
+        $this->law = $law;
     }
 
      /**

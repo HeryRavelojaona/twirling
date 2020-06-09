@@ -59,7 +59,7 @@ class Router
                     $this->backController->addUser($this->request->getPost());
                 }
                 elseif($route === 'deleteuser'){
-                    $this->backController->deleteUser($this->request->getPost());
+                    $this->backController->deleteUser($this->request->getGet());
                 }
                 elseif($route === 'addarticle'){
                     $this->backController->addArticle($this->request->getPost());

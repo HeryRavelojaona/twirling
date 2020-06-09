@@ -1,3 +1,4 @@
+<?php $this->title = "Configuration"; ?>
 <?php include 'adminNavbar.php';?>
 <section id="Info" class="info admin-info-part">
         <div class="container">

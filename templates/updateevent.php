@@ -1,5 +1,6 @@
  <!-- ======= Training Section ======= -->
- <?php $this->title = "Mis à jour d'évènement"; ?>
+<?php $this->title = "Mis à jour d'évènement"; ?>
+<?php include 'adminNavbar.php';?>
 <section id="Training" class="training ">
 <div class="container">
 <div class="section-title">

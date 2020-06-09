@@ -1,9 +1,12 @@
+<?php $this->title = "Administration membres"; ?>
+<?php include 'adminNavbar.php';?>
 <?php include 'adminNavbar.php';?>
 <section id="Members" class="actuality ">
         <div class="container">
             <div class="section-title">
                 <h2>Membres du bureau</h2>
                 <?= $this->session->show('delete_user'); ?>
+                <?= $this->session->show('adduser'); ?>
                 <?= $this->session->show('send_message'); ?>
                 <?= $this->session->show('user_message'); ?>
                 <div class="message-for-all">
@@ -11,10 +14,14 @@
                     <span class="response-message"></span>
                 </div>
             </div>
-           
+            <?php if($this->session->get('law') >= 80)
+            {;?>
             <div class="message-for-all">
                 <a href="index.php?route=adduser" class="btn btn-primary text-message-for-all">Ajouter un membre <i class="fas fa-plus-circle"></i></a>
             </div>
+            <?php
+            }
+            ?>
         <div >
         <table class="table container admin-table admin-reload">
            
@@ -41,13 +48,21 @@
                     <td><?= htmlspecialchars($AllUser->getLastName());?><br/><?= htmlspecialchars($AllUser->getFirstName());?> </td>
                     <td><?= htmlspecialchars($AllUser->getRole());?></td>
                     <td class="action-table">
-                        <a href="index.php?route=contactuser&userId=<?= htmlspecialchars($AllUser->getId());?>" class="btn btn-info admin-btn">Contacter</a>
-                        <?php if($this->session->get('id')== htmlspecialchars($AllUser->getId()))
+                        <a href="index.php?route=contactuser&userId=<?= htmlspecialchars($AllUser->getId());?>" class="btn btn-info admin-btn" title="Contacter"><i class="fa fa-envelope"></i></a>
+                        <?php if($this->session->get('law') >= 80)
                         {;?>
-                         <a href="index.php?route=profile" class="btn admin-btn btn-warning">Profil</a>
+                         <a href="index.php?route=profile" class="btn admin-btn btn-warning" title="profil"><i class="fa fa-user" aria-hidden="true"></i></a>
+                         <a href="index.php?route=publishOrNot&userId=<?= htmlspecialchars($AllUser->getId());?>&action=<?= htmlspecialchars($action);?>" class="btn admin-btn btn-<?= htmlspecialchars($color);?>"  title="<?= htmlspecialchars($action);?>"><i class="far <?= htmlspecialchars($icon);?>"></i> </a>
+                         <a href="index.php?route=deleteuser&userId=<?= htmlspecialchars($AllUser->getId());?>" class="btn admin-btn btn-danger" title="supprimer"><i class="fas fa-trash-alt"></i></a>
                         <?php 
-                        };?>
-                        <a href="index.php?route=publishOrNot&userId=<?= htmlspecialchars($AllUser->getId());?>&action=<?= htmlspecialchars($action);?>" class="btn admin-btn btn-<?= htmlspecialchars($color);?>"><?= htmlspecialchars($action);?> </a>
+                        }else if($this->session->get('id')== htmlspecialchars($AllUser->getId()))
+                        {?>
+                        <a href="index.php?route=profile" class="btn admin-btn btn-warning">Profil</a>
+                        <a href="index.php?route=deleteuser&userId=<?= htmlspecialchars($AllUser->getId());?>" class="btn admin-btn btn-danger" title="supprimer"><i class="fas fa-trash-alt"></i></a>
+                        <?php
+                        };
+                        ?>
+                        
                     </td>
                 </tr>
             </tbody>
@@ -63,9 +78,14 @@
             <div class="section-title">
                 <h2>Adhérents</h2>
             </div>
+            <?php if($this->session->get('law') >= 80)
+            {;?>
             <div class="message-for-all">
                 <a href="../public/index.php?route=adduser" class="btn btn-primary text-message-for-all">Ajouter un membre <i class="fas fa-plus-circle"></i></a>
             </div>
+            <?php
+            }
+            ;?>
         <div >
         <table class="table container admin-table admin-reload">
            
@@ -86,17 +106,13 @@
                     <td><?= htmlspecialchars($member->getLastName());?><br/><?= htmlspecialchars($member->getFirstName());?> </td>
                     <td><?= htmlspecialchars($member->getRole());?></td>
                     <td class="action-table">
-                        <a href="index.php?route=contactuser&userId=<?= htmlspecialchars($member->getId());?>" class="btn btn-info admin-btn">Contacter</a>
-                        <a class="btn btn-danger admin-btn check-delete" data-deleteid="delete-article-<?= $member->getId() ?>">Supprimer</a>
-                        <div class="control-delete" id="delete-article-<?= $member->getId() ?>">
-                            <form action="index.php?route=deleteuser" method="POST" class="delete-form" >
-                            <p class="go-delete">Etes vous sur ?</p>
-                                <input type="hidden" name="userId" id="sendUserId" value="<?= htmlspecialchars($member->getId());?>"/>
-                                <button class="btn btn-danger go-delete confirm-delete" name="submit">Oui <i class="fas fa-trash-alt"></i></button>
-                                <button class="stop-delete go-delete btn btn-secondary">Non</button>
-                            </form>
-                            
-                        </div>
+                        <a href="index.php?route=contactuser&userId=<?= htmlspecialchars($member->getId());?>" class="btn btn-info admin-btn" title="Contacter"><i class="fa fa-envelope"></i></a>
+                        <?php if($this->session->get('law') >= 80)
+                        {?>
+                        <a href="index.php?route=deleteuser&userId=<?= htmlspecialchars($member->getId());?>" class="btn admin-btn btn-danger" title="supprimer"><i class="fas fa-trash-alt"></i></a>
+                        <?php
+                        }
+                        ?>
                     </td>
                 </tr>
             </tbody>
