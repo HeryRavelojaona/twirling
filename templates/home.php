@@ -30,8 +30,8 @@
                     <div class="box">
                         <a class=" actuality-click" href="../public/index.php?route=article&articleId=<?= htmlspecialchars($article->getId());?>">
                           <img src="assets/img/upload/<?= htmlspecialchars($article->getFileName());?>" class="actuality-img">
-                          <?php $date = new Datetime($article->getCreatedAt()); ?>
-                          <span class="actuality-date">Publié le: <?= htmlspecialchars($date->format('d-m-Y'));?></span>
+                          <?php $date = new DateTimeFrench($article->getCreatedAt()); ?>
+                          <span class="actuality-date">Publié le <?= htmlspecialchars($date->format('d-F-Y'));?></span>
                           <h4><?= htmlspecialchars($article->getTitle());?></h4>
                           <p><?= $article->getContent();?></p>
                           <a href="../public/index.php?route=article&articleId=<?= htmlspecialchars($article->getId());?>" class="read-more">Lire la suite...</a>

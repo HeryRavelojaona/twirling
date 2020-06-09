@@ -28,7 +28,7 @@
             </thead>
             <?php
                     foreach ($articles as $article)
-                    {   $date = new Datetime($article->getCreatedAt());
+                    {   $date = new DateTimeFrench($article->getCreatedAt());
                         if($article->getStatus()== 0){$action = 'Brouillon';
                             $title = 'Brouillon';
                             $color= 'secondary';
@@ -44,7 +44,7 @@
                 <tr>
                     <td><?= htmlspecialchars($article->getTitle());?></td>
                     <td><?= htmlspecialchars($usersName);?></td>
-                    <td><?= htmlspecialchars($date->format('d-m-Y'));?></td>
+                    <td><?= htmlspecialchars($date->format('d-F-Y'));?></td>
                     <td class="action-table">
                         <a href="index.php?route=article&articleId=<?= htmlspecialchars($article->getId());?>" class="btn btn-info admin-btn" title="voir"><i class="fas fa-eye"></i></a>
                         <a href="index.php?route=updatearticle&articleId=<?= htmlspecialchars($article->getId());?>" class="btn admin-btn btn-warning" title="Modifier"><i class="fas fa-exchange-alt"></i></a>

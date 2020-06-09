@@ -22,7 +22,7 @@
             </thead>
             <?php
                     foreach ($stories as $story)
-                    {   $date = new Datetime($story->getCreatedAt());
+                    {   $date = new DateTimeFrench($story->getCreatedAt());
                         if($story->getStatus()== 0){$action = 'Brouillon';
                             $title = 'Brouillon';
                             $icon = 'fa-pause-circle';
@@ -37,7 +37,7 @@
                 <tr>
                     <td><?= htmlspecialchars($story->getTitle());?></td>
                     <td><?= htmlspecialchars($usersName);?></td>
-                    <td><?= htmlspecialchars($date->format('d-m-Y'));?></td>
+                    <td><?= htmlspecialchars($date->format('d-F-Y'));?></td>
                     <td class="action-table">
                         <a href="index.php?route=article&articleId=<?= htmlspecialchars($story->getId());?>" class="btn btn-info admin-btn" title="voir"><i class="fas fa-eye"></i></a>
                         <a href="index.php?route=updatearticle&articleId=<?= htmlspecialchars($story->getId());?>" class="btn admin-btn btn-warning" title="Modifier"><i class="fas fa-exchange-alt"></i></a>
