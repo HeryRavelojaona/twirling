@@ -5,6 +5,7 @@
             <form class="form-horizontal connexion all-forms" method="post" action="../public/index.php?route=login">
                 <fieldset>
                     <legend>Connexion</legend>
+                    <?= $this->session->show('not_login');?>
                     <div class="form-group">
                         <label for="inputEmail" class="col-lg-2 control-label">Email</label>
                         <div class="col-lg-12">

@@ -50,7 +50,7 @@ class Router
                     $this->frontController->event($this->request->getGet());
                 }
                 elseif($route === 'profile'){
-                    $this->frontController->profile();
+                    $this->backController->profile();
                 }
                 elseif($route === 'administration'){
                     $this->backController->admin();

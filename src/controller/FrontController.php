@@ -29,7 +29,6 @@ class FrontController extends Controller
             'articles' => $articles,
             'team' => $team,
             'config' => $config
-
         ]);
         
     }
@@ -120,14 +119,6 @@ class FrontController extends Controller
         $this->session->set('logout', 'Vous êtes déconnecter');
         header('Location: ../public/index.php');
         exit();
-    }
-
-    public function profile()
-    {
-        $picture = $this->userDAO->getFile($this->session->get('mail'));
-        return $this->view->render('profile',[
-            'picture'=>$picture
-        ]);
     }
 
     public function training()

@@ -9,6 +9,7 @@
                 <?= $this->session->show('adduser'); ?>
                 <?= $this->session->show('send_message'); ?>
                 <?= $this->session->show('user_message'); ?>
+                <?= $this->session->set('status_user'); ?>
                 <div class="message-for-all">
                     <a href="index.php?route=contactmembers" class="btn btn-secondary text-message-for-all">Envoyer un message collectif <i class="fas fa-envelope-square"></i></a><br/>
                     <span class="response-message"></span>
