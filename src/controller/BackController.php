@@ -49,7 +49,7 @@ class BackController extends Controller
     {
         if($this->checkIfLoggedIn())
         {
-                /*All admin members*/
+            /*All admin members*/
             $allUsers = $this->userDAO->getAdmins();
             /*members ADHERENTS*/
             $members = $this->userDAO->getMembers();
@@ -60,14 +60,27 @@ class BackController extends Controller
         }
     }
 
-    public function profile()
+    public function profile($get)
     {
         if($this->checkIfLoggedIn())
         {
-            $picture = $this->userDAO->getFile($this->session->get('mail'));
-            return $this->view->render('profile',[
-                'picture'=>$picture
-            ]);
+            if($get->get('userId'))
+            {   $userId = htmlspecialchars($get->get('userId'));
+                $user = $this->userDAO->getUser($userId);
+                $picture = $this->userDAO->getFile($user->getEmail());
+                return $this->view->render('profile',[
+                    'user'=>$user,
+                    'picture'=>$picture
+                ]);
+                
+            }else
+            {
+                $picture = $this->userDAO->getFile($this->session->get('mail'));
+                return $this->view->render('profile',[
+                    'picture'=>$picture
+                ]);
+            }
+                
         }
     }
 

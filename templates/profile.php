@@ -28,11 +28,23 @@
                                 <button type="button" class="changeImgClose">close</button>
                             </form>
                         </div>
-                        <!---Form for change image end----->
+                        <?php if(isset($user))
+                        {
+                        ?>
+
+                            <h3 class="profile-content">Nom: <?= htmlspecialchars($user->getLastName()) ; ?></h3>
+                            <h4 class="profile-content">Prénom: <?= htmlspecialchars($user->getFirstName()); ?></h4>
+                            <p class="profile-content">Email: <?= htmlspecialchars($user->getEmail()); ?></p>
+                            <p class="profile-content">Role: <?= htmlspecialchars($user->getRole()); ?></p>
+                        <?php
+                        }else{
+                        ?>
                         <h3 class="profile-content">Nom: <?= $this->session->get('lastname') ; ?></h3>
                         <h4 class="profile-content">Prénom: <?= $this->session->get('firstname'); ?></h4>
                         <p class="profile-content">Email: <?= $this->session->get('mail'); ?></p>
                         <p class="profile-content">Role: <?= $this->session->get('role'); ?></p>
+                        <?php 
+                        };?>
                     </div>   
                     <!---Form for change Password---> 
                     <div class="profile-part col-xl-6 ">

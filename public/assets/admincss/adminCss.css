@@ -207,9 +207,6 @@ Addevent
 /*-----------------
 Config admin
 ----------------------*/
-.admin-info-part {
-    height: 90vh;
-}
 
 .config-part {
     margin: 30px;
