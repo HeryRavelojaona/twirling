@@ -15,8 +15,8 @@
             <thead class="thead-style">
                 <tr>
                 <th>TITRE</th>
-                <th>Crée par</th>
-                <th>Crée le</th>
+                <th>Créé par</th>
+                <th>Créé le</th>
                 <th>Actions</th>
                 </tr>
             </thead>

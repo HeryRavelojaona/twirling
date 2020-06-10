@@ -22,10 +22,9 @@
         <!--feuille de style-->
         <link rel="stylesheet" type="text/css" href="../public/assets/css/reset.css"/> <!--reset_css-->
         <link rel="stylesheet" type="text/css" href="../public/assets/css/style.css"/><!--Mobile-first-->
-        <link rel="stylesheet" type="text/css" href="../public/assets/admincss/adminCss.css"/><!--Mobile-first-->
         <link rel="stylesheet" type="text/css" media="screen and (min-width: 576px)" href="../public/assets/css/tablet.css"/><!--tablet-style-->
         <link rel="stylesheet" type="text/css" media="screen and (min-width: 992px)" href="../public/assets/css/desktop.css"/><!--desktop-style-->
-      <link href="../public/assets/css/style.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="../public/assets/admincss/adminCss.css"/>
   </head>
 
   <body data-spy="scroll" data-target=".navbar" data-offset="60">

@@ -102,7 +102,7 @@ class BackController extends Controller
     {
         if($this->checkIfAdmin())
         {
-            $category = 1;
+            $category = 2;
             $articles = $this->articleDAO->showArticles($category);
             /* Get user Name with is Id*/
             foreach($articles as $article){

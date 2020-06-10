@@ -1,6 +1,6 @@
 <?php
 
-namespace Spac\src\DAO;
+namespace Spac\src\dao;
 
 use Spac\config\Parameter;
 use Spac\src\model\User;
