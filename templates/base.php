@@ -9,16 +9,16 @@
       <meta content="Club de twirling bâton de Fontenay sous bois" name="descriptison">
       <meta content="twirling bâton, sport, fontenay sous bois" name="keywords">
       <link rel="canonical" href="https://spac.heryravelojaona.fr"/>
-      <!-- Favicons -->
+      <!--Favicons-->
       <link href="assets/img/favicon.ico" rel="icon">
-      <!-- Google Fonts -->
-      <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet" type="text/css"/>
+      <!--Google Fonts-->
+      <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet" type="text/css">
       <!--fontawesome CDN-->
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
-      <!--Boostrapd CSS CDN -->
+      <!--Boostrapd CSS CDN-->
       <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
-      <!-- Template Main CSS File -->
+      <!--Template Main CSS File-->
         <!--feuille de style-->
         <link rel="stylesheet" type="text/css" href="assets/css/reset.css"/> <!--reset_css-->
         <link rel="stylesheet" type="text/css" href="assets/css/style.css"/><!--Mobile-first-->
@@ -54,7 +54,7 @@ crossorigin="anonymous"></script>
         
 </body>
 <!-- ======= Footer ======= -->
-<footer id="footer">
+<footer>
   <a href="#" class="back-to-top"><i class="fas fa-arrow-up"></i></a>
   <div class="container">
       <div class="copyright">

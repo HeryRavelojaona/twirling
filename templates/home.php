@@ -16,30 +16,31 @@
     <section id="Actuality" class="actuality">
       <div class="container">
           <div class="section-title">
-            <span>Dernières</span>
-            <h2>Actualités</h2>
+              <span>Dernières</span>
+              <h2>Actualités</h2>
           </div>
           <div class="row">
         <?php
             foreach ($articles as $article)
             {
         ?>
-                <div class="col-lg-6 fade-up">
-                    <div class="box">
-                        <a class=" actuality-click" href="index.php?route=article&articleId=<?= htmlspecialchars($article->getId());?>">
-                          <img src="assets/img/upload/<?= htmlspecialchars($article->getFileName());?>" class="actuality-img" alt="photo actualité">
-                          <?php $date = new DateTimeFrench($article->getCreatedAt()); ?>
-                          <span class="actuality-date">Publié le <?= htmlspecialchars($date->format('d-F-Y'));?></span>
-                          <h4><?= htmlspecialchars($article->getTitle());?></h4>
-                          <p><?= $article->getContent();?></p>
-                          <a href="index.php?route=article&articleId=<?= htmlspecialchars($article->getId());?>" class="read-more">Lire la suite...</a>
-                        </a>
-                    </div>
+              <div class="col-lg-6 fade-up">
+                  <div class="box">
+                      <a class=" actuality-click" href="index.php?route=article&articleId=<?= htmlspecialchars($article->getId());?>">
+                        <img src="assets/img/upload/<?= htmlspecialchars($article->getFileName());?>" class="actuality-img" alt="photo actualité">
+                        <?php $date = new DateTimeFrench($article->getCreatedAt()); ?>
+                        <span class="actuality-date">Publié le <?= htmlspecialchars($date->format('d-F-Y'));?></span>
+                        <h4><?= htmlspecialchars($article->getTitle());?></h4>
+                        <div><?= $article->getContent();?></div>
+                        <p class="read-more">Lire la suite...</p>
+                      </a>
+                  </div>
               </div>
         <?php
         }
         ?>
           </div>
+      </div>
   </section><!-- End Actuality Section -->
 
   <!-- ======= About Section ======= -->
@@ -102,7 +103,7 @@
           <div class="icon-box">
             <img src="assets/img/linapodium.png" class="img-fluid img-services rounded-circle" alt="twirling">
             <h4><a href="">Les compétitions</a></h4>
-            <p>-	Testez votre progression et remportez des médailles en vous mesurant à d’autres sportifs dans la France entière  </p>
+            <p>Testez votre progression et remportez des médailles en vous mesurant à d’autres sportifs dans la France entière  </p>
           </div>
         </div>
 
@@ -118,7 +119,7 @@
           <div class="icon-box">
             <img src="assets/img/duochampionnat.jpg" class="img-fluid img-services rounded-circle" alt="Twirling">
             <h4><a href="">Des duos</a></h4>
-            <p>-	Trouvez un.e partenaire de twirl pour partager une chorégraphie et le podium des compétitions</p>
+            <p>Trouvez un.e partenaire de twirl pour partager une chorégraphie et le podium des compétitions</p>
           </div>
         </div>
 
@@ -134,11 +135,11 @@
   </section><!-- End Services Section -->
 
 <!-- ======= Info Section ======= -->
-<section id="Info" class="info">
+<section id="Info">
   <div class="container">
 
       <div class="row d-flex align-items-center fade-left">
-          <img src="assets/img/danseuse.png" alt="twirling-baton" class="gif fade-up"/></a>
+          <img src="assets/img/danseuse.png" alt="twirling-baton" class="gif fade-up"/>
           <div class="col-lg-6 col-md-12 col-12">
             <p class="tarif-info">Inscription à partir de 6 ans<br/> Mixtes</p>
             <p class="tarif-info">Ouvert à tous et à toutes</p>
@@ -181,50 +182,48 @@
   </div>
 </section><!-- End Info Section -->
 
-  <!-- ======= Team Section ======= -->
-  <section id="team" class="team">
-    <div class="container">
+<!-- ======= Team Section ======= -->
+<section id="team" class="team">
+  <div class="container">
 
-      <div class="section-title">
-        <span>Bénévoles</span>
-        <h2>Team</h2>
-        <p>Une équipe qui prendra soin de vous</p>
+    <div class="section-title">
+      <span>Bénévoles</span>
+      <h2>Team</h2>
+      <p>Une équipe qui prendra soin de vous</p>
+    </div>
+
+    <div class="row">
+    <?php foreach($team as $user)
+    {
+    ;?>
+
+    <div class="col-lg-4 col-md-6 d-flex align-items-stretch fade-right">
+          <div class="member">
+            <?php if(!$user->getFileName())
+            {
+            ;?>
+              <img src="assets/img/upload/1591624659.jpg" class="img-fluid " alt="Photo des membres">
+            <?php
+            }else
+            {?>
+              <img src="assets/img/upload/<?= htmlspecialchars($user->getFileName());?>" class="img-fluid " alt="Photo des membres">
+            <?php
+            }
+            ;?>
+              
+              <h4><?= htmlspecialchars($user->getFirstName());?> </h4>
+              <span><?= htmlspecialchars($user->getRole());?></span>
+              <div><?= isset($user)? $user->getComment():'';?></div>
+          </div>
       </div>
-
-      <div class="row">
-      <?php foreach($team as $user)
-      {
-      ;?>
-
-      <div class="col-lg-4 col-md-6 d-flex align-items-stretch fade-right">
-            <div class="member">
-              <?php if(!$user->getFileName())
-              {
-              ;?>
-                <img src="assets/img/upload/1591624659.jpg" class="img-fluid " alt="Photo des membres">
-              <?php
-              }else
-              {?>
-                <img src="assets/img/upload/<?= htmlspecialchars($user->getFileName());?>" class="img-fluid " alt="Photo des membres">
-              <?php
-              }
-              ;?>
-               
-                <h4><?= htmlspecialchars($user->getFirstName());?> </h4>
-                <span><?= htmlspecialchars($user->getRole());?></span>
-                <div><?= isset($user)? $user->getComment():'';?></div>
-            </div>
-        </div>
-      <?php
-      }
-      ;?>
-
-      </div>
+    <?php
+    }
+    ;?>
 
     </div>
-  </section><!-- End Team Section -->
 
-</section><!-- End Portfolio Section -->
+  </div>
+</section><!-- End Team Section -->
 <section id="contact" class="contact">
         <div class="container">
 

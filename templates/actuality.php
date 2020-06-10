@@ -21,7 +21,7 @@
                     <img src="assets/img/upload/<?= htmlspecialchars($article->getFileName());?>" class="actuality-img">
                     <span class="actuality-date"><?= htmlspecialchars($date->format('d-F-Y'));?></span>
                     <h4><?= $article->getTitle();?></h4>
-                    <p><?= $article->getContent();?></p>
+                    <div><?= $article->getContent();?></div>
                     <a href="index.php?route=article&articleId=<?= htmlspecialchars($article->getId());?>" class="read-more">Lire la suite...</a>
                 </a>
             </div>
