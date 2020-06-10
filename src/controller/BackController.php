@@ -573,14 +573,23 @@ class BackController extends Controller
                     $extension = pathinfo($filename, PATHINFO_EXTENSION);
                     /*Automatically Change filename*/
                     $filename= time().'.'.$extension;
-                    if(!array_key_exists(strtolower($extension), $allowed)) echo "Erreur : Veuillez sélectionner un format de fichier valide.";
+                    if(!array_key_exists(strtolower($extension), $allowed))
+                    {
+                        echo "Erreur : Veuillez sélectionner un format de fichier valide.";
+                        exit();
+                    } 
                     $maxsize = 5000000000;
-                    if($filesize > $maxsize) echo "Error: La taille du fichier est supérieure à la limite autorisée.";
+                    if($filesize > $maxsize)
+                    {
+                        echo "Error: La taille du fichier est supérieure à la limite autorisée.";
+                        exit();
+                    } 
 
                     if(in_array($filemime, $allowed)){
                         /*Check if file exist.*/
                         if(file_exists("../public/assets/img/upload/" . $filename)){
                             echo $_FILES["photo"]["name"] . " existe déjà.";
+                            exit();
                         } else{
                             move_uploaded_file($_FILES["photo"]["tmp_name"], "../public/assets/img/upload/" . $filename);
                             echo "Votre fichier a été téléchargé avec succès."; 
@@ -595,6 +604,11 @@ class BackController extends Controller
             if($post->get('password') != $post->get('samepassword') ){
                 $errors['password'] = '<p>mot de passe non identique</p>';
             }
+            if($this->userDAO->checkMail($post))
+            {
+                $errors['mail']= $this->userDAO->checkMail($post);
+            }
+            /* = ;*/
             if(!$errors){
                 /*Status choice*/
                 if($post->get('choice')== 'admin'){

@@ -154,4 +154,14 @@ class UserDAO extends DAO
         $sql = 'DELETE FROM user WHERE id = ?';
         $this->createQuery($sql, [$userId]); 
     }
+
+    public function checkMail(Parameter $post)
+    {
+        $sql = 'SELECT COUNT(email) FROM user WHERE email = ?';
+        $result = $this->createQuery($sql, [$post->get('mail')]);
+        $isUnique = $result->fetchColumn();
+        if($isUnique) {
+            return '<p>Votre mail est déja utiliser</p>';
+        }  
+    }
 }

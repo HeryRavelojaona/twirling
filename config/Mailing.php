@@ -100,4 +100,5 @@ class Mailing
         // Send the message
         $result = $this->mailer->send($message);
     }
+    
 }
