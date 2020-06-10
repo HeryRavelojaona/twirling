@@ -6,9 +6,10 @@ use Spac\config\Parameter;
 
 class BackController extends Controller
 {
-    /*Const for $_files*/
+    /*Const for upload $_files*/
     const Allowed = array("jpg" => "image/jpg", "jpeg" => "image/jpeg", "gif" => "image/gif", "png" => "image/png");
-    const  Maxsize = 5000000000;
+    const Maxsize = 5000000000;
+    const Repository = "assets/img/upload/"; 
 
     public function admin()
     {
@@ -160,7 +161,7 @@ class BackController extends Controller
 
                 if(in_array($filemime, SELF::Allowed)){
                     /* Check if file exist*/
-                    $location = "assets/img/upload/" . $filename;
+                    $location = SELF::Repository . $filename;
                     if(file_exists($location)){
                         $response['error'] = $filename . " existe déjà.";
                     } else{
@@ -293,7 +294,6 @@ class BackController extends Controller
                     $filesize = $files->get('photo')["size"];
                     $tmpname= $files->get('photo')['tmp_name'];
                     $filemime = mime_content_type($tmpname);
-                
                     $extension = pathinfo($filename, PATHINFO_EXTENSION);
         
                     /*Automatically Change filename*/
@@ -305,10 +305,10 @@ class BackController extends Controller
                     /*check Filemime type*/
                     if(in_array($filemime, SELF::Allowed)){
                         /*Check if file exist.*/
-                        if(file_exists("assets/img/upload/" . $filename)){
+                        if(file_exists(SELF::Repository.$filename)){
                             echo $files->get('photo')["name"] . " existe déjà.";
                         } else{
-                            move_uploaded_file($files->get('photo')["tmp_name"], "assets/img/upload/" . $filename);
+                            move_uploaded_file($files->get('photo')["tmp_name"], SELF::Repository.$filename);
                             /*save name in database*/
                             $this->userDAO->uploadPicture($this->session->get('mail'), $filename);
 
@@ -581,11 +581,11 @@ class BackController extends Controller
 
                     if(in_array($filemime, SELF::Allowed)){
                         /*Check if file exist.*/
-                        if(file_exists("assets/img/upload/" . $filename)){
+                        if(file_exists(SELF::Repository.$filename)){
                             echo $files->get('photo')["name"] . " existe déjà.";
                             exit();
                         } else{
-                            move_uploaded_file($files->get('photo')["tmp_name"], "assets/img/upload/" . $filename);
+                            move_uploaded_file($files->get('photo')["tmp_name"], SELF::Repository.$filename);
                             echo "Votre fichier a été téléchargé avec succès."; 
                         } 
                     } else{
