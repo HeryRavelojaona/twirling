@@ -27,16 +27,16 @@
         ?>
                     <a href="#" class="nav-link" data-toggle="dropdown" role="button" aria-expanded="false">Admin</a>
                     <ul class="dropdown-menu" role="menu">
-                    <li><a href="../public/index.php?route=profile" class="dropdown-item">
-                    <img src="../public/assets/img/upload/<?= htmlspecialchars($this->session->get('filename'));?>" class="img-fluid rounded-circle profil-img"><br/>Profil</a></li>
+                    <li><a href="index.php?route=profile" class="dropdown-item">
+                    <img src="assets/img/upload/<?= htmlspecialchars($this->session->get('filename'));?>" class="img-fluid rounded-circle profil-img"><br/>Profil</a></li>
             <?php if($this->session->get('status') === '1') { ?>
-                    <li><a href="../public/index.php?route=administration" class="dropdown-item">Administration</a></li>
+                    <li><a href="index.php?route=administration" class="dropdown-item">Administration</a></li>
             <?php } ?>
-                    <li><a href="../public/index.php?route=logout" class="dropdown-item">Déconnexion</a></li>
+                    <li><a href="index.php?route=logout" class="dropdown-item">Déconnexion</a></li>
         <?php 
             }else{ 
         ?>
-                    <a href="../public/index.php?route=login" class="nav-link" ><i class="fas fa-user-lock"></i></a>   
+                    <a href="index.php?route=login" class="nav-link" ><i class="fas fa-user-lock"></i></a>   
         <?php 
         } 
         ?>

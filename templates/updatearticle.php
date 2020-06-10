@@ -36,7 +36,7 @@
                                 <button type="button" class="changeImgClose">close</button>
                             </form>
                         </div>
-                <form class="col-lg-12" action="../public/index.php?route=updatearticle&articleId=<?= htmlspecialchars($article->getId());?>" method="post">
+                <form class="col-lg-12" action="index.php?route=updatearticle&articleId=<?= htmlspecialchars($article->getId());?>" method="post">
                         <div class="form-group">
                             <label for="title" class="col-lg-6 control-label">Titre</label>
                             <div class="col-lg-12">
@@ -65,7 +65,7 @@
                     </div>
                 </form>
                 <div class="return-btn">
-                    <a href="../public/index.php?route=administration" class="btn btn-info ">Retour</a>
+                    <a href="index.php?route=administration" class="btn btn-info ">Retour</a>
                 </div>
             </div>
         </div>

@@ -65,7 +65,7 @@
                     </div>
                 </form>
                 <div class="return-btn">
-                    <a href="../public/index.php?route=admintraining" class="btn btn-info ">Retour</a>
+                    <a href="index.php?route=admintraining" class="btn btn-info ">Retour</a>
                 </div>
             </div>
         </div>
@@ -131,7 +131,7 @@
         </div>
         </form>
         <div class="return-btn">
-            <a href="../public/index.php?route=administration" class="btn btn-info ">Retour</a>
+            <a href="index.php?route=administration" class="btn btn-info ">Retour</a>
         </div>
 
     </div>

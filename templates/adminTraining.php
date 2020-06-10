@@ -10,7 +10,7 @@
                 <?= $this->session->show('status_event'); ?>
             </div>
             <div class="message-for-all">
-                <a href="../public/index.php?route=addevent" class="btn btn-primary text-message-for-all">Ajouter un nouvel entrainement <i class="fas fa-plus-circle"></i></a>
+                <a href="index.php?route=addevent" class="btn btn-primary text-message-for-all">Ajouter un nouvel entrainement <i class="fas fa-plus-circle"></i></a>
             </div>
         <div >
         <table class="table container admin-table admin-reload">

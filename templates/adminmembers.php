@@ -82,7 +82,7 @@
             <?php if($this->session->get('law') >= 80)
             {;?>
             <div class="message-for-all">
-                <a href="../public/index.php?route=adduser" class="btn btn-primary text-message-for-all">Ajouter un membre <i class="fas fa-plus-circle"></i></a>
+                <a href="index.php?route=adduser" class="btn btn-primary text-message-for-all">Ajouter un membre <i class="fas fa-plus-circle"></i></a>
             </div>
             <?php
             }

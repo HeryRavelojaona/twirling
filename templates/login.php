@@ -2,7 +2,7 @@
 <?php include 'navbarbase.php';?>
 <section id="login_form" class="contact">
     <div class="container">
-        <form class="form-horizontal connexion all-forms" method="post" action="../public/index.php?route=login">
+        <form class="form-horizontal connexion all-forms" method="post" action="index.php?route=login">
             <fieldset>
                 <legend>Connexion</legend>
                 <?= $this->session->show('not_login');?>
@@ -28,6 +28,6 @@
                 </div>
             </fieldset>
         </form>
-        <a href="../public/index.php" class="btn btn-info return">Retour</a>
+        <a href="index.php" class="btn btn-info return">Retour</a>
     </div>
 </section>

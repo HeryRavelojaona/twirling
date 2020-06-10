@@ -5,7 +5,7 @@
                     <div class="profile-part col-xl-6">
                         <button type="button" id="openModal">
                             <div id="picture_profil">
-                                <img src="../public/assets/img/upload/<?= isset($picture) ? $picture : ''; ?>" class="profil-img img-fluid  " ><br/>Photo 
+                                <img src="assets/img/upload/<?= isset($picture) ? $picture : ''; ?>" class="profil-img img-fluid  " ><br/>Photo 
                                 <i class="fas fa-user-cog"></i>
                             </div>
                         </button>
@@ -47,6 +47,7 @@
                         };?>
                     </div>   
                     <!---Form for change Password---> 
+                    
                     <div class="profile-part col-xl-6 ">
                         <button  class="btn btn-warning profile-content modif-pass">Modifier votre mot de passe</button><br/>
                         <form class="connexion profile-changePass" id="change_password" method="post" action="">

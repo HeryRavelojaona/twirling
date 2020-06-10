@@ -70,7 +70,7 @@ class Form_ajax {
                 cache: false,
                 contentType: false,
                 processData: false,
-                url: "../public/index.php?route=fileUpload",
+                url: "index.php?route=fileUpload",
                 success: function (data) {
                         $('.status').text(data);
                         $(element)[0].reset();
@@ -113,13 +113,13 @@ class Form_ajax {
                     cache: false,
                     contentType: false,
                     processData: false,
-                    url: "../public/index.php?route=previewarticle",
+                    url: "index.php?route=previewarticle",
                     success: function (data) {
                         let response = JSON.parse(data);
                         let name = response.filename;
                         if(!response.error){
         
-                            $('#preview_file').attr("src","../public/assets/img/upload/"+name);
+                            $('#preview_file').attr("src","assets/img/upload/"+name);
                             $('.preview-title').text(response.title);
                             $('.preview-content').html(response.content);
                             $('.actuality-edit').hide();
@@ -210,7 +210,7 @@ class Form_ajax {
                 $.ajax({
                     type: "POST",
                     data: fileData,
-                    url: "../public/index.php?route=previewevent",
+                    url: "index.php?route=previewevent",
                     success: function (data) {
                         let response = JSON.parse(data);
                         console.log(response);
@@ -260,7 +260,7 @@ class Form_ajax {
             $.ajax({
                 type: "POST",
                 data: fileData,
-                url: "../public/index.php?route=changeconfig",
+                url: "index.php?route=changeconfig",
                 success: function (data) {
                         $('#changePrice').hide();
                         $('#changePrice')[0].reset();
@@ -281,7 +281,7 @@ class Form_ajax {
             $.ajax({
                 type: "POST",
                 data: fileData,
-                url: "../public/index.php?route=changeconfig",
+                url: "index.php?route=changeconfig",
                 success: function (data) {
                     console.log(data);
                        /* $('#changeAddress').hide();*/
@@ -303,7 +303,7 @@ class Form_ajax {
             $.ajax({
                 type: "POST",
                 data: fileData,
-                url: "../public/index.php?route=changeconfig",
+                url: "index.php?route=changeconfig",
                 success: function (data) {
                     console.log(data);
                        /* $('#changeAddress').hide();*/
@@ -325,7 +325,7 @@ class Form_ajax {
             $.ajax({
                 type: "POST",
                 data: fileData,
-                url: "../public/index.php?route=changeconfig",
+                url: "index.php?route=changeconfig",
                 success: function (data) {
                     console.log(data);
                        /* $('#changeAddress').hide();*/

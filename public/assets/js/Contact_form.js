@@ -19,7 +19,7 @@ class Contact {
             $.ajax({
                 type: "POST",
                 data: fileData,
-                url: "../public/index.php?route=contact",
+                url: "index.php?route=contact",
                 success: function (data) {
                     let response = JSON.parse(data);
                     if(response.success){

@@ -13,7 +13,7 @@
                 <?= $this->session->show('delete_article'); ?>
             </div>
             <div class="message-for-all">
-                <a href="../public/index.php?route=addarticle" class="btn btn-primary text-message-for-all">Ajouter une nouvelle actualité <i class="fas fa-plus-circle"></i></a>
+                <a href="index.php?route=addarticle" class="btn btn-primary text-message-for-all">Ajouter une nouvelle actualité <i class="fas fa-plus-circle"></i></a>
             </div>
         <div >
         <table class="table container admin-table admin-reload">

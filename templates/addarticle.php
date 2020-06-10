@@ -50,7 +50,7 @@
                     </div>
                 </form>
                 <div class="return-btn">
-                    <a href="../public/index.php?route=administration" class="btn btn-info ">Retour</a>
+                    <a href="index.php?route=administration" class="btn btn-info ">Retour</a>
                 </div>
             </div>
         </div>
@@ -108,7 +108,7 @@
                 </div>
             </form>
                 <div class="return-btn">
-                    <a href="../public/index.php?route=addarticle" class="btn btn-info ">Annuler</a>
+                    <a href="index.php?route=addarticle" class="btn btn-info ">Annuler</a>
                 </div>
           </div>
     </section><!-- End Actuality  Section -->

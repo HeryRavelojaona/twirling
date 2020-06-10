@@ -7,6 +7,7 @@ use Spac\config\Parameter;
 class BackController extends Controller
 {
     
+    const Allowed = array("jpg" => "image/jpg", "jpeg" => "image/jpeg", "gif" => "image/gif", "png" => "image/png");
 
     public function admin()
     {
@@ -562,7 +563,7 @@ class BackController extends Controller
         if($this->checkIfAdmin())
         {
             if(isset($_FILES['photo'])){
-                if($_FILES['photo'] && $_FILES['photo'] ["error"] == 0 ){
+                if($_FILES['photo'] && $_FILES['photo']["error"] == 0 ){
                     $allowed = array("jpg" => "image/jpg", "jpeg" => "image/jpeg", "gif" => "image/gif", "png" => "image/png");
                     $filename = $_FILES["photo"]["name"];
                     $filetype = $_FILES["photo"]["type"];
@@ -587,11 +588,11 @@ class BackController extends Controller
 
                     if(in_array($filemime, $allowed)){
                         /*Check if file exist.*/
-                        if(file_exists("../public/assets/img/upload/" . $filename)){
+                        if(file_exists("assets/img/upload/" . $filename)){
                             echo $_FILES["photo"]["name"] . " existe déjà.";
                             exit();
                         } else{
-                            move_uploaded_file($_FILES["photo"]["tmp_name"], "../public/assets/img/upload/" . $filename);
+                            move_uploaded_file($_FILES["photo"]["tmp_name"], "assets/img/upload/" . $filename);
                             echo "Votre fichier a été téléchargé avec succès."; 
                         } 
                     } else{

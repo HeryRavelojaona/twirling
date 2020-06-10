@@ -2,5 +2,5 @@
 <?php include 'navbarbase.php';?>
 <section>
     <p>page inexistante</p>
-    <a href="../public/index.php" class="btn btn-info return">Retour</a>
+    <a href="index.php" class="btn btn-info return">Retour</a>
 </section>
