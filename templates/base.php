@@ -57,12 +57,15 @@ crossorigin="anonymous"></script>
 <footer id="footer">
   <a href="#" class="back-to-top"><i class="fas fa-arrow-up"></i></a>
   <div class="container">
-    <div class="copyright">
-      &copy; 2020 Copyright <strong><span>SPAC</span></strong>. All Rights Reserved<br/>
-    </div>
-    <div class="credits">
-      Site réalisé par<a href=""> Hery Ravelojaona</a>
-    </div>
+      <div class="copyright">
+        &copy; 2020 Copyright <strong><span>SPAC</span></strong>. All Rights Reserved<br/>
+      </div>
+      <div class="credits">
+        Site réalisé par<a href=""> Hery Ravelojaona</a>
+      </div>
+      <div class="copyright">
+      <a href="index.php?route=mentionlegale">Mentions légales</a>
+      </div>
   </div>
 </footer><!-- End Footer -->
 </html>

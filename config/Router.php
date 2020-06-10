@@ -49,6 +49,9 @@ class Router
                 elseif($route === 'event'){
                     $this->frontController->event($this->request->getGet());
                 }
+                elseif($route === 'mentionlegale'){
+                    $this->frontController->mention();
+                }
                 elseif($route === 'profile'){
                     $this->backController->profile($this->request->getGet());
                 }

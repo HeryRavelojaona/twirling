@@ -33,6 +33,12 @@ class FrontController extends Controller
         
     }
 
+    public function mention()
+    {
+        return $this->view->render('mentionlegale');
+
+    }
+
     public function article(Parameter $get)
     {
         if(isset($get)){
