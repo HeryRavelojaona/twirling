@@ -9,7 +9,7 @@
                 <?= $this->session->show('adduser'); ?>
                 <?= $this->session->show('send_message'); ?>
                 <?= $this->session->show('user_message'); ?>
-                <?= $this->session->set('status_user'); ?>
+                <?= $this->session->show('status_user'); ?>
                 <div class="message-for-all">
                     <a href="index.php?route=contactmembers" class="btn btn-secondary text-message-for-all">Envoyer un message collectif <i class="fas fa-envelope-square"></i></a><br/>
                     <span class="response-message"></span>
@@ -52,7 +52,7 @@
                         <a href="index.php?route=contactuser&userId=<?= htmlspecialchars($AllUser->getId());?>" class="btn btn-info admin-btn" title="Contacter"><i class="fa fa-envelope"></i></a>
                         <?php if($this->session->get('law') >= 80)
                         {;?>
-                         <a href="index.php?route=profile" class="btn admin-btn btn-warning" title="profil"><i class="fa fa-user" aria-hidden="true"></i></a>
+                         <a href="index.php?route=profile&userId=<?= htmlspecialchars($AllUser->getId());?>" class="btn admin-btn btn-warning" title="profil"><i class="fa fa-user" aria-hidden="true"></i></a>
                          <a href="index.php?route=publishOrNot&userId=<?= htmlspecialchars($AllUser->getId());?>&action=<?= htmlspecialchars($action);?>" class="btn admin-btn btn-<?= htmlspecialchars($color);?>"  title="<?= htmlspecialchars($action);?>"><i class="far <?= htmlspecialchars($icon);?>"></i> </a>
                          <a href="index.php?route=deleteuser&userId=<?= htmlspecialchars($AllUser->getId());?>" class="btn admin-btn btn-danger" title="supprimer"><i class="fas fa-trash-alt"></i></a>
                         <?php 

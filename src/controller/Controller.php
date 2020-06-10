@@ -4,11 +4,11 @@ namespace Spac\src\controller;
 
 use Spac\config\Request;
 use Spac\src\model\View;
-use Spac\src\DAO\UserDAO;
-use Spac\src\DAO\ArticleDAO;
+use Spac\src\dao\UserDAO;
+use Spac\src\dao\ArticleDAO;
 use Spac\config\Mailing;
-use Spac\src\DAO\ConfigDAO;
-use Spac\src\DAO\EventDAO;
+use Spac\src\dao\ConfigDAO;
+use Spac\src\dao\EventDAO;
 use Spac\src\constraint\Validation;
 
 abstract class Controller

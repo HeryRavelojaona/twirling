@@ -1,5 +1,5 @@
 <?php
-namespace Spac\src\DAO;
+namespace Spac\src\dao;
 
 use PDO;
 use Exception;
