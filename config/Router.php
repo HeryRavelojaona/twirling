@@ -59,7 +59,7 @@ class Router
                     $this->backController->admin();
                 }
                 elseif($route === 'adduser'){
-                    $this->backController->addUser($this->request->getPost());
+                    $this->backController->addUser($this->request->getPost(), $this->request->getFiles());
                 }
                 elseif($route === 'deleteuser'){
                     $this->backController->deleteUser($this->request->getGet());
@@ -83,7 +83,7 @@ class Router
                     $this->backController->deleteEvent($this->request->getPost());
                 }
                 elseif($route === 'previewarticle'){
-                    $this->backController->previewArticle($this->request->getPost());
+                    $this->backController->previewArticle($this->request->getPost(), $this->request->getFiles());
                 }
                 elseif($route === 'previewevent'){
                     $this->backController->previewEvent($this->request->getPost());
@@ -98,7 +98,7 @@ class Router
                     $this->frontController->logout();
                 }
                 elseif($route === 'fileUpload'){
-                    $this->backController->fileUpload($this->request->getPost());
+                    $this->backController->fileUpload($this->request->getPost(), $this->request->getFiles());
                 }
                 elseif($route === 'changeconfig'){
                     $this->backController->changeConfig($this->request->getPost());

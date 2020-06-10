@@ -6,8 +6,9 @@ use Spac\config\Parameter;
 
 class BackController extends Controller
 {
-    
+    /*Const for $_files*/
     const Allowed = array("jpg" => "image/jpg", "jpeg" => "image/jpeg", "gif" => "image/gif", "png" => "image/png");
+    const  Maxsize = 5000000000;
 
     public function admin()
     {
@@ -123,7 +124,7 @@ class BackController extends Controller
     }
     
     /*Preview article article before validation addArticle*/
-    public function previewArticle(Parameter $post)
+    public function previewArticle(Parameter $post, $files)
     {
         if($this->checkIfLoggedIn())
         {
@@ -144,28 +145,26 @@ class BackController extends Controller
             }
 
             /*Control Uploaded file*/
-            if($_FILES['photo'] && $_FILES['photo']["error"] == 0 ){
-                $allowed = array("jpg" => "image/jpg", "jpeg" => "image/jpeg", "gif" => "image/gif", "png" => "image/png");
-                $filename = $_FILES["photo"]["name"];
-                $filetype = $_FILES["photo"]["type"];
-                $filesize = $_FILES["photo"]["size"];
-                $tmpname= $_FILES['photo']['tmp_name'];
+            if($files->get('photo') && $files->get('photo')["error"] == 0 ){
+                $filename = $files->get('photo')["name"];
+                $filesize = $files->get('photo')["size"];
+                $tmpname = $files->get('photo')['tmp_name'];
                 $filemime = mime_content_type($tmpname);
                 
                 $extension = pathinfo($filename, PATHINFO_EXTENSION);
                 /*Change automatically filename*/
                 $filename= time().'.'.$extension;
-                if(!array_key_exists(strtolower($extension), $allowed)) $response['error'] = "Erreur : Veuillez sélectionner un format de fichier valide.";
-                $maxsize = 5000000000;
-                if($filesize > $maxsize) $response['error'] = "Error: La taille du fichier est supérieure à la limite autorisée.";
+                if(!array_key_exists(strtolower($extension), SELF::Allowed)) $response['error'] = "Erreur : Veuillez sélectionner un format de fichier valide.";
+               
+                if($filesize > SELF::Maxsize) $response['error'] = "Error: La taille du fichier est supérieure à la limite autorisée.";
 
-                if(in_array($filemime, $allowed)){
+                if(in_array($filemime, SELF::Allowed)){
                     /* Check if file exist*/
-                    $location = "../public/assets/img/upload/" . $filename;
+                    $location = "assets/img/upload/" . $filename;
                     if(file_exists($location)){
                         $response['error'] = $filename . " existe déjà.";
                     } else{
-                        move_uploaded_file($_FILES["photo"]["tmp_name"], $location);
+                        move_uploaded_file($files->get('photo')["tmp_name"], $location);
                         $response['filepath'] = $location;
                         $response['filename'] = $filename;
                     } 
@@ -174,7 +173,7 @@ class BackController extends Controller
                     $response['error'] = "Error: Il y a eu un problème de téléchargement de votre fichier, ou votre fichier est invalide."; 
                 }
             }else {
-                if( $_FILES['photo']["error"]==1) {
+                if($files->get('photo')["error"]==1) {
                     $response['error'] = 'Fichier trop volumineux';
                 }else{
                     $response['error']= 'Veuillez ajouter un fichier valide';
@@ -209,7 +208,7 @@ class BackController extends Controller
             if($post->get('submit') || $post->get('save')){
                 $this->articleDAO->addArticle($post, $this->session->get('id'), $status, $category);
                 $this->session->set('addarticle','Article bien ajouté');
-                header('Location: ../public/index.php?route=administration');
+                header('Location: index.php?route=administration');
                 exit();
             }
             
@@ -267,7 +266,7 @@ class BackController extends Controller
                     }
                     $this->articleDAO->updateArticle($post, $articleId, $status);
                     $this->session->set('updatearticle', $session);
-                    header('Location: ../public/index.php?route=administration');
+                    header('Location: index.php?route=administration');
                     exit(); 
                 }
                 return $this->view->render('updatearticle', [
@@ -283,18 +282,16 @@ class BackController extends Controller
     } 
     
     /* For change picture on profil*/
-    public function fileUpload($post)
+    public function fileUpload($post, $files)
     {   
         if($this->checkIfLoggedIn())
         {
-            if(isset($_FILES['photo'])){
+            if(isset($files)){
             
-                if($_FILES['photo'] && $_FILES['photo'] ["error"] == 0 ){
-                    $allowed = array("jpg" => "image/jpg", "jpeg" => "image/jpeg", "gif" => "image/gif", "png" => "image/png");
-                    $filename = htmlspecialchars($_FILES["photo"]["name"]);
-                    $filetype = $_FILES["photo"]["type"];
-                    $filesize = $_FILES["photo"]["size"];
-                    $tmpname= $_FILES['photo']['tmp_name'];
+                if($files->get('photo') && $files->get('photo')["error"] == 0 ){
+                    $filename = htmlspecialchars($files->get('photo')["name"]);
+                    $filesize = $files->get('photo')["size"];
+                    $tmpname= $files->get('photo')['tmp_name'];
                     $filemime = mime_content_type($tmpname);
                 
                     $extension = pathinfo($filename, PATHINFO_EXTENSION);
@@ -302,17 +299,16 @@ class BackController extends Controller
                     /*Automatically Change filename*/
                     $filename= time().'.'.$extension;
                     /*Check file extension*/
-                    if(!array_key_exists(strtolower($extension), $allowed)) echo "Erreur : Veuillez sélectionner un format de fichier valide.";
+                    if(!array_key_exists(strtolower($extension), SELF::Allowed)) echo "Erreur : Veuillez sélectionner un format de fichier valide.";
                     /*Check file size*/
-                    $maxsize = 5000000000;
-                    if($filesize > $maxsize) echo "Error: La taille du fichier est supérieure à la limite autorisée.";
+                    if($filesize > SELF::Maxsize) echo "Error: La taille du fichier est supérieure à la limite autorisée.";
                     /*check Filemime type*/
-                    if(in_array($filemime, $allowed)){
+                    if(in_array($filemime, SELF::Allowed)){
                         /*Check if file exist.*/
-                        if(file_exists("../public/assets/img/upload/" . $filename)){
-                            echo $_FILES["photo"]["name"] . " existe déjà.";
+                        if(file_exists("assets/img/upload/" . $filename)){
+                            echo $files->get('photo')["name"] . " existe déjà.";
                         } else{
-                            move_uploaded_file($_FILES["photo"]["tmp_name"], "../public/assets/img/upload/" . $filename);
+                            move_uploaded_file($files->get('photo')["tmp_name"], "assets/img/upload/" . $filename);
                             /*save name in database*/
                             $this->userDAO->uploadPicture($this->session->get('mail'), $filename);
 
@@ -346,7 +342,7 @@ class BackController extends Controller
                 $this->session->set('delete_article','Suppression impossible');
             }
 
-            header('Location: ../public/index.php?route=administration');
+            header('Location: index.php?route=administration');
             exit();
         }
         
@@ -431,7 +427,7 @@ class BackController extends Controller
                 $category = 3;
                 $this->eventDAO->addEvent($post, $this->session->get('id'), $status, $category);
                 $this->session->set('addevent','Article bien ajouté');
-                header('Location: ../public/index.php?route=admintraining');
+                header('Location: index.php?route=admintraining');
                 exit();
             }
             
@@ -516,7 +512,7 @@ class BackController extends Controller
                 $this->session->set('delete_event','Suppression impossible');
             }
 
-            header('Location: ../public/index.php?route=admintraining');
+            header('Location: index.php?route=admintraining');
             exit();
         }
     }
@@ -542,7 +538,7 @@ class BackController extends Controller
                 
                     $this->eventDAO->updateEvent($post, $eventId, $status);
                     $this->session->set('updateevent', $session);
-                    header('Location: ../public/index.php?route=admintraining');
+                    header('Location: index.php?route=admintraining');
                     exit(); 
             }else{
                  
@@ -558,41 +554,38 @@ class BackController extends Controller
      } 
 
     /*Add article after preview validation*/
-    public function addUser(Parameter $post)
+    public function addUser(Parameter $post, $files)
     {   
         if($this->checkIfAdmin())
         {
-            if(isset($_FILES['photo'])){
-                if($_FILES['photo'] && $_FILES['photo']["error"] == 0 ){
-                    $allowed = array("jpg" => "image/jpg", "jpeg" => "image/jpeg", "gif" => "image/gif", "png" => "image/png");
-                    $filename = $_FILES["photo"]["name"];
-                    $filetype = $_FILES["photo"]["type"];
-                    $filesize = $_FILES["photo"]["size"];
-                    $tmpname= $_FILES['photo']['tmp_name'];
+            if(isset($files)){
+                if($files->get('photo') && $files->get('photo')["error"] == 0 ){
+                    $filename = $files->get('photo')["name"];
+                    $filesize = $files->get('photo')["size"];
+                    $tmpname = $files->get('photo')['tmp_name'];
                     $filemime = mime_content_type($tmpname);
 
                     $extension = pathinfo($filename, PATHINFO_EXTENSION);
                     /*Automatically Change filename*/
                     $filename= time().'.'.$extension;
-                    if(!array_key_exists(strtolower($extension), $allowed))
+                    if(!array_key_exists(strtolower($extension), SELF::Allowed))
                     {
                         echo "Erreur : Veuillez sélectionner un format de fichier valide.";
                         exit();
                     } 
-                    $maxsize = 5000000000;
-                    if($filesize > $maxsize)
+                    if($filesize > SELF::Maxsize)
                     {
                         echo "Error: La taille du fichier est supérieure à la limite autorisée.";
                         exit();
                     } 
 
-                    if(in_array($filemime, $allowed)){
+                    if(in_array($filemime, SELF::Allowed)){
                         /*Check if file exist.*/
                         if(file_exists("assets/img/upload/" . $filename)){
-                            echo $_FILES["photo"]["name"] . " existe déjà.";
+                            echo $files->get('photo')["name"] . " existe déjà.";
                             exit();
                         } else{
-                            move_uploaded_file($_FILES["photo"]["tmp_name"], "assets/img/upload/" . $filename);
+                            move_uploaded_file($files->get('photo')["tmp_name"], "assets/img/upload/" . $filename);
                             echo "Votre fichier a été téléchargé avec succès."; 
                         } 
                     } else{
@@ -629,7 +622,7 @@ class BackController extends Controller
                 if($post->get('submit') || $post->get('save')){
                     $this->userDAO->addUser($post, $function, $filename, $role);
                     $this->session->set('adduser','Utilisateur bien ajouté');
-                    header('Location: ../public/index.php?route=adminmembers');
+                    header('Location: index.php?route=adminmembers');
                     exit();
                 }
 
@@ -656,7 +649,7 @@ class BackController extends Controller
                 $this->session->set('delete_user','Suppression impossible');
             }
 
-            header('Location: ../public/index.php?route=adminmembers');
+            header('Location: index.php?route=adminmembers');
             exit();
         } 
     }
@@ -755,7 +748,7 @@ class BackController extends Controller
     {
         if(!$this->session->get('id')) {
             $this->session->set('not_login', 'Vous devez vous connecter pour accéder à cette page');
-            header('Location: ../public/index.php?route=login');
+            header('Location: index.php?route=login');
         } else {
             return true;
         }
@@ -766,7 +759,7 @@ class BackController extends Controller
         $this->checkIfLoggedIn();
         if(!($this->session->get('law') >= 80)) {
             $this->session->set('not_admin', 'Vous n\'avez pas les droits pour accéder à cette page');
-            header('Location: ../public/index.php?route=administration');
+            header('Location: index.php?route=administration');
         } else {
             return true;
         }
