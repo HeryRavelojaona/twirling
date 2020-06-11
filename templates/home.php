@@ -2,45 +2,45 @@
 <!-- ======= Hero Section ======= -->
 <?php include 'homeNavbar.php';?>
 <section id="hero" class="align-items-center">
-        <div class="container fade-up">
-          <img src="https://www.gifsanimes.com/data/media/1622/twirling-baton-image-animee-0003.gif" alt="twirling-baton-image-animee-0003" class="gif-baton fade-right " />
-          <h1>Twirling-bâton<br/>Fontenay-sous-bois</h1>
-          <h2>Les panthères de Fontenay vous souhaitent la bienvenue <br/>
-            <?= $this->session->show('login'); ?>
-            <?= $this->session->show('logout'); ?>
-          </h2>
-        </div>
-      </section><!-- End Hero -->
-
-    <!-- ======= Actuality Section ======= -->
-    <section id="Actuality" class="actuality">
-      <div class="container">
-          <div class="section-title">
-              <span>Dernières</span>
-              <h2>Actualités</h2>
-          </div>
-          <div class="row">
-        <?php
-            foreach ($articles as $article)
-            {
-        ?>
-              <div class="col-lg-6 fade-up">
-                  <div class="box">
-                      <a class=" actuality-click" href="index.php?route=article&articleId=<?= htmlspecialchars($article->getId());?>">
-                        <img src="assets/img/upload/<?= htmlspecialchars($article->getFileName());?>" class="actuality-img" alt="photo actualité">
-                        <?php $date = new DateTimeFrench($article->getCreatedAt()); ?>
-                        <span class="actuality-date">Publié le <?= htmlspecialchars($date->format('d-F-Y'));?></span>
-                        <h4><?= htmlspecialchars($article->getTitle());?></h4>
-                        <div><?= $article->getContent();?></div>
-                        <p class="read-more">Lire la suite...</p>
-                      </a>
-                  </div>
-              </div>
-        <?php
-        }
-        ?>
-          </div>
+      <div class="container fade-up">
+        <img src="https://www.gifsanimes.com/data/media/1622/twirling-baton-image-animee-0003.gif" alt="twirling-baton-image-animee-0003" class="gif-baton fade-right " />
+        <h1>Twirling-bâton<br/>Fontenay-sous-bois</h1>
+        <h2>Les panthères de Fontenay vous souhaitent la bienvenue <br/>
+          <?= $this->session->show('login'); ?>
+          <?= $this->session->show('logout'); ?>
+        </h2>
       </div>
+</section><!-- End Hero -->
+
+<!-- ======= Actuality Section ======= -->
+<section id="Actuality" class="actuality">
+  <div class="container">
+      <div class="section-title">
+          <span>Dernières</span>
+          <h2>Actualités</h2>
+      </div>
+      <div class="row">
+    <?php
+        foreach ($articles as $article)
+        {
+    ?>
+          <div class="col-lg-6 fade-up">
+              <div class="box">
+                  <a class=" actuality-click" href="index.php?route=article&articleId=<?= htmlspecialchars($article->getId());?>">
+                    <img src="assets/img/upload/<?= htmlspecialchars($article->getFileName());?>" class="actuality-img" alt="photo actualité">
+                    <?php $date = new DateTimeFrench($article->getCreatedAt()); ?>
+                    <span class="actuality-date">Publié le <?= htmlspecialchars($date->format('d-F-Y'));?></span>
+                    <h4><?= htmlspecialchars($article->getTitle());?></h4>
+                    <div><?= $article->getContent();?></div>
+                    <p class="read-more">Lire la suite...</p>
+                  </a>
+              </div>
+          </div>
+    <?php
+    }
+    ?>
+      </div>
+    </div>
   </section><!-- End Actuality Section -->
 
   <!-- ======= About Section ======= -->
@@ -135,8 +135,13 @@
   </section><!-- End Services Section -->
 
 <!-- ======= Info Section ======= -->
-<section id="Info">
+
+<section id="info">
   <div class="container">
+        <div class="section-title">
+            <span>Informations</span>
+            <h2>Informations</h2>
+        </div>
 
       <div class="row d-flex align-items-center fade-left">
           <img src="assets/img/danseuse.png" alt="twirling-baton" class="gif fade-up"/>

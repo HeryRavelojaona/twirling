@@ -12,7 +12,7 @@
       <!--Favicons-->
       <link href="assets/img/favicon.ico" rel="icon">
       <!--Google Fonts-->
-      <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet" type="text/css">
+      <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i&family=Raleway:300,300i,400,400i,500,500i,600,600i,700,700i&family=Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet" type="text/css">
       <!--fontawesome CDN-->
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
       <!--Boostrapd CSS CDN-->
@@ -51,10 +51,8 @@ crossorigin="anonymous"></script>
 <script src="assets/js/Contact_form.js"></script>
 <script src="assets/js/Form_ajax.js"></script>
 <script src="assets/js/main.js"></script>
-        
-</body>
-<!-- ======= Footer ======= -->
-<footer>
+
+   <footer>
   <a href="#" class="back-to-top"><i class="fas fa-arrow-up"></i></a>
   <div class="container">
       <div class="copyright">
@@ -67,5 +65,8 @@ crossorigin="anonymous"></script>
       <a href="index.php?route=mentionlegale">Mentions légales</a>
       </div>
   </div>
-</footer><!-- End Footer -->
+</footer><!-- End Footer -->     
+</body>
+<!-- ======= Footer ======= -->
+
 </html>

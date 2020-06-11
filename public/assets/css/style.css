@@ -321,18 +321,18 @@ Read-more
   text-align: center;
 }
 
-#Info {
+#info {
   background: #f2f2f2;
   padding: 15px 0;
   text-align: center;
 }
 
-#Info .categories{
+#info .categories{
   border-top: 1px solid #281EA7;
 }
 
-#Info .tarif-info,
-#Info .category-info {
+#info .tarif-info,
+#info .category-info {
   font-weight: bold;
   color: #CF0A56;
 

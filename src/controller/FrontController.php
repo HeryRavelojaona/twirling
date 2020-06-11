@@ -102,7 +102,7 @@ class FrontController extends Controller
                     $this->session->set('law', $result['result']['law']);
                     $this->session->set('status', $result['result']['status']);
                     $this->session->set('filename', $result['result']['filename']);
-                    header('Location: ../public/index.php');
+                    header('Location: index.php');
                     exit();
                 }
                 else {
@@ -123,7 +123,7 @@ class FrontController extends Controller
         $this->session->stop();
         $this->session->start();
         $this->session->set('logout', 'Vous êtes déconnecter');
-        header('Location: ../public/index.php');
+        header('Location: index.php');
         exit();
     }
 
