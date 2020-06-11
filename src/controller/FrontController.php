@@ -161,15 +161,16 @@ class FrontController extends Controller
 
     /*contact*/
     public function contact(Parameter $post)
-    {              
-        $res = array('success'=>false,'errors'=>'');
+    {     
+        if(isset($post)){
+             $res = array('success'=>false,'errors'=>'');
         $res['errors']= $this->validation->validate($post, 'contact');
-        if(!$res['errors']){
-            $res['success']= true;
-            $this->mailing->contact($post);
-        }
-        echo json_encode($res) ;
-         
+            if(!$res['errors']){
+                $res['success']= true;
+                $this->mailing->contact($post);
+            }
+         echo json_encode($res) ;
+        };
     }
   
 }

@@ -269,7 +269,6 @@
             <div class="col-lg-6 map">
                 <iframe class="mb-4 mb-lg-0 google-map" src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d10500.752352180461!2d2.477525011060456!3d48.85462365521368!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sGymnase%20salvador%20allende%2094120!5e0!3m2!1sfr!2sfr!4v1589540536859!5m2!1sfr!2sfr" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
             </div>
-
             <div class="col-lg-6">
               <form action="#" method="post" class="email-form" id="contact_form">
                 <div class="form-row">

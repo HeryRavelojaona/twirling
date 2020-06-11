@@ -14,7 +14,7 @@ class Contact {
 
         $(element).submit(function(e){
             e.preventDefault();
-  
+
             let fileData = $(element).serialize();
             $.ajax({
                 type: "POST",
@@ -37,7 +37,7 @@ class Contact {
                         $(".error-content").html(response.errors.message);  
                     }
                 }
-            })
+            })  
         })
     }
 }
