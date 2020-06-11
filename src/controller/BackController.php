@@ -11,14 +11,20 @@ class BackController extends Controller
     const Maxsize = 5000000000;
     const Repository = "assets/img/upload/"; 
 
+    /*Const for status*/
+    const Publish = 1;
+    const Unpublish = 0;
+
+    /*Const for category*/
+    const Actuality = 1;
+    const Story = 2;
+    const Training = 3;
+
     public function admin()
     {
         if($this->checkIfLoggedIn())
         {
-            /*$category = 1 if is for actuality*/
-            $category = 1;
-            $articles = $this->articleDAO->showArticles($category);
-
+            $articles = $this->articleDAO->showArticles(SELF::Actuality);
             /* Get user Name with is Id*/
             foreach($articles as $article){
                 $userId = $article->getUserId();
@@ -91,8 +97,7 @@ class BackController extends Controller
     {
         if($this->checkIfLoggedIn())
         {
-            /*$category = 3 For training event*/
-            $events = $this->eventDAO->showEvents(3);
+            $events = $this->eventDAO->showEvents(SELF::Training);
             return $this->view->render('adminTraining',[
                 'events' => $events
             ]);
@@ -104,8 +109,7 @@ class BackController extends Controller
     {
         if($this->checkIfAdmin())
         {
-            $category = 2;
-            $articles = $this->articleDAO->showArticles($category);
+            $articles = $this->articleDAO->showArticles(SELF::Story);
             /* Get user Name with is Id*/
             foreach($articles as $article){
                 $userId = $article->getUserId();
@@ -114,8 +118,7 @@ class BackController extends Controller
             }
 
             /*Story article*/
-            $category = 2;
-            $stories = $this->articleDAO->showArticles($category);
+            $stories = $this->articleDAO->showArticles(SELF::Story);
             return $this->view->render('adminstory',[
                 'stories' => $stories,
                 'usersName' => $usersName
@@ -190,23 +193,23 @@ class BackController extends Controller
     {   
         if($this->checkIfLoggedIn())
         {
-            /* If $status = 1 article is published else if =0 is save*/
-            if($post->get('submit')) {
-                $status = 1;
-            }
-            if($post->get('save')){
-                $status = 0;
-            }
             /*category choice*/
             if($post->get('choice')== 'actuality'){
-                $category = 1;
+                $category = SELF::Actuality;
             }
             if($post->get('choice')== 'story'){
-                $category = 2;
+                $category = SELF::Story;
             }
 
             if($post->get('submit') || $post->get('save')){
-                $this->articleDAO->addArticle($post, $this->session->get('id'), $status, $category);
+                if($post->get('submit'))
+                {
+                    $this->articleDAO->addArticle($post, $this->session->get('id'), SELF::Publish, $category);
+                }
+                if($post->get('save'))
+                {
+                    $this->articleDAO->addArticle($post, $this->session->get('id'), SELF::Unpublish, $category);
+                }
                 $this->session->set('addarticle','Article bien ajouté');
                 header('Location: index.php?route=administration');
                 exit();
@@ -215,7 +218,6 @@ class BackController extends Controller
             return $this->view->render('addarticle');
         }
     }
-
 
     /*-------
     Update and change password With an Ajax Call
@@ -257,14 +259,14 @@ class BackController extends Controller
                 $errors = $this->validation->validate($post, 'updateArticle');
                 if(!$errors){
                     if($post->get('save')){
-                        $status = 0;
+                        $this->articleDAO->updateArticle($post, $articleId, SELF::Unpublish);
                         $session = 'Article mis à jour et bien enregistrer';
                     }
                     elseif($post->get('submit')){
-                        $status = 1;
+                        $this->articleDAO->updateArticle($post, $articleId, SELF::Publish);
                         $session = 'Article mis à jour et publié';
                     }
-                    $this->articleDAO->updateArticle($post, $articleId, $status);
+
                     $this->session->set('updatearticle', $session);
                     header('Location: index.php?route=administration');
                     exit(); 
@@ -355,13 +357,11 @@ class BackController extends Controller
             if($get->get('articleId')){
                 $articleId= $get->get('articleId');
                 if($get->get('action') === 'Article publié'){
-                    $status = 0;
-                    $this->articleDAO->publishOrnotArticle($articleId, $status);
+                    $this->articleDAO->publishOrnotArticle($articleId, SELF::Unpublish);
                     $this->session->set('status_article', 'Votre article a bien été retiré');
                 }
                 if($get->get('action') === 'Brouillon'){
-                    $status = 1;
-                    $this->articleDAO->publishOrnotArticle($articleId, $status);
+                    $this->articleDAO->publishOrnotArticle($articleId, SELF::Publish);
                     $this->session->set('status_article', 'Votre article a bien été publié');
                 }
                 header('Location: index.php?route=administration');
@@ -373,13 +373,11 @@ class BackController extends Controller
             
                 $eventId= $get->get('eventId');
                 if($get->get('action') === 'Article publié'){
-                    $status = 0;
-                    $this->eventDAO->publishOrnotEvent($eventId, $status);
+                    $this->eventDAO->publishOrnotEvent($eventId, SELF::Unpublish);
                     $this->session->set('status_event', 'Votre article a bien été retiré');
                 }
                 if($get->get('action') === 'Brouillon'){
-                    $status = 1;
-                    $this->eventDAO->publishOrnotEvent($eventId, $status);
+                    $this->eventDAO->publishOrnotEvent($eventId, SELF::Publish);
                     $this->session->set('status_event', 'Votre article a bien été publié');
                 }
                 header('Location: index.php?route=admintraining');
@@ -389,14 +387,11 @@ class BackController extends Controller
             if($get->get('userId')){
                 $userId= $get->get('userId');
                 if($get->get('action') == 'Visible'){
-                    $visible = 0;
-                    $this->userDAO->updateVisibility($userId, $visible);
-                    
+                    $this->userDAO->updateVisibility($userId, SELF::Unpublish);
                     $this->session->set('status_user', 'Le membre a bien été retiré');
                 }
                 if($get->get('action') == 'Non visible'){
-                    $visible = 1;
-                    $this->userDAO->updateVisibility($userId, $visible);
+                    $this->userDAO->updateVisibility($userId, SELF::Publish);
                     $this->session->set('status_user', 'Le membre a bien été publié');
                 }
             
@@ -415,16 +410,14 @@ class BackController extends Controller
         {
             /* If $status = 1 article is published else if =0 is save*/
             if($post->get('submit')) {
-            $status = 1;
+            $status = SELF::Publish;
             }
             if($post->get('save')){
-                $status = 0;
+                $status = SELF::Unpublish;
             }
 
             if($post->get('submit') || $post->get('save')){
-                /*$category = Training*/
-                $category = 3;
-                $this->eventDAO->addEvent($post, $this->session->get('id'), $status, $category);
+                $this->eventDAO->addEvent($post, $this->session->get('id'), $status, SELF::Training);
                 $this->session->set('addevent','Article bien ajouté');
                 header('Location: index.php?route=admintraining');
                 exit();
@@ -527,11 +520,11 @@ class BackController extends Controller
             }
             if($post->get('save') || $post->get('submit')) {
                     if($post->get('save')){
-                        $status = 0;
+                        $status = SELF::Unpublish;
                         $session = 'Evènement mis à jour et bien enregistrer';
                     }
                     elseif($post->get('submit')){
-                        $status = 1;
+                        $status = SELF::Publish;
                         $session = 'Evènement mis à jour et publié';
                     }
                 
@@ -539,18 +532,30 @@ class BackController extends Controller
                     $this->session->set('updateevent', $session);
                     header('Location: index.php?route=admintraining');
                     exit(); 
-            }else{
-                 
-                return $this->view->render('updateevent', [
-                    'event'=>$event,
-                ]);
+            }else{  
+                    return $this->view->render('updateevent', [
+                        'event'=>$event,
+                    ]);
             }
 
             return $this->view->render('updateevent', [
                 'event'=>$event,
             ]);   
         }
-     } 
+    }
+     
+    /*Return role*/
+    public function roleAndName($law)
+    {
+        if($law == 20){ $role = 'Bénévole';}
+        if($law == 40){ $role = 'Entraineur';}
+        if($law == 60){ $role = 'Trésorièr/e';}
+        if($law == 80){ $role = 'Secrétaire';}
+        if($law == 100){ $role = 'Président';}
+        elseif(empty($law)){$role = 'Adhérent';}
+
+        return $role;
+    }
 
     /*Add article after preview validation*/
     public function addUser(Parameter $post, $files)
@@ -612,12 +617,11 @@ class BackController extends Controller
                 }
 
                 /*UserRole and userLaw*/
-                if($post->get('role') == 20){ $role = 'Bénévole';}
-                if($post->get('role') == 40){ $role = 'Entraineur';}
-                if($post->get('role') == 60){ $role = 'Trésorièr/e';}
-                if($post->get('role') == 80){ $role = 'Secrétaire';}
-                if($post->get('role') == 100){ $role = 'Président';}
-                else{$role = 'Adhérent';}
+                if($post->get('role'))
+                {
+                    $law = $post->get('role');
+                    $role = $this->roleAndName($law);
+                }
                 if($post->get('submit') || $post->get('save')){
                     $this->userDAO->addUser($post, $function, $filename, $role);
                     $this->session->set('adduser','Utilisateur bien ajouté');
@@ -645,7 +649,7 @@ class BackController extends Controller
                 $this->userDAO->deleteUser($userId);
                 $this->session->set('delete_user','Utilisateur bien supprimer');
             }else {
-                $this->session->set('delete_user','Suppression impossible');
+                    $this->session->set('delete_user','Suppression impossible');
             }
 
             header('Location: index.php?route=adminmembers');
