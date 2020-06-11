@@ -4,7 +4,7 @@
  */
 class Contact {
     constructor(){
-        this.sendMessage('#contact_form'); 
+        this.sendMessage("#contact_form"); 
     }
 
     /**
@@ -23,18 +23,18 @@ class Contact {
                 success: function (data) {
                     let response = JSON.parse(data);
                     if(response.success){
-                        $('.error-name').hide();
-                        $('.error-email').hide();
-                        $('.error-subject').hide();
-                        $('.error-content').hide();
-                        $('.contact #contact_sent').text('Message bien envoyé');
+                        $(".error-name").hide();
+                        $(".error-email").hide();
+                        $(".error-subject").hide();
+                        $(".error-content").hide();
+                        $(".contact #contact_sent").text("Message bien envoyé");
                         $(element)[0].reset();
                     }  
                     else {
-                        $('.error-name').html(response.errors.name);
-                        $('.error-email').html(response.errors.email);
-                        $('.error-subject').html(response.errors.subject);
-                        $('.error-content').html(response.errors.message);  
+                        $(".error-name").html(response.errors.name);
+                        $(".error-email").html(response.errors.email);
+                        $(".error-subject").html(response.errors.subject);
+                        $(".error-content").html(response.errors.message);  
                     }
                 }
             })

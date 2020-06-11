@@ -5,12 +5,12 @@
 *Pink color: #DB3575;
 */
 
-/*--------------------------------------------------------------
-# General
---------------------------------------------------------------*/
+
+/*-------------#General-------*/
+
 body {
   font-family: "Open Sans", sans-serif;
-  color: #444444;
+  color: #444;
 }
 
 a:hover {
@@ -18,11 +18,11 @@ a:hover {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: "Raleway", sans-serif;
+  font-family: "Raleway", "sans-serif";
 }
 
 /*--------------------------------------------------------------
-# Back to top button
+#Back-to-top-button
 --------------------------------------------------------------*/
 .back-to-top {
   position: fixed;
@@ -40,29 +40,29 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 24px;
   width: 40px;
   height: 40px;
-  background: #DB3575;
+  background: #db3575;
   color: #fff;
   transition: all 0.4s;
 }
 
 .back-to-top i:hover {
-  background:#FFBF61;
-  color: #DB3575;
+  background:#ffbf61;
+  color: #db3575;
 }
 
 /*--------------------------------------------------------------
 *
-/* Navigation Menu
+/* Navigation-Menu
 --------------------------------------------------------------*/
-/*Navigation */
+/*Navigation*/
 .navbar {
-  background: linear-gradient(to right,white, rgb(223, 54, 110) );
+  background: linear-gradient(to right,white, rgb(223, 54, 110));
   height: 60px;
 }
 
-.navbar-brand  {
+.navbar-brand {
   font-size: 28px !important;
-  color: #FFBF61 !important;
+  color: #ffbf61 !important;
   text-shadow: #000 3px 3px 3px;
   font-weight: 700;
   letter-spacing: 2px;
@@ -75,25 +75,25 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .navbar a {
-  color: #000 ;
+  color: #000;
   transition: 0.3s;
   font-size: 18px;
   font-family: "Raleway", sans-serif;
-  
 }
 
-.navbar > ul > li:hover, .navbar .active {
+.navbar > ul > li:hover,
+ .navbar .active {
   background: #fff !important;
 }
 
 .navbar .collapse {
-  background: rgba(255,255,255,0.9);
+  background: rgba(255, 255, 255, 0.9);
   border-radius: 5px;
 }
 
 .navbar .collapse a {
   text-align: center;
-  color:#191919 !important ;
+  color:#191919 !important;
 }
 
 .close-btn {
@@ -102,16 +102,13 @@ h1, h2, h3, h4, h5, h6 {
   
 
 /*--------------------------------------------------------------
-# Hero Section
+#Hero-Section
 --------------------------------------------------------------*/
 #hero {
   width: 100vw;
   margin-top: 60px;
   background-size: cover;
   position: relative;
-}
-
-#hero {
   text-align: center;
 }
 
@@ -135,7 +132,7 @@ h1, h2, h3, h4, h5, h6 {
 
 
 /*--------------------------------------------------------------
-# Sections General
+#Sections-General
 --------------------------------------------------------------*/
 section {
   padding: 60px 0 !important;
@@ -153,7 +150,6 @@ section {
 }
 
 .section-title h2 {
-  
   font-weight: 700;
   text-transform: uppercase;
   padding-bottom: 0;
@@ -184,19 +180,19 @@ section {
 }
 
 /*----------------------------
-Read-more
------------------------------*/
+Read-more--------------------*/
+
 .read-more {
-  color: #DB3575;
+  color: #db3575;
 }
+
 .read-more:hover {
-  color: #281EA7;
-
+  color: #281ea7;
 }
 
-/*--------------------------------------------------------------
-# Actuality
---------------------------------------------------------------*/
+/*---------------------
+#Actuality---------------*/
+
 .actuality {
   padding-top: 0;
   margin-bottom: 50px;
@@ -209,7 +205,7 @@ Read-more
 
 .actuality .box {
   text-align: center;
-  padding: 50px 0px;
+  padding: 50px 0;
   box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
   transition: all ease-in-out 0.3s;
   height: 500px;
@@ -226,35 +222,35 @@ Read-more
   font-weight: 600;
   padding: 0;
   margin: 20px 0;
-  color: #281EA7;
+  color: #281ea7;
 }
 
 .actuality .box p {
-  color: #aaaaaa;
+  color: #aaa;
   font-size: 15px;
   margin: 5px;
   padding: 0;
 }
 
 .actuality .box:hover {
-  background: #FFBF61;
+  background: #ffbf61;
   padding: 30px 0;
   box-shadow: 10px 15px 30px rgba(0, 0, 0, 0.18);
 }
 
 .actuality .article-box:hover {
-  background: #ffffff;
+  background: #fff;
 }
 
 .actuality .box:hover h4 {
-  color: #DB3575;
+  color: #db3575;
 }
 
 .actuality .box:hover span,
 .actuality .box:hover p {
-  /*color: #fff;*/
   color: #316BA4;
 }
+
 .page {
   display: flex;
   justify-content: center;
@@ -262,12 +258,12 @@ Read-more
 
 .page li a {
   margin: 0 5px;
-  color: #DB3575;
+  color: #db3575;
 }
 
 .page li a:hover {
   font-weight: bold;
-  color: #316BA4;
+  color: #316ba4;
 }
 
 .article-return {
@@ -275,12 +271,12 @@ Read-more
 }
 
 .article-return .return {
-  background: #DB3575;
+  background: #db3575;
 }
 
 
 /*--------------------------------------------------------------
-# About
+#About
 --------------------------------------------------------------*/
 .about .content h3 {
   font-weight: 600;
@@ -294,13 +290,13 @@ Read-more
 
 .about .content ul li {
   padding-bottom: 10px;
-  color:#281EA7;
+  color:#281ea7;
 }
 
 .about .content ul i {
   font-size: 20px;
   padding-right: 4px;
-  color: #FFBF61;
+  color: #ffbf61;
 }
 
 .about .content p:last-child {
@@ -311,10 +307,8 @@ Read-more
   width: 100%;
 }
 
+/*-------#Info-----------------*/
 
-/*--------------------------------------------------------------
-# Info
---------------------------------------------------------------*/
 .info {
   background: #f2f2f2;
   padding: 15px 0;
@@ -328,14 +322,13 @@ Read-more
 }
 
 #info .categories{
-  border-top: 1px solid #281EA7;
+  border-top: 1px solid #281ea7;
 }
 
 #info .tarif-info,
 #info .category-info {
   font-weight: bold;
-  color: #CF0A56;
-
+  color: #cf0a56;
 }
 
 .gif {
@@ -347,7 +340,7 @@ Read-more
 }
 
 /*--------------------------------------------------------------
-# Services
+#Services
 --------------------------------------------------------------*/
 .services .icon-box {
   text-align: center;
@@ -377,7 +370,7 @@ Read-more
 
 
 /*--------------------------------------------------------------
-# Story
+#Story
 --------------------------------------------------------------*/
 .story {
   margin: 0 auto;
@@ -389,7 +382,7 @@ Read-more
 .story .story-item .story-info {
   opacity: 1;
   position: relative;
-  border: 1px solid #DB3575;
+  border: 1px solid #db3575;
   border-radius: 3px;
   box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.1);
   bottom: 10px;
@@ -403,7 +396,6 @@ Read-more
   position: relative;
   left: 50%;
   transform: translateX(-50%);
-
 }
 
 .story-img {
@@ -418,7 +410,6 @@ Read-more
   position: relative;
   left: 50%;
   transform: translateX(-50%);
-  
 }
 
 .text-hommage h4,
@@ -431,7 +422,7 @@ Read-more
 .story .story-item .story-info h4 {
   font-size: 18px;
   font-weight: 600;
-  color: #281EA7;
+  color: #281ea7;
 }
 
 .story .story-item .story-info p {
@@ -440,13 +431,13 @@ Read-more
   margin-bottom: 0;
 }
 
-
 /*--------------------------------------------------------------
-# Training
+#Training
 --------------------------------------------------------------*/
 #Training {
   min-height: 85vh;
 }
+
 .training .box {
   padding: 20px;
   background: #f9f9f9;
@@ -463,11 +454,10 @@ Read-more
   text-transform: uppercase;
   font-weight: 700;
   color: #191919;
-
 }
 
 .training .box h4 {
-  color: #DB3575;
+  color: #db3575;
   font-weight: 500;
   font-family: "Open Sans", sans-serif;
   margin-bottom: 20px;
@@ -486,7 +476,7 @@ Read-more
 }
 
 .training .training-date {
-  color: #281EA7;
+  color: #281ea7;
 }
 
 .training .box ul {
@@ -568,7 +558,7 @@ Read-more
 }
 
 /*--------------------------------------------------------------
-# Team
+#Team
 --------------------------------------------------------------*/
 .team .member {
   text-align: center;
@@ -606,7 +596,7 @@ Read-more
 }
 
 /*--------------------------------------------------------------
-# Contact
+#Contact
 --------------------------------------------------------------*/
 .contact .info-box {
   color: #444444;
@@ -622,15 +612,15 @@ Read-more
 
 .contact .info-box i {
   font-size: 32px;
-  color: #FFBF61;
+  color: #ffbf61;
   border-radius: 50%;
   padding: 8px;
-  border: 2px dotted #DB3575;
+  border: 2px dotted #db3575;
 }
 
 .contact .info-box h3 {
   font-size: 20px;
-  color: #777777;
+  color: #777;
   font-weight: 700;
   margin: 10px 0;
 }
@@ -640,7 +630,7 @@ Read-more
   line-height: 24px;
   font-size: 14px;
   margin-bottom: 0;
-  color: #281EA7;
+  color: #281ea7;
 }
 
 .contact .map {
@@ -668,7 +658,6 @@ Read-more
   margin-bottom: 10px;
 }
 
-
 .contact .email-form input, .contact .email-form textarea {
   border-radius: 0;
   box-shadow: none;
@@ -687,17 +676,17 @@ Read-more
   border: 0;
   padding: 10px 24px;
   transition: 0.4s;
-  background: #DB3575;
+  background: #db3575;
   color: #fff;
 }
 
 .contact .email-form button[type="submit"]:hover {
-  color: #316BA4;
-  background: #FFBF61;
+  color: #316ba4;
+  background: #ffbf61;
 }
 
 /*--------------------------------------------------------------
-# Footer
+#Footer
 --------------------------------------------------------------*/
 footer {
   background: #0c0c0c;
@@ -750,7 +739,7 @@ footer .footer-top .social-links a {
 }
 
 footer .footer-top .social-links a:hover {
-  background: #FFBF61;
+  background: #ffbf61;
   color: #fff;
   text-decoration: none;
 }
@@ -827,7 +816,7 @@ footer .credits a {
 }
 
 #forgot_pass{
-  background-color: #FFBF61;
+  background-color: #ffbf61;
   color: #fff;
 }
 

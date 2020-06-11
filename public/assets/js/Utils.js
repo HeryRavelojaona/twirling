@@ -6,17 +6,16 @@ class Utils {
     constructor(){
         this.btnClose(".navbar-toggler-icon");
         this.ArrowUp();
-        this.changeConfig('#openChangePrice', '#changePrice');
-        this.changeConfig('#openChangeAddress', '#changeAddress');
-        this.changeConfig('#openChangeEmail', '#changeEmail');
-        this.changeConfig('#openChangePhone', '#changePhone');
+        this.changeConfig("#openChangePrice", "#changePrice");
+        this.changeConfig("#openChangeAddress", "#changeAddress");
+        this.changeConfig("#openChangeEmail", "#changeEmail");
+        this.changeConfig("#openChangePhone", "#changePhone");
         this.responsiveSlider(576, 992);
         this.openForm();
         this.deleteArticle();
-        this.articleEditor('textarea.tiny');
-        this.selectRole('.category-choice');
+        this.articleEditor("textarea.tiny");
+        this.selectRole(".category-choice");
     }
-
 
     /**Tinymce Editarticle
     * @params element Selector
@@ -35,13 +34,13 @@ class Utils {
         const btnMenu =  $(listener);
 
         btnMenu.click(function(){
-            btnMenu.toggleClass('active');
+            btnMenu.toggleClass("active");
 
-            if (btnMenu.hasClass('active')) {
+            if (btnMenu.hasClass("active")) {
                 $(".collapse").fadeIn();
                 $(".close-btn").click(function(){
                     $(".collapse").fadeOut();
-                    btnMenu.removeClass('active');
+                    btnMenu.removeClass("active");
                 })
             }else {
                 $(".collapse").hide();
@@ -52,11 +51,11 @@ class Utils {
 
      /*Show and hide arrowUp at scroll*/
     ArrowUp() {
-        $(window).on('scroll',() =>{
+        $(window).on("scroll",() =>{
             if(window.scrollY >400){
-            $('.back-to-top').fadeIn();
+            $(".back-to-top").fadeIn();
             }else{
-                $('.back-to-top').fadeOut();
+                $(".back-to-top").fadeOut();
             }
          })
     }
@@ -74,7 +73,7 @@ class Utils {
 
     /*Change Hero Img*/
     responsiveSlider(mobileBreakpoint, desktopBreakpoint) {
-        let img = $('#hero');
+        let img = $("#hero");
         let screenSize = window.screen.width;
         this.mobileBreakpoint = mobileBreakpoint;
         this.desktopBreakpoint = desktopBreakpoint;
@@ -96,11 +95,10 @@ class Utils {
 
     /*part Change pass*/
     openForm() {
-      
-       $('.profile-changePass').hide();
+       $(".profile-changePass").hide();
         
-        $('.modif-pass').click(function(e){
-                $('.profile-changePass').toggle();
+        $(".modif-pass").click(function(e){
+                $(".profile-changePass").toggle();
         });
         
     }
@@ -108,17 +106,17 @@ class Utils {
     /*Open form Delete article on admin*/
     deleteArticle() {
         // Ask confirmation   
-        $('.check-delete').click(function(e){
+        $(".check-delete").click(function(e){
             e.preventDefault();
-            $('#' + e.target.dataset.deleteid).css('display','flex');
+            $("#" + e.target.dataset.deleteid).css("display","flex");
             $(this).hide();
         });
         
         // Cancel
-        $('.stop-delete').click(function(e) {
+        $(".stop-delete").click(function(e) {
             e.preventDefault();
-            $(e.target).closest('.control-delete').css('display','none');
-            $('.check-delete').show();
+            $(e.target).closest(".control-delete").css("display","none");
+            $(".check-delete").show();
         });  
     }
 
@@ -127,9 +125,9 @@ class Utils {
     */
     selectRole(element) {
         $(element).focusout(function(){
-                if($(this).val() == 'member'){
-                    $('.create-role').hide();
-                }else{$('.create-role').show();}
+                if($(this).val() == "member"){
+                    $(".create-role").hide();
+                }else{$(".create-role").show();}
             });
     }
 };

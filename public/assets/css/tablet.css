@@ -5,7 +5,6 @@
 #hero h1 {
     font-size: 32px !important;
     line-height: 36px;
- 
 }
 
 #hero{
@@ -17,7 +16,7 @@
     color: #eee;
     font-size: 28px !important;
     line-height: 34px;
-    margin-bottom: 0px;
+    margin-bottom: 0;
 }
 
 .section-title span {
@@ -31,7 +30,6 @@
 
 #footer .footer-top .footer-info {
     margin-bottom: 15px;
-
 }
 
 .team .member {

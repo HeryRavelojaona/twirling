@@ -9,7 +9,7 @@ $(document).ready(function() {
     const utils = new Utils();
 
     /*form*/
-    const form_ajax = new Form_ajax();
+    const form_ajax = new FormAjax();
     
     /*Contact_form*/
     const contact_ajax = new Contact();

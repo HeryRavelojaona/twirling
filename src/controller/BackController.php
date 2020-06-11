@@ -74,8 +74,7 @@ class BackController extends Controller
                 return $this->view->render('profile',[
                     'user'=>$user,
                     'picture'=>$picture
-                ]);
-                
+                ]);   
             }else
             {
                 $picture = $this->userDAO->getFile($this->session->get('mail'));
