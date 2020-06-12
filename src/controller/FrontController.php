@@ -4,8 +4,6 @@ namespace Spac\src\controller;
 
 use Spac\config\Parameter;
 
-
-
 class FrontController extends Controller
 {
 
@@ -36,7 +34,6 @@ class FrontController extends Controller
     public function mention()
     {
         return $this->view->render('mentionlegale');
-
     }
 
     public function article(Parameter $get)
@@ -156,7 +153,7 @@ class FrontController extends Controller
                 ]);
         }
      
-         $this->errorController->errorNotFound();
+        $this->errorController->errorNotFound();
     }
 
     /*contact*/

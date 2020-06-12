@@ -6,7 +6,7 @@
       <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
       <title><?= $title ?></title>
-      <meta content="Club de twirling bâton de Fontenay sous bois" name="descriptison">
+      <meta content="Club de twirling bâton de Fontenay sous bois" name="description">
       <meta content="twirling bâton, sport, fontenay sous bois" name="keywords">
       <link rel="canonical" href="https://spac.heryravelojaona.fr"/>
       <!--Favicons-->
@@ -19,12 +19,12 @@
       <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
       <!--Template Main CSS File-->
-        <!--feuille de style-->
-        <link rel="stylesheet" type="text/css" href="assets/css/reset.css"/> <!--reset_css-->
-        <link rel="stylesheet" type="text/css" href="assets/css/style.css"/><!--Mobile-first-->
-        <link rel="stylesheet" type="text/css" media="screen and (min-width: 576px)" href="assets/css/tablet.css"/><!--tablet-style-->
-        <link rel="stylesheet" type="text/css" media="screen and (min-width: 992px)" href="assets/css/desktop.css"/><!--desktop-style-->
-        <link rel="stylesheet" type="text/css" href="assets/admincss/adminCss.css"/>
+      <!--feuille de style-->
+      <link rel="stylesheet" type="text/css" href="assets/css/reset.css"/> <!--reset_css-->
+      <link rel="stylesheet" type="text/css" href="assets/css/style.css"/><!--Mobile-first-->
+      <link rel="stylesheet" type="text/css" media="screen and (min-width: 576px)" href="assets/css/tablet.css"/><!--tablet-style-->
+      <link rel="stylesheet" type="text/css" media="screen and (min-width: 992px)" href="assets/css/desktop.css"/><!--desktop-style-->
+      <link rel="stylesheet" type="text/css" href="assets/admincss/adminCss.css"/>
   </head>
 
   <body data-spy="scroll" data-target=".navbar" data-offset="60">

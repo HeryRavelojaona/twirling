@@ -5,7 +5,7 @@
 class Animation {
     constructor(){
         this.AnimationScroll();
-        this.smoothScroll();
+        this.smoothScroll(".navbar a");
     }
 
     //animation scrollReveal librarie
@@ -35,9 +35,11 @@ class Animation {
             duration: 5000 });
     }
 
-    /*smoothSrcoll*/
-    smoothScroll() {
-        $(".navbar a").on("click",function(event){
+    /**
+     * @param element Select element 
+     */
+    smoothScroll(element) {
+        $(element).on("click",function(event){
             let hash=this.hash;
             $("body,html").animate({scrollTop:$(hash).offset().top},900,function(){window.location.hash=hash;})
     

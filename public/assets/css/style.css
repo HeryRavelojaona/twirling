@@ -5,9 +5,7 @@
 *Pink color: #DB3575;
 */
 
-
 /*-------------#General-------*/
-
 body {
   font-family: "Open Sans", sans-serif;
   color: #444;
@@ -17,8 +15,13 @@ a:hover {
   text-decoration: none;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: "Raleway", "sans-serif";
+h1,
+h2,
+h3, 
+h4, 
+h5, 
+h6 {
+  font-family: "Raleway", sans-serif;
 }
 
 /*--------------------------------------------------------------
@@ -46,14 +49,10 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .back-to-top i:hover {
-  background:#ffbf61;
+  background: #ffbf61;
   color: #db3575;
 }
 
-/*--------------------------------------------------------------
-*
-/* Navigation-Menu
---------------------------------------------------------------*/
 /*Navigation*/
 .navbar {
   background: linear-gradient(to right,white, rgb(223, 54, 110));
@@ -82,7 +81,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .navbar > ul > li:hover,
- .navbar .active {
+.navbar .active {
   background: #fff !important;
 }
 
@@ -93,14 +92,13 @@ h1, h2, h3, h4, h5, h6 {
 
 .navbar .collapse a {
   text-align: center;
-  color:#191919 !important;
+  color: #191919 !important;
 }
 
 .close-btn {
   border-radius: 5px;
 }
   
-
 /*--------------------------------------------------------------
 #Hero-Section
 --------------------------------------------------------------*/
@@ -129,7 +127,6 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 24px;
   margin-bottom: 30px;
 }
-
 
 /*--------------------------------------------------------------
 #Sections-General
@@ -206,7 +203,7 @@ Read-more--------------------*/
 .actuality .box {
   text-align: center;
   padding: 50px 0;
-  box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
   transition: all ease-in-out 0.3s;
   height: 500px;
   margin: 20px 0;
@@ -248,7 +245,7 @@ Read-more--------------------*/
 
 .actuality .box:hover span,
 .actuality .box:hover p {
-  color: #316BA4;
+  color: #316ba4;
 }
 
 .page {
@@ -274,7 +271,6 @@ Read-more--------------------*/
   background: #db3575;
 }
 
-
 /*--------------------------------------------------------------
 #About
 --------------------------------------------------------------*/
@@ -290,7 +286,7 @@ Read-more--------------------*/
 
 .about .content ul li {
   padding-bottom: 10px;
-  color:#281ea7;
+  color: #281ea7;
 }
 
 .about .content ul i {
@@ -321,7 +317,7 @@ Read-more--------------------*/
   text-align: center;
 }
 
-#info .categories{
+#info .categories {
   border-top: 1px solid #281ea7;
 }
 
@@ -368,13 +364,13 @@ Read-more--------------------*/
   margin-bottom: 0;
 }
 
-
 /*--------------------------------------------------------------
 #Story
 --------------------------------------------------------------*/
 .story {
   margin: 0 auto;
 }
+
 .story .story-item {
   margin-bottom: 30px;
 }
@@ -563,7 +559,7 @@ Read-more--------------------*/
 .team .member {
   text-align: center;
   margin-bottom: 20px;
-  box-shadow: 0px 0px 12px 0px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.1);
   padding: 30px 20px;
   background: #fff;
   width: 100%;
@@ -592,14 +588,14 @@ Read-more--------------------*/
   padding-top: 10px;
   font-size: 14px;
   font-style: italic;
-  color: #aaaaaa;
+  color: #aaa;
 }
 
 /*--------------------------------------------------------------
 #Contact
 --------------------------------------------------------------*/
 .contact .info-box {
-  color: #444444;
+  color: #444;
   text-align: center;
   box-shadow: 0 0 30px rgba(214, 215, 216, 0.6);
   padding: 20px 0 30px 0;
@@ -658,7 +654,8 @@ Read-more--------------------*/
   margin-bottom: 10px;
 }
 
-.contact .email-form input, .contact .email-form textarea {
+.contact .email-form input, 
+.contact .email-form textarea {
   border-radius: 0;
   box-shadow: none;
   font-size: 14px;

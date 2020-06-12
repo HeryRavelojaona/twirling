@@ -249,38 +249,42 @@ class BackController extends Controller
     /*Update article*/
     public function updateArticle(Parameter $post, $get)
     { 
-        if($this->checkIfLoggedIn())
+        if(!$this->checkIfLoggedIn())
         {
-            if($get->get('articleId')){
-                $articleId = $get->get('articleId');
-                $article = $this->articleDAO->showArticle($articleId);
-            }
-            if($post->get('save') || $post->get('submit')) {
-                $errors = $this->validation->validate($post, 'updateArticle');
-                if(!$errors){
-                    if($post->get('save')){
-                        $this->articleDAO->updateArticle($post, $articleId, SELF::Unpublish);
-                        $session = 'Article mis à jour et bien enregistrer';
-                    }
-                    elseif($post->get('submit')){
-                        $this->articleDAO->updateArticle($post, $articleId, SELF::Publish);
-                        $session = 'Article mis à jour et publié';
-                    }
-
-                    $this->session->set('updatearticle', $session);
-                    header('Location: index.php?route=administration');
-                    exit(); 
-                }
-                return $this->view->render('updatearticle', [
-                    'article'=>$article,
-                    'errors' => $errors
-                ]);
-            }
-
-            return $this->view->render('updatearticle', [
-                'article'=>$article,
-            ]); 
+            header('Location: index.php');
+            exit();
         }
+        $errors = 0;
+        if($post->get('save') || $post->get('submit')) {
+            $articleId = $get->get('articleId');
+            $errors = $this->validation->validate($post, 'updateArticle');
+            if(!$errors){
+                if($post->get('save')){
+                    $this->articleDAO->updateArticle($post, $articleId, SELF::Unpublish);
+                    $session = 'Article mis à jour et bien enregistrer';
+                }
+                elseif($post->get('submit')){
+                    $this->articleDAO->updateArticle($post, $articleId, SELF::Publish);
+                    $session = 'Article mis à jour et publié';
+                }
+
+                $this->session->set('updatearticle', $session);
+                header('Location: index.php?route=administration');
+                exit(); 
+            }
+        }
+
+        $article = $this->articleDAO->showArticle($get->get('articleId'));
+        if (!$article) {
+            header('Location: index.php');
+            exit();
+        }
+
+        return $this->view->render('updatearticle', [
+            'article'=>$article,
+            'errors' => $errors
+        ]);
+        
     } 
     
     /* For change picture on profil*/

@@ -16,7 +16,6 @@ class FormAjax {
 
     /**
      * Change user password
-     * @param element HTMLElement|string Element 
      */
     changePass() {
         $("#pass_validation").click(function(){
@@ -49,7 +48,7 @@ class FormAjax {
     {   /*open part form*/
         if($("#myModal").hide()){
             $("#openModal").click(function(){
-            $("#myModal").show();
+                $("#myModal").show();
             })
         }
         /*Reload Img on close part*/
@@ -82,6 +81,7 @@ class FormAjax {
      */
 
     addArticle() {
+        
         let validForm = true;
         /*Input title Validation*/
         $("#actualityTitle").focusout(function(e){
@@ -89,7 +89,9 @@ class FormAjax {
             if(title.length < 2){
                 $(".form-error").html("Veuillez remplir le champ titre avec minimum 2 charactères");
                 validForm = false;
-            }else{validForm = true;}   
+            } else {
+                validForm = true;
+            }   
         })
 
         /* Input content validation*/

@@ -41,12 +41,14 @@
                             <label for="title" class="col-lg-6 control-label">Titre</label>
                             <div class="col-lg-12">
                                 <input type="text" class="form-control" id="actualityTitle" name="title" value=" <?= htmlspecialchars($article->getTitle());?>">
+                                <div><?= isset($errors['title'])?$errors['title']:'';?></div>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="content" class="col-lg-6 control-label">Texte</label>
                             <div class="col-lg-12">
                                 <textarea class="form-control  tiny" id="actualityContent" name="content"><?= $article->getContent();?></textarea>
+                                <div><?= isset($errors['content'])?$errors['content']:'';?></div>
                             </div>
                         </div>  
                         <span class="form-error"></span>

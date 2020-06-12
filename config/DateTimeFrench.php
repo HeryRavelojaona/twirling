@@ -1,7 +1,7 @@
 
 <?php
-use DateTime;
-class DateTimeFrench extends DateTime 
+
+class DateTimeFrench extends Datetime 
 {
 
 	public function format($format='j M Y'){
