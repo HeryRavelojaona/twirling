@@ -1,9 +1,9 @@
 /* Navigation */
 
 .profil-img {
-    max-height: 80px;
-    position: relative;
-    margin: 0 auto;
+  max-height: 80px;
+  position: relative;
+  margin: 0 auto;
 }
 
 /* ---------------
@@ -11,120 +11,120 @@ Table
 ------------- */
 
 .admin-table {
-    text-align: center;
-    margin: 50px 0 ;
+  text-align: center;
+  margin: 50px 0;
 }
 
 .admin-table tr td {
-    border: 1px solid;
-    vertical-align: middle;
+  border: 1px solid;
+  vertical-align: middle;
 }
 
 .action-table {
-    max-width: 150px;
+  max-width: 150px;
 }
 
 .action-table .admin-btn {
-    color: #fff !important;
-    text-align: center;
+  color: #fff !important;
+  text-align: center;
 }
 
 .action-table a {
-    margin: 10px; 
+  margin: 10px; 
 }
 
 .admin-table .control-delete {
-    display: none;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
+  display: none;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
 }
 
 .thead-style {
-    color: #fff;
-    text-transform: uppercase;
-    font-weight: bold;
-    background-color: #db3575;
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: bold;
+  background-color: #db3575;
 }
 
 /* Actuality
 --------------------------------------------------------------*/
 #main {
-    padding-top: 60px;
+  padding-top: 60px;
 }
 
 .message-for-all {
-    text-align: center;
+  text-align: center;
 }
 
 .text-message-for-all {
-    color: #fff !important;
-    padding: 15px;
+  color: #fff !important;
+  padding: 15px;
 }
 
 .text-message-for-all i {
-    margin: 0 10px;
-    font-size: 30px;
+  margin: 0 10px;
+  font-size: 30px;
 }
 
 .actuality-admin {
-    margin: 30px 0;
+  margin: 30px 0;
 }
 
 .admin-box .action .btn {
-    margin: 10px 0;
+  margin: 10px 0;
 }
 
 #changePrice,
 #changeAddress,
 #changeEmail,
 #changePhone {
-    display: none;
-    margin: 10px 0;
+  display: none;
+  margin: 10px 0;
 }
 
 /* -----------------------------
 Profile-part
 -------------------------------- */
 .profile {
-    text-align: center;
-    margin-top: 100px;
-    height: 90vh;
-    box-shadow: 0 0 30px rgba(214, 215, 216, 0.6);
+  text-align: center;
+  margin-top: 100px;
+  height: 90vh;
+  box-shadow: 0 0 30px rgba(214, 215, 216, 0.6);
 }
 
 .profile-content {
-    margin :10px 0;
+  margin :10px 0;
 }
 
 .profile-changePass {
-    box-shadow: 0 0 30px rgba(214, 215, 216, 0.6);
-    margin: 20px;
+  box-shadow: 0 0 30px rgba(214, 215, 216, 0.6);
+  margin: 20px;
 }
 
 .profile-changePass input {
-    text-align: center;
+  text-align: center;
 }
 
 #myModal {
-    text-align: center;
-    width: 320px;
-    height: 250px;
-    border: 1px solid #281ea7;
-    box-shadow: 0 0 30px rgba(214, 215, 216, 0.6);
-    border-radius: 3px;
-    background-color: #fff;
-    display: none;
-    position: fixed;
-    z-index: 9999;
-    left: 50%;
-    transform: translateX(-50%);
-    top: 20%;
+  text-align: center;
+  width: 320px;
+  height: 250px;
+  border: 1px solid #281ea7;
+  box-shadow: 0 0 30px rgba(214, 215, 216, 0.6);
+  border-radius: 3px;
+  background-color: #fff;
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 20%;
 }
 
 #openModal {
-    max-height: 200px;
-    border: none;
-    border-radius: 10px;
+  max-height: 200px;
+  border: none;
+  border-radius: 10px;
 }
 
 /* --------------
@@ -132,68 +132,68 @@ AddArticle
 -------------- */
 
 .addarticlebox textarea{
-    height:250px;
+  height:250px;
 }
 
 .addarticlebox {
-    height: auto !important;
+  height: auto !important;
 }
 
 .return-btn {
-    margin-top: 50px;
-    text-align: center;
-    width: 100%;
+  margin-top: 50px;
+  text-align: center;
+  width: 100%;
 }
 
 .return-btn .btn-info {
-    border: none;
-    background-color: rgb(223, 54, 110);
+  border: none;
+  background-color: rgb(223, 54, 110);
 }
 
 .actuality .preview {
-    display: none;
+  display: none;
 }
 
 #savecontent {
-    visibility: hidden;
+  visibility: hidden;
 }
 
 .action {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
 
 .action .btn {
-    text-align: center;
-    width: 120px;
+  text-align: center;
+  width: 120px;
 }
 
 /* -----------------
 Delete article
 ----------------- */
 .admin-box .action .response-message {
-    font-size: 1em;
+  font-size: 1em;
 }
 
 /* ----------------
 Category choice
 ---------------- */
 .category-choice {
-    padding: 5px;
-    color: #316BA4 !important;
+  padding: 5px;
+  color: #316BA4 !important;
 }
 
 /* -------------------
 Addevent
 ----------------------- */
 .event-preview {
-    display:none;
+  display:none;
 }
 
 .training .admin-update {
-    margin-top : 100px;
-    height: 60vh;
+  margin-top : 100px;
+  height: 60vh;
 }
 
 /* -----------------
@@ -201,20 +201,20 @@ Config admin
 ---------------------- */
 
 .config-part {
-    margin: 30px;
+  margin: 30px;
 }
 
 .admin-info {
-    width: 600px;
-    background-color: #fff;
-    border-radius: 5px;
-    padding: 30px;
+  width: 600px;
+  background-color: #fff;
+  border-radius: 5px;
+  padding: 30px;
 }
 
 @media screen and (max-width: 600px) {
-     .admin-info {
-        width: 300px;
-    }
+   .admin-info {
+  width: 300px;
+  }
 }
 
 /* ----------------------
@@ -222,11 +222,11 @@ Contact all
 --------------------------- */
 
 #contactall_sent {
-    background-color: #e83e8c;
-    border-radius: 3px;
-    border: none;
-    font-weight: 700;
-    color: #fff;
+  background-color: #e83e8c;
+  border-radius: 3px;
+  border: none;
+  font-weight: 700;
+  color: #fff;
 }
 
 /* ----------------------
@@ -234,6 +234,6 @@ Adduser
 --------------------------- */
 
 .select-role {
-    text-align: center !important;
+  text-align: center !important;
 }
 

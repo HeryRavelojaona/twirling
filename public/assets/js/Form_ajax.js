@@ -30,7 +30,7 @@ class FormAjax {
                     if(response.isSuccess) {
                         $(".profile-changePass").hide();
                         $(".modif-pass").text("Changement bien effectuer").css("color","#007bff");
-                    }else {console.log(response);
+                    }else {
                         $(".form-error").text(response.validationpass);
                     }
                     $(".profile-changePass")[0].reset();
@@ -213,8 +213,8 @@ class FormAjax {
                     url: "index.php?route=previewevent",
                     success: function (data) {
                         let response = JSON.parse(data);
-                        console.log(response);
-                        if(response.error ==true){
+            
+                        if(response.error === true){
                             $(".preview-title").text(response.title);
                             $(".preview-place").text(response.place);
                             $(".preview-address").text(response.address);

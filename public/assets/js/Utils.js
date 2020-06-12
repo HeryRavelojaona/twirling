@@ -47,7 +47,7 @@ class Utils {
             }
 
         });
-    };
+    }
 
      /*Show and hide arrowUp at scroll*/
     arrowUp() {

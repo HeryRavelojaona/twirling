@@ -3,8 +3,8 @@
 -- Model: New Model    Version: 1.0
 -- MySQL Workbench Forward Engineering
 
-SET @OLD_UNIQUE_CHECKS=@àUNIQUE_CHECKS, UNIQUE_CHECKS=0;
-SET @OLD_FOREIGN_KEY_CHECKS=@àFOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_UNIQUE_CHECKS=@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
 
 -- -----------------------------------------------------
@@ -14,102 +14,102 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,N
 -- -----------------------------------------------------
 -- Schema twirling
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `twirling` DEFAULT CHARACTER SET utf8 ;
-USE `twirling` ;
+CREATE SCHEMA IF NOT EXISTS 'twirling' DEFAULT CHARACTER SET utf8 ;
+USE 'twirling' ;
 
 -- -----------------------------------------------------
--- Table `twirling`.`user`
+-- Table 'twirling'.'user'
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `twirling`.`user` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `lastname` VARCHAR(45) NOT NULL,
-  `firstname` VARCHAR(45) NOT NULL,
-  `email` VARCHAR(45) NOT NULL,
-  `password` VARCHAR(100) NOT NULL,
-  `filename` VARCHAR(45) NULL,
-  `role` VARCHAR(45) NOT NULL,
-  `status` TINYINT NOT NULL,
-  `comment` MEDIUMTEXT NULL,
-  PRIMARY KEY (`id`))
+CREATE TABLE IF NOT EXISTS 'twirling'.'user' (
+  'id' INT NOT NULL AUTO_INCREMENT,
+  'lastname' VARCHAR(45) NOT NULL,
+  'firstname' VARCHAR(45) NOT NULL,
+  'email' VARCHAR(45) NOT NULL,
+  'password' VARCHAR(100) NOT NULL,
+  'filename' VARCHAR(45) NULL,
+  'role' VARCHAR(45) NOT NULL,
+  'status' TINYINT NOT NULL,
+  'comment' MEDIUMTEXT NULL,
+  PRIMARY KEY ('id'))
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `twirling`.`category`
+-- Table 'twirling'.'category'
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `twirling`.`category` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `name` VARCHAR(100) NOT NULL,
-  PRIMARY KEY (`id`))
+CREATE TABLE IF NOT EXISTS 'twirling'.'category' (
+  'id' INT NOT NULL AUTO_INCREMENT,
+  'name' VARCHAR(100) NOT NULL,
+  PRIMARY KEY ('id'))
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `twirling`.`article`
+-- Table 'twirling'.'article'
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `twirling`.`article` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `title` VARCHAR(45) NOT NULL,
-  `content` LONGTEXT NOT NULL,
-  `created_at` DATETIME NOT NULL,
-  `filename` VARCHAR(45) NULL,
-  `user_id` INT NOT NULL,
-  `category_id` INT NOT NULL,
-  PRIMARY KEY (`id`),
-  INDEX `fk_article_user1_idx` (`user_id` ASC) VISIBLE,
-  INDEX `fk_article_category1_idx` (`category_id` ASC) VISIBLE,
-  CONSTRAINT `fk_article_user1`
-    FOREIGN KEY (`user_id`)
-    REFERENCES `twirling`.`user` (`id`)
+CREATE TABLE IF NOT EXISTS 'twirling'.'article' (
+  'id' INT NOT NULL AUTO_INCREMENT,
+  'title' VARCHAR(45) NOT NULL,
+  'content' LONGTEXT NOT NULL,
+  'created_at' DATETIME NOT NULL,
+  'filename' VARCHAR(45) NULL,
+  'user_id' INT NOT NULL,
+  'category_id' INT NOT NULL,
+  PRIMARY KEY ('id'),
+  INDEX 'fk_article_user1_idx' ('user_id' ASC) VISIBLE,
+  INDEX 'fk_article_category1_idx' ('category_id' ASC) VISIBLE,
+  CONSTRAINT 'fk_article_user1'
+    FOREIGN KEY ('user_id')
+    REFERENCES 'twirling'.'user' ('id')
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `fk_article_category1`
-    FOREIGN KEY (`category_id`)
-    REFERENCES `twirling`.`category` (`id`)
+  CONSTRAINT 'fk_article_category1'
+    FOREIGN KEY ('category_id')
+    REFERENCES 'twirling'.'category' ('id')
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `twirling`.`event`
+-- Table 'twirling'.'event'
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `twirling`.`event` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `title` VARCHAR(45) NOT NULL,
-  `address` VARCHAR(45) NOT NULL,
-  `date_start` DATETIME NOT NULL,
-  `comment` LONGTEXT NULL,
-  `user_id` INT NOT NULL,
-  `img_name` VARCHAR(45) NULL,
-  `zipcode` INT NOT NULL,
-  `city` VARCHAR(100) NOT NULL,
-  `date_end` DATETIME NOT NULL,
-  `category_id` INT NOT NULL,
-  PRIMARY KEY (`id`),
-  INDEX `fk_event_user_idx` (`user_id` ASC) VISIBLE,
-  INDEX `fk_event_category1_idx` (`category_id` ASC) VISIBLE,
-  CONSTRAINT `fk_event_user`
-    FOREIGN KEY (`user_id`)
-    REFERENCES `twirling`.`user` (`id`)
+CREATE TABLE IF NOT EXISTS 'twirling'.'event' (
+  'id' INT NOT NULL AUTO_INCREMENT,
+  'title' VARCHAR(45) NOT NULL,
+  'address' VARCHAR(45) NOT NULL,
+  'date_start' DATETIME NOT NULL,
+  'comment' LONGTEXT NULL,
+  'user_id' INT NOT NULL,
+  'img_name' VARCHAR(45) NULL,
+  'zipcode' INT NOT NULL,
+  'city' VARCHAR(100) NOT NULL,
+  'date_end' DATETIME NOT NULL,
+  'category_id' INT NOT NULL,
+  PRIMARY KEY ('id'),
+  INDEX 'fk_event_user_idx' ('user_id' ASC) VISIBLE,
+  INDEX 'fk_event_category1_idx' ('category_id' ASC) VISIBLE,
+  CONSTRAINT 'fk_event_user'
+    FOREIGN KEY ('user_id')
+    REFERENCES 'twirling'.'user' ('id')
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `fk_event_category1`
-    FOREIGN KEY (`category_id`)
-    REFERENCES `twirling`.`category` (`id`)
+  CONSTRAINT 'fk_event_category1'
+    FOREIGN KEY ('category_id')
+    REFERENCES 'twirling'.'category' ('id')
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `twirling`.`config`
+-- Table 'twirling'.'config'
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `twirling`.`config` (
-  `contribution` DECIMAL NULL,
-  `address` VARCHAR(500) NULL,
-  `email` VARCHAR(45) NULL,
-  `phone` INT NULL)
+CREATE TABLE IF NOT EXISTS 'twirling'.'config' (
+  'contribution' DECIMAL NULL,
+  'address' VARCHAR(500) NULL,
+  'email' VARCHAR(45) NULL,
+  'phone' INT NULL)
 ENGINE = InnoDB;
 
 
