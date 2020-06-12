@@ -1,16 +1,15 @@
+/* Navigation */
 
-/*Navigation Menu
---------------------------------------------------------------*/
-/*Navigation*/
 .profil-img {
     max-height: 80px;
     position: relative;
     margin: 0 auto;
 }
 
-/*---------------
+/* ---------------
 Table
--------------*/
+------------- */
+
 .admin-table {
     text-align: center;
     margin: 50px 0 ;
@@ -27,7 +26,7 @@ Table
 
 .action-table .admin-btn {
     color: #fff !important;
-    text-align: center ;
+    text-align: center;
 }
 
 .action-table a {
@@ -83,9 +82,9 @@ Table
     margin: 10px 0;
 }
 
-/*-----------------------------
+/* -----------------------------
 Profile-part
---------------------------------*/
+-------------------------------- */
 .profile {
     text-align: center;
     margin-top: 100px;
@@ -128,9 +127,9 @@ Profile-part
     border-radius: 10px;
 }
 
-/*--------------
+/* --------------
 AddArticle
---------------*/
+-------------- */
 
 .addarticlebox textarea{
     height:250px;
@@ -170,43 +169,43 @@ AddArticle
     width: 120px;
 }
 
-/*-----------------
+/* -----------------
 Delete article
------------------*/
+----------------- */
 .admin-box .action .response-message {
     font-size: 1em;
 }
 
-/*----------------
+/* ----------------
 Category choice
-----------------*/
+---------------- */
 .category-choice {
     padding: 5px;
     color: #316BA4 !important;
 }
 
-/*-------------------
+/* -------------------
 Addevent
------------------------*/
+----------------------- */
 .event-preview {
     display:none;
 }
 
-.training .admin-update{
+.training .admin-update {
     margin-top : 100px;
     height: 60vh;
 }
 
-/*-----------------
+/* -----------------
 Config admin
-----------------------*/
+---------------------- */
 
 .config-part {
     margin: 30px;
 }
 
 .admin-info {
-    width: 600px ;
+    width: 600px;
     background-color: #fff;
     border-radius: 5px;
     padding: 30px;
@@ -218,9 +217,10 @@ Config admin
     }
 }
 
-/*----------------------
+/* ----------------------
 Contact all
----------------------------*/
+--------------------------- */
+
 #contactall_sent {
     background-color: #e83e8c;
     border-radius: 3px;
@@ -229,9 +229,10 @@ Contact all
     color: #fff;
 }
 
-/*----------------------
+/* ----------------------
 Adduser
----------------------------*/
+--------------------------- */
+
 .select-role {
     text-align: center !important;
 }

@@ -5,7 +5,7 @@
       <meta charset="utf-8">
       <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-      <title><?= $title ?></title>
+      <title><?= isset($title)? $title :'SPAC' ;?></title>
       <meta content="Club de twirling bâton de Fontenay sous bois" name="description">
       <meta content="twirling bâton, sport, fontenay sous bois" name="keywords">
       <link rel="canonical" href="https://spac.heryravelojaona.fr"/>
@@ -38,9 +38,10 @@
 
 <!--JS Files -->
 <script
-src="https://code.jquery.com/jquery-3.5.1.min.js"
-integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
-crossorigin="anonymous"></script>
+  src="https://code.jquery.com/jquery-3.5.1.min.js"
+  integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+  crossorigin="anonymous">
+</script>
 <script src=https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js></script>
 <script src="https://unpkg.com/scrollreveal"></script>
   <!--Tinymce Wysiwigg-->
@@ -52,19 +53,19 @@ crossorigin="anonymous"></script>
 <script src="assets/js/Form_ajax.js"></script>
 <script src="assets/js/main.js"></script>
 
-   <footer>
-  <a href="#" class="back-to-top"><i class="fas fa-arrow-up"></i></a>
-  <div class="container">
-      <div class="copyright">
-        &copy; 2020 Copyright <strong><span>SPAC</span></strong>. All Rights Reserved<br/>
+<footer>
+      <a href="#" class="back-to-top"><i class="fas fa-arrow-up"></i></a>
+      <div class="container">
+            <div class="copyright">
+              &copy; 2020 Copyright <strong><span>SPAC</span></strong>. All Rights Reserved<br/>
+            </div>
+            <div class="credits">
+              Site réalisé par<a href=""> Hery Ravelojaona</a>
+            </div>
+            <div class="copyright">
+            <a href="index.php?route=mentionlegale">Mentions légales</a>
+            </div>
       </div>
-      <div class="credits">
-        Site réalisé par<a href=""> Hery Ravelojaona</a>
-      </div>
-      <div class="copyright">
-      <a href="index.php?route=mentionlegale">Mentions légales</a>
-      </div>
-  </div>
 </footer><!-- End Footer -->     
 </body>
 <!-- ======= Footer ======= -->

@@ -5,7 +5,7 @@
 class Utils {
     constructor(){
         this.btnClose(".navbar-toggler-icon");
-        this.ArrowUp();
+        this.arrowUp();
         this.changeConfig("#openChangePrice", "#changePrice");
         this.changeConfig("#openChangeAddress", "#changeAddress");
         this.changeConfig("#openChangeEmail", "#changeEmail");
@@ -47,10 +47,10 @@ class Utils {
             }
 
         });
-    }
+    };
 
      /*Show and hide arrowUp at scroll*/
-    ArrowUp() {
+    arrowUp() {
         $(window).on("scroll",() =>{
             if(window.scrollY >400){
             $(".back-to-top").fadeIn();
@@ -130,4 +130,4 @@ class Utils {
                 }else{$(".create-role").show();}
             });
     }
-};
+}

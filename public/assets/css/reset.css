@@ -1,4 +1,4 @@
-/*reset css*/
+/* reset css */
 *,
 *::before,
 *::after {
@@ -24,11 +24,11 @@ h4,
 p,
 ul[class],
 ol[class],
-li{
+li {
   margin: 0;
 }
 
-body{
+body {
   margin: 0 auto;
   min-height: 100vh;
   scroll-behavior: smooth;
